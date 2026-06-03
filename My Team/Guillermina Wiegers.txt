@@ -1,1 +1,116 @@
+Meeting Title: Assessment planning with Lauro and Daniel
+Date: May 28
+Meeting participants: Damian Rotondi
 
+Transcript:
+ 
+Speaker A: Excepto Brasil y un poco de México, doble sombrero, me refiero a Sergio Martínez, César Hinojosa, Mariselo Merino, bla, bla, bla, Richard Álvarez, todos los que hoy en día imputan Master Data por VU, vendors, clientes MRO, etcétera, tienen doble sombrero, hacen Master Data y hacen su trabajo, compras, almacén, invoice, facturación, lo que sea. El único caso donde eso no sucede, y no sé si no es para algunos domains además, es Brasil, que tiene el equipo de Robson, y México que tiene un mini equipo, que si te digo equipo, me parece que estamos hablando de tres personas, con esas dos. Yo todavía no agendé nada. 
+Speaker B: Eso lo vamos a validar con el assessment. 
+Speaker A: Sí, pero yo para ir a hacer un assessment, por eso te decía lo de hay que hablar con Daniel Vila primero y con Lauro. ¿Por qué? Porque para ir a hacer un assessment de cómo las es hoy y para contarles que vas a centralizar y por eso estás haciendo el assessment, hay que tener mucho cuidado, porque la gente va a ah, ¿Y yo qué carajo voy a hacer? ¿Entendés la lógica, o sea, es como que? Por eso yo estoy primero, ahora estoy Carlos Padilla es el jefe de Maricielo, yo ahora voy a hablar con él para rechequear que Maricielo tenga otra labor y que esto sea on top off, ¿Entendés? Porque si no, indirectamente va a estar gente, vos no vas a existir. Ese es el punto. Por eso yo te había puesto esa reunión con Lauro y Daniel, porque hay que alinear che, miren, estamos hablando este proyecto, vamos a hacer esto, que de hecho Claudio Gambio lo preguntó en la reunión. Ese es uno de los puntos más críticos para mí ahora en este momento, porque te va a servir para ver cómo encaras las conversaciones, cómo encaras el tema, todo, porque si no está diciendo, bueno, yo voy a tener que en algunos meses dejar de tener estos recursos, ¿Se entiende? Por eso la col con Lauro y Daniel es importante, porque si no, no podemos avanzar en Brasil. 
+Speaker B: Claro, pero ese call va a ser, Digo, para pedirles permiso para hacer el assessment y que transmitan ellos antes de que lleguemos nosotros la tranquilidad de que mira, estamos haciendo un assessment porque hay un proyecto de regionalización, pero no está previsto ningún tipo de. 
+Speaker A: Es que yo no lo sé, No podés asegurar eso, entendés, o sea, por ahí ver cómo lo encaramos. ¿Bueno, ese es el punto para discutir con ellos como ven mejor está agendada, no? 
+Speaker B: Esta reunión está agendada, la habíamos pasado, 
+Speaker A: yo la pasé, creo que es el martes. 
+Speaker B: Listo, perfecto. 
+Speaker A: Después con el resto yo estoy avanzando porque es indistinto, da igual. 
+Speaker B: Tenemos la pata de esto es pata Gente del Bien, la pata digamos. Técnica es que estamos involucrando a Minsight. ¿Para que lo estamos involucrando? 
+Speaker A: No, no me Insight lo dijimos para ver si ellos primero, como están haciendo lo de Master Data de Lima, de hecho hoy tenemos call con ellos, ellos están haciendo la Master Data de Lima. La idea que habíamos hablado era que ellos pudieran gestionar toda la parte de PMO de este proyecto de centralización. ¿Entonces, más allá de que ellos para Lima están haciendo también limpieza, si nosotros usamos el consultor Softnis? Si nosotros usamos Softnis para hacer toda la limpieza de los datos, ¿Ellos igual pueden actuar como PMOs de el proyecto en sí, de cómo hacer la centralización, cómo armar el equipo, todo lo que es, no sé si tenemos que hacer los relevamientos, lo que sea, entendés? Todo lo que tiene que ver, o 
+Speaker B: sea, ellos pasarían a ser, por ejemplo, el assessment que estamos haciendo nosotros ahora. 
+Speaker A: Sí, ponele como pueden hacer, o el assessment, o lo hacemos en conjunto, o pueden incluso, no sé, hacer como el armado de cómo debería ser esa limpieza, porque pensá que tenemos 4 o 5 domains, entonces compaginar todo eso, ellos si tienen la experiencia para hacer proyectos que tienen que ver con limpieza de datos, pueden asesorar, incluso pueden, no sé, ver si, qué sé yo, si en la parte de Lima lo pueden hacer ellos mismos con, no sé, yo tengo dudas 
+Speaker B: ahí ahora, porque si llega a funcionar lo de Sofnis, acuérdate lo que dijo 
+Speaker A: Carlos, es carísimo, yo me quedé con eso y debe ser carísimo sí son 
+Speaker B: de 3 a 5 dólares por sky. 
+Speaker A: 3 a 5 dólares POR SKY, 
+Speaker B: no sé cuánto cobraba SKF, no se. 
+Speaker A: Revisa, revisó 17, 23.000, 23.000. Solo. 
+Speaker B: Ahora tengo dudas con Mindsight. Sobre su rol, pero OK, 
+Speaker A: 23 mil, 
+Speaker B: ese caus, no sé cuánto, creo que son 75 mil. 
+Speaker A: Poco es tanta plata, solo de marrow, 75 mil 400. Por eso te las doy yo. ¿Bueno, que tenés dudas de mi? 
+Speaker B: Insight no entra como PMO, 
+Speaker A: Hay que preguntarle si ellos también saben limpiar data, porque tal vez usamos este verb softness para MRO, que es lo más complejo, y usamos a ellos para vendors o players o. 
+Speaker B: Yo creo que va a ser un híbrido eventualmente. 
+Speaker A: Pero veamos cómo funciona. 
+Speaker B: Y respecto, ahora pasemos al satélite MRO. 
+Speaker A: Emarrow es la COL de hoy. 
+Speaker B: Claro. Que sería este satélite. Sería este EMAR y Emarrow. 
+Speaker A: No, no, pero te está confundiendo. Ah, está bien. Sí, sí, sí. 
+Speaker B: Recién hablamos de esto. Ahora vamos a hablar de un dominio particular que se maró. Y nosotros lo habíamos dividido en cuatro. Todo lo que es data, que probablemente va a venir por acá con Softnis o un híbrido, porque hay cosas que sofnis. Entonces, ¿En qué está esta etapa? Mi expectativa es que Pedro Costa le mande un dataset de 50 códigos, variado, y que veamos que nos devuelve eso. La parte de proceso es min, max y todo lo que tenemos que mapear nosotros con todos el workshop que tenemos que hacer. 
+Speaker A: Yo eso lo dejaría con data máximos, mínimos. 
+Speaker B: No, no, pero esto es el proceso, no es la data. Esto es cómo debes planificar con mínimos y máximos. Es el mapeo que queremos hacer del proceso, que todos trabajen de la misma manera, que no planifiquen por históricos, sino que planifiquen por. Esto es el workshop. 
+Speaker A: Ah, OK. Sí, sí, sí. Perdón. Está bien. 
+Speaker B: Después tenés gente que es lo de. El planificador de mantenimiento y el de almacén en México. Y después tenés sistemas, que es lo de SAL que va corriendo. Qué es lo que está pasando hoy. Para mí hay una puja entre Tres Lagoas y Lima, porque Lima lo está empujando Fabio Bresil con ese input que habrá tenido de McKinsey, en donde dice que la cantidad de pos son 96.000. Y Tres Lagoas está pujando porque. ¿Cómo se llama? Por las dos falta de procesos y el tema de las órdenes duplicadas. Ahí es lo que espero que se resuelva hoy en la reunión. ¿Hacia dónde vamos? ¿Qué hice yo y que te quería mostrar para que me ayudes tal vez en esa reunión? La matriz de decisión. 
+
+Meeting Title: Atlas rollout and data cleanup
+Date: May 28
+Meeting participants: Damian Rotondi
+
+Transcript:
+ 
+Speaker A: Sobre esto, sobre Marou, sobre. 
+Speaker B: No, no, pero primero lo quiero digerir con Fabio porque ellos están hablando con Ludmila también, quiero estar alineado con ellos y con Claudia, porque además Ludmila ya está tocando a Claudio, está tocando a Fabio, ya sé. Bueno, tema 3, 
+Speaker A: atlas, atlas, atlas, Atlas demanda, rígidos, o sea, rollout rígidos, vamos por lo más fácil, Rollout rígidos, mandaron la tarea a todos, se le mandó al proveedor, el proveedor esta semana está de viaje y están de vacaciones, o sea, Lane, que es el de customer con quien estamos llevando el proyecto, esta semana está de vacaciones, vuelve la semana que viene y ahí le va a decir a Luis, bueno, ¿Cuáles son los siguientes pasos? 
+Speaker B: Demandas, rígidos, rígidos 
+Speaker A: y después, porque ahí hay que hacer el CIB, un poco lo que hablamos con Luis y después 
+Speaker B: todo lo que es rígidos, Atlas, falta la cotización formal. 
+Speaker A: Sí, sí, sí, cotización, esfuerzo, OK, estamos en esa, Sí, sí, proceso de armada, 
+Speaker B: quoting process, o sea todo lo que 
+Speaker A: es, sí, sí, etc. Atlas, demandas flexibles, bueno, México, ya sabes, estos seres de luz, el tema de 
+Speaker B: datos, limpieza, 
+Speaker A: Conosur, ayer tuvimos reunión con Pedro y Tomás de feedback y todo, ellos lo están usando, no lo están usando al 100% porque tienen que limpiar primero un poquito de Master data, después outliers, después otra cosa más, y lo que me dijo Pedro es, yo me comprometo que lo vamos a usar, lo vamos a usar como herramienta, me gusta, vi todas las capacitaciones, me encantaron las capacitaciones y estamos en el camino hacia, o sea, pero tranquila, me dijo la vamos a optar. La expectativa, esto es para dejarlo muy claro con Santi, si vos hoy te juro con él H, es una herramienta que es un ciclo, o sea, como es el ciclo de planeamiento, de forecast, de todo, no es algo que vos usas todos los días, yo esto se lo aclaro a todo el mundo y a todos los que tienen expectativa de que no lo aprenden a usar, no, o sea, no es una herramienta que vos usas todos los días como si estuvieras usando SAP y todos los días tenés que entrar a hacer una factura, entonces la curva de opción es mucho más lenta porque lo tocas una vez al mes, la frecuencia baja, básicamente lo tocas una vez al mes todo el proceso, entonces paciencia con eso, lo están usando todos, a todos les gusta, todos están contentos todos. Ahora, ¿Que pasa? Hay un montón de cosas que hay que corregir del lado del usuario para poder usarlo bien. 
+Speaker B: Digamos que estamos en la etapa de limpieza de la historia y outliers y 
+Speaker A: adopción de la herramienta, o sea, todos la están usando, todos están contentos y es un camino, o sea, salvo el pelotudo de México, pero todo el resto está en esa. Y supply 
+Speaker B: flexible, ¿No? 
+Speaker A: Sí, sí, sí. Martu ya lo está usando también. Algunas dudas que va y viene con el consultor, pero Claudio está de vacaciones tres semanas, vuelve la semana que viene, No, creo que la otra. Ayer tuvimos reunión con John K, con Artur y con Dardo, con el consultor para ver unos temas de supply y supply Londrina, perdón, o sea, Brasil, perdóname. Y ya más o menos mediados de junio, ponele, podemos empezar a hacer como las primeras capacitaciones, o sea, en realidad es como una capacitación a un hand, porque la persona es una Claudia Matsunaga, que es quien lo va a usar, entonces es más como un one on one donde la vas guiando con el sistema, lo mismo que hicimos acá con Martina, que es de supply de acá, más o menos mediados de junio. Y después, bueno, that's it, vamos a hacer semanales sesiones de soporte, o sea, líneas generales. 
+Speaker B: Supply flexibles. ¿Quién lo está usando? ¿Quién no lo está usando? Nadie, solo Argentina. 
+Speaker A: Solo Argentina. Y en Brasil, mediados de junio va a hacerse como la implementación al usuario. Ya toda la parte técnica, todo lo tengo. 
+Speaker B: Ya está hecho el supply. Entonces Supply. Está lista la parte técnica. Ahora estamos en la opción de. 
+Speaker A: Ni siquiera arrancamos la opción, no, por 
+Speaker B: eso estamos en la parte de end user, el usuario final, pero ya el backend ya está, se supone. Bien, 
+Speaker A: probablemente cuando empiece a usar usuario surja temas como todos lados. 
+Speaker B: ¿Otro proyecto? Mercury. 
+Speaker A: Mercury, Mercury. Estamos en periodo de. A ver, se hizo toda la conversación a los keyusers de la etapa de planificación, ¿Qué key users? A los de Brasil, Rock, Monopolis, Mawa y Doctrina son más o menos 8 o 10 incluidas son. Ahora, ¿Qué pasa? Esos keyusers ahora tienen que llegar y testear toda una planilla de escenarios para ver que todo funcione, etcétera, etcétera. ¿Qué pasa? Hay un tema donde los datos, la master data de hecho está como tenés que pasar toda la master data de un sistema al opcenter. Se puso un recurso específico de master data. 
+Speaker B: Vos decís pasar la master data, ¿Que tenemos hoy en SAP a OPCenter, en SAP, en donde sea que estés? Sí, pero ¿Y cómo sabemos que está bien esa Master Data? 
+Speaker A: Están mirando, están revisando, están poniendo todo, hay un foco muy grande puesto en eso y corrigiendo lo que es velocidades de máquinas, o sea, se está reflejando la realidad básicamente. Hay mucho hincapié puesto. 
+Speaker B: ¿Quién está haciendo eso 
+Speaker A: operaciones, No, está Edson, que es el keyuser y está el equipo de Master Data? Por eso digo, pusieron un recurso dedicado de Master Data para el proyecto que está full, full Master Data y encima conseguimos una licencia de. Bueno, no importa. Es como que puedes hacer subidas masivas, si no tenía que estar, era mucho más difícil. Está en proceso de implementación, se están haciendo los testing con los usuarios de lo que se puede, porque hay data que no está subida, digamos, están. La semana pasada tuvimos circo, fue creo que estaba el 40% cuando ya debería estar al 100. Entonces ahí dijimos, che, yo hablé con Daniel Doval, todos de acuerdo, todos alineados en que si no está la Master Data correcta, no se avanza, no se hace nada. Bueno, si hay que correr el proyecto dos semanas, tres semanas, lo corremos, no pasa nada. Incluso Daniel me dijo, si hay que hacer un parate, lo paramos, hasta que esto no esté corregido, no se avanza. Estaba Laura también, todos de acuerdo, dijimos no quiero poner al usuario a testear si la data no es correcta. 
+Speaker B: ¿Hoy estamos en la etapa de, digamos, extracción y validación de datos maestros para hacer algún tipo de test? 
+Speaker A: No, o sea, se está copiando la Master Data. Lo que pasa que, a ver, vos te copias todos los datos de un sistema a otro, no es específicamente para la validación y test. Se están haciendo en paralelo los test de los escenarios de cómo funciona la herramienta, ¿Entendés? Ahora solamente se están usando los datos que ya están subidos. Por ejemplo, si vos ya subiste todo lo que es café para la máquina, estás testeando solamente café, ¿Entendés? ¿Y qué te iba a decir? Bueno, eso son estas semanas. 
+Speaker B: ¿Algún riesgo esa digo, sí la mascarda, 
+Speaker A: que no lleguen a copiarlo bien, que no esté bien, o sea que no se llegue a tiempo? Están todos ya contrarrestados. Es un tema, no es un riesgo que te pare el proyecto ahora, pero sí es un tema. 
+Speaker B: ¿Hasta cuándo tenemos tiempo para resolver esto? 
+Speaker A: ¿No lo están haciendo, digamos, hay tiempo 
+Speaker B: porque vos en qué momento se para el proyecto? Porque no se resolvió el tema de Master Data 
+Speaker A: te diría que el proyecto puede no pararse. Lo que se puede parar es que vos puedas testear todos los escenarios, ¿Entendés? Ese es el tema. Pero por ahora, o sea, hay reuniones todos los días con los keyusers, yo participo para que ellos testeen y saquen sus dudas. Entonces está funcionando. Keyusers se conectan, van, lo hacen. Ahora, sí hay un tema con el tema de las reglas de negocio. Las reglas de negocio son las reglas que vos pones cuando implementás un sistema. Todos vamos a poner las órdenes de compra los lunes. Es una pelotuda, ponele eso. Bueno, Mahua lo hace una forma, Rondonépolis la hace de otra y Londrina lo hace de otra. De esos hay varias cosas de distintas áreas. Eso se tiene que validar con gerentes, con gente, porque es lo que te determina un poco cómo vas a operar con el sistema y en el sistema. Y eso está un poco trabado. Por ejemplo, yo de hecho ahora hay una reunión que Vini está tratando hace dos semanas de validar una reunión. Como Patricia y Customer Service no se conectan, no contestan los mensajes, no contestan nada, Con Vini dijimos ponemos esta reunión hoy si no viene nadie, es tipo ya van una semana o 10 días si no viene nadie. Hola Lauro. Porque aparte Lauro no tiene idea, Patricia para mí tampoco tiene mucha idea, entonces ahí puede llegar a ver un tema, pero por ahora está como bien. Y después, con respecto a las siguientes fases, que es lo que justamente el proyecto se termina en septiembre, octubre, septiembre. El tema que existe es qué hacemos con las otras dos fases. Con la parte, porque esto es scheduling, con la parte de planning y con la parte de cilindros y tintas. Para eso había una reunión ayer que Daniel me pidió pasarla porque están con el Go Live de SAP. Me yo voy a tratar de conectarme, si no me puedo conectar te aviso ese día, porque como estoy en el site probablemente no llegue, pero tal vez sí. Bueno, yo le dije no importa, avísame, si no la muevo. Y quedamos que como él no podía, quedamos para moverla para el. Creo que es la semana del 8, me puse que la puse para el 9 o algo así. 
+Speaker B: OK. 
+Speaker A: Porque bueno, yo la semana que viene no estoy y la semana que viene, justo el 1 de junio es el Go Live en Tres Lagoas y va a ser un caos. Así que aparte no es algo que vos tenés que definir ya. Otro tema que hay que definir ahí es el tema de los recursos, porque hoy en día vas a necesitar, hoy en día vos tenés mucha gente haciendo el scheduling, cuando sea que se implementa esta herramienta, vas a necesitar dos personas como mucho. 
+Speaker B: Sí, pero el tema estructura se está conversando por separado, lo que tenemos que definir es qué debería de pasar cuando se implemente esto, cómo cambia la estructura, qué necesitas. 
+Speaker A: Bueno, por eso Si vos tenés 8, 10 queduleros, solamente van a necesitar 2. 
+Speaker B: Por eso te digo, independientemente de lo que tenga qué dice cuál es el to be 2, listo. 
+Speaker A: Pero no es tan listo ahora. No, no es que me chupo un huevo ahora, porque vos, esa es la gente que hoy en día le estás diciendo que participe del proyecto, entonces le tenemos que decir algo, porque vos no le podes decir, che, testeate, hacé todo esto, bla, bla, bla, andate a la conversación, estamos hablando de proyecto buenísimo y vas a rajar a ocho, siete personas. 
+Speaker B: Está bien, entonces un riesgo. Otro riesgo es el de gente. 
+Speaker A: No es un riesgo un watch out, básicamente, ni siquiera es un watch out, es algo que hay que resolver, pero no es un riesgo, o sea, el consultor el otro día estamos en una reunión, dijo, yo lo dije Desde el día 1, hay que ocuparse de este tema, porque hay que decir a la gente qué vas a hacer. Si la persona hoy en día está haciendo dos cosas, fantástico, seguía haciendo lo otro, ahora, si no lo está haciendo, no sé. Entonces no es un riesgo y no es un riesgo, es una definición que hay que tomar con respecto a qué haces con la gente. Y bueno, y eso Mercurio y queda 
+Speaker B: bueno, el mentre value de Londrina, me dijiste que estamos tocando de oído. Queda el layo nada más que tiene que presentar. 
+Speaker A: Sí, el dashboard. Yo me junté incluso el lunes con Jessy, no, el lunes no, el martes con Jessy, con Eric y con. No me acuerdo qué más estaba de Haití, no sé si Lourdes o Ana Emily, para que Eric les cuente qué estaba haciendo él de lo de Production Adherence, para no pisarse con lo que están haciendo ellas. Charla técnica yo. Pero básicamente ahí acordaron si se están pisando o no. Aparentemente no, pero bueno, es más una cosa. Pero bueno, ayer la reunión esa que había puesto Luis no se hizo, con lo cual yo no sé qué es, qué tan al tanto está Santi de 
+Speaker B: cómo nos va, es el que menos 
+Speaker A: me no está bien, porque estas cosas, viste, de golpe no tienen importancia. Y de golpe tipo, ¿Qué pasó con Inventory Value? Y entonces yo quiero dejar claro cuál es el rol para que no nos. 
+Speaker B: Escúchame la otra. La semana tema Quick Wins, ahora pasamos a proyectos. Quick Wins la semana que viene, como 
+Speaker A: 248. Igual es fácil, pero lo estuve ayudando a Raúl que estuvo toda la semana pasada de vacaciones haciendo las reuniones con los customer service para mapear básicamente qué existe hoy en el sistema. Que existe hoy en el sistema de rígidos como request que te llegan de. ¿Cómo se llama? De. ¿De los clientes postventa y que le falta? Flexibles, tienen que mandar unas planillas, nadie las manda. Ya le pedí a Paty, ya le pedí a todos, le mandé 14 mails a cada uno, uno solo me contestó. 
+Speaker B: Para mí todo lo que dos por estudio se lo está comiendo Salesforce. 
+Speaker A: No, no, que Salesforce para mí no tiene nada que ver acá. Ese es otro temita. Y otra cosa que me fui a una reunión. ¿Alex Álvarez? Sí, sí, ¿La viste? 
+Speaker B: No, yo no estoy. 
+Speaker A: Le pregunté a Ramón, tipo, ¿Qué es esto? Nunca me contestó Ramón tampoco. 
+Speaker B: OK, 
+Speaker A: te digo cuál es la reunión, porque dije, ¿Qué carajo es esto y por qué estoy yo acá? 
+Speaker B: No la hizo va, o por lo 
+Speaker A: menos no me invitó. 
+Speaker B: OK, es. 
+Speaker A: Update, proyecto de simplificación, la puso Alex e invitó a esta gente. Es como una mezcolanza de personas. Un technical Supervisor, Marco Salazar, que es TCO Procurement, Luis Renato Varas, Francisco Romero, que es el Jefe del Genio de México. 
+Speaker B: Escúchame, y el otro tema que quería hablar es Quick Wins. Nosotros la semana que viene con Marce terminamos la de Sabrina de Brasil y terminamos la de Multicarrier de Pati. Entró un mail de Patricia Hoy, Sousa Hoy, pidiendo ayuda para castomar con un reporting. Lo que yo quisiera pedirte es si en algún punto puedes llamarla y hacer un screening. 
+Speaker A: Patricia no me contesta ni un mensaje. Te estoy escribiendo, Patricia, te estoy escribiendo por el proyecto de Mercury, por estas cosas que tengo que definir, arreglo negocio, por el proyecto 248 que me tiene que mandar esa Fátima planilla, ¿No? Y vini está igual, no contesta la tipa no contesta los mails y no contesta, o sea, no es porque no quiere, obviamente. 
+Speaker B: Pobrecita, no, pero no está pidiendo esa ayuda, no le estamos pidiendo algo Nosotros, 
+Speaker A: por más que en esto también es para ella. 
+Speaker B: Bueno, yo le respondí, le acabo de responder. 
+Speaker A: ¿No tengo idea tipo cómo, o sea, o sea, cómo llegar a ella, entendés? ¿Y me da pena, no la quiero quemar, viste? Como 
+Speaker B: agendar una reunión, si querés o no, no, dejá, ya está, yo me ocupo. 
+Speaker A: No sé cómo hacer para pobre, para darle una mano también. 
