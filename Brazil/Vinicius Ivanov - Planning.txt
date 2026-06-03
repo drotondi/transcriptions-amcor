@@ -1,0 +1,357 @@
+Meeting Title: Vini Ivanov
+Date: May 6
+Meeting participants: Damian Rotondi
+
+Transcript:
+ 
+Speaker A: Então, batendo um pato pro Lauro agora de sair de férias, ele quer que além do DTS eu comece a voltar agora dentro do supply chain e a ajudar a virar, como um todo, a estruturação da área aqui do Brasil. 
+Speaker B: Porque ele não tem ninguém que faça isso, né? 
+Speaker A: Não, hoje o time é assim, um time... O que que aconteceu? O Martim veio de mercado e aí ele trocou as pessoas. Então ele trouxe o Daniel Vila, não sei se você conhece o time de supply daqui do Brasil. 
+Speaker B: Conheço o nome, amanhã tenho a... Então, 
+Speaker A: o Martim veio, ele trouxe o Daniel Vila que trabalhava com ele na Colgate. Aí ele tinha trazido uma outra menina que se chamava Fernanda em Customer Service. Ela saiu da empresa. A Patrícia, que agora está em Customer e PCP, ela era do time de operações, mas ela não tem nenhum background de supply chain. Então ela vem de operações. Quem está cuidando do Waze, dos stocks, é o Nakamura, que era de FP&A, de finanças. Quem cuida de logística é o Marcelo Félix, que também era de finanças. Então, assim, hoje o time do Lauro, quem tem conhecimento técnico de supply chain é o Daniel Vila, porque ele sempre trabalhou com supply chain. E na operação que está com central de frete, expedir, inbound, outbound, você tem o Vitor, que conhece bastante, mas não é de planning, não é nada. Então, o Lauro quer entender, assim, como que eu consigo ajudar ele, primeiro, trazer todo mundo pro universo de supply chain, o que que é o escopo de cada um, como que as coisas conectam, a gente tá sofrendo muito assim, ah, você ainda tem o processo de S&OP, você planeja, só que você planeja médio ou longo prazo, por exemplo, a gente tá agora em maio, o time do Daniel Vila que cuida de demanda, Ele tá olhando julho em diante. Então ele não tá nem olhando mais maio, nem olhando mais junho. Porque isso aí já deveria estar com o time de Sennaui executando. Só que assim, do planejamento pra execução, a gente tem um gap que ninguém consegue orquestrar o que foi planejado. Não sei o quanto você domina assim do SOP, do SOI, mas... se desdobrar o plano para o execução, aqui a gente tem um gap grande. Desde a época que implementou lá atrás já era um desafio por conta da muita mudança de pedido, demanda do cliente, então assim, o Fork e Check Currency sempre foi baixo, sempre foi um desafio para a área de demanda, assim, a gente está falando de 30% de acuracidade, 30 e poucos por cento. 
+Speaker B: Mas quanto ao benchmark do Então, rígido 
+Speaker A: a gente fala em 80%. Só que aí... 
+Speaker B: Isso, isso. 
+Speaker A: Vem tecnologia e depois você vai bater um papo com o Daniel Vila. Rígidos tem três clientes. Tem a FENSA, que é a Coca-Cola, maior cliente. Tem Gatorade lá. Então, assim... Você tem três clientes e da FEMSA a gente tá dentro da Coca-Cola, dentro do cliente. Então assim, a gente tem a máquina que a gente sabe que faz tantas unidades. Lá é um pouco o processo inverso. Quanto que a máquina consegue fazer? Ah, consegue fazer 100 mil por mês. Aí você vai pra área de vendas e fala, você consegue vender 100 mil. Então, vendo quanto consegue produzir pra vendas e pro mercado vender. Aqui em flexíveis é o contrário. O time de vendas tem que falar quanto que eles estão planejando vender pro time operações. ajustar a máquina, pessoas, turno, pra conseguir produzir. E nesse meio do caminho a demanda flutua. O que eles planejavam não entra de pedido, ou eles planejavam que ia ser 100, caiu pra 50, ou tem caso que eles planejaram 100 e veio uma demanda de mercado pra 200, só que você não consegue absorver. Então, assim, tem muita crise alinhada à questão de variação de demanda, complexidade do processo. Então, assim, que nem a gente tá falando de DTS, Quando a gente vai fazer qualquer item de flexíveis, a gente tem cilindro, que é o ferramental. Então assim, um SKU, ele demanda um jogo de oito cilindros. Então se a demanda aumenta, se ela reduz, se precisa regravar, se precisa trocar, é muito complexo, porque... produzir um cilindro não é simples. Às vezes você precisa engrossar o cilindro, às vezes você precisa desgravar o que está gravado, gravar uma nova arte. Então, essa complexidade que está sendo um desafio em DTS é também no dia a dia para suplar e segurar. 
+Speaker B: E aí, para entender, você falou do gap entre play e execução. O que é esse gap? 
+Speaker A: Vou dar um exemplo simples para você aqui. Vamos falar assim, se você falar assim, quanto que é a capacidade das plantas do Brasil? Do Brasil. Então você vai falar assim, o Brasil faz 5 mil toneladas-mês flexíveis. Então você tem 5 mil toneladas-mês, que deveria ser o faturamento de capacidade. Só que aqui você tem máquina que está com 20% de ocupação, que você tem capacidade, só que você não tem pedido, e você tem máquina que está com 140% de ocupação. Tecnologia que, não sei se já ouviu falar de trilaminado, depois você bate um papo com o Daniel e fala assim, todo o mercado de café, café atomatado, vegetais, que é o principal experiente. Café Três Corações, Melita, JD. Ele é dessa tecnologia que a gente fala de triplex. Então aqui, aqui você só tem duas máquinas. Então assim, aqui qualquer dificuldade. 
+Speaker B: Como assim 140? 
+Speaker A: Por exemplo, vou dar um exemplo. Vamos falar que aqui a capacidade da máquina é de 100 tons. E você tem uma demanda com um pedido de 140. Você está 40% acima. 
+Speaker B: E o que acontece com esse 40%? Você não dá pra rebalançar? 
+Speaker A: Não dá porque nessa tecnologia você teria que comprar mais uma máquina. 
+Speaker B: E também não dá pra fazer stocking? 
+Speaker A: Não porque ela sempre trabalha no limite. Não para. Não para. Esse é o maior gargal aqui hoje. Só que em contrapartida, quando você vê número absoluto, você fala, puta, por que que não entrega 5 mil? Você pegava, acabou de fechar o mês de abril, a gente faturou 4.500 em alguma coisa. Poderia chegar em 5? Poderia, mas aí você tem máquina que você tem capacidade, mas você não tem demanda. 
+Speaker B: Então é tipo um... E não dá pra fazer isso daqui, não sei se é triplex, tipo, não dá. 
+Speaker A: Isso é outra tecnologia. Então assim, você não consegue fazer café que é trilaminado, filme, numa máquina que é bilaminada. Aí aqui você consegue fazer, quer dizer, eu vou falar, pegs, unilever pegs, que é um cliente que não tá passando mais a demanda que a gente tinha. Só que qual que é a maior dor do Lauro? Porque assim, a gente tá agora planejando julho em diante, né? Então... 
+Speaker B: Desculpa. Tudo que você planeja na Triplex é vendido? 
+Speaker A: Tudo. Falta capacidade ainda. Porque os mercados que mais crescem hoje é café, né? 
+Speaker B: Mas quer dizer, no mix de produtos que você colocou ali na Triplex. Esse mix tá... não tem oportunidade? Quer dizer, você tá produzindo algo que 
+Speaker A: É, o que eles estão tentando fazer, por exemplo, tem a planta de Londrina em Mauá. Você tem duas triplex em Londrina, que está cheia, e uma em Mauá, que está 90%. Então assim, dá pra transferir a tecnologia... café não, café já tentaram fazer em Mauá, não homologou. Ah, dá pra transferir a tomatado, que é predileta com os clientes, pra Mauá? 
+Speaker B: Tá. 
+Speaker A: Talvez o custo é mais caro, porque a mão de obra de Mauá é 20, 30% mais cara que em Londrina, São Paulo e tal assim. Aí você começa a se embarrar em rentabilidade. Então assim, tem vários pontos, não é tão simples. Só que qual que é a maior dor do laudo? Como que ele demonstra isso sem indicador? Porque assim, em números absolutos, Não é difícil. Vamos falar assim, a gente tá agora em maio, o time do Daniel Vila depois ele te explica, mas vai ficar olhando de julho pra frente. Julho, agosto, setembro. Aí eles acabaram de divulgar o plano. Aqui vai ser 4,700. Aqui vai ser 4,760. Aqui vai ser 4,800. Só que o Lauro hoje não consegue saber o perfil da máquina, que é o que você está falando. Tá bom, 4700 é o número do Brasil. Mas como que está distribuído isso? Eu tenho, sei lá, vou falar de impressão. Eu tenho cinco máquinas aqui. Eu tenho impressora A, impressora B, impressora C, impressora D, impressora E. Aqui, quando você fala de impressão, você fala de imprimir metros quadrados. Então, você precisa imprimir por cento de H4700, você precisa imprimir 15 mil metros. Nessas cinco máquinas aqui. Essa máquina, ela só faz café, biscoito e tal. Ela está a 90% tomada. Essa máquina, Ela faz outros mercados, faz sabonete, e tal, só atrapalha 40%. Só que hoje, respondendo a sua pergunta, eu consigo pegar essa máquina em outros mercados e ela tem 120% aqui. Eu consigo balancear esses 20% que tá estourando, jogar pra cá, pra cá, pra cá? O Lauro não consegue ter essa resposta. 
+Speaker B: A limitação é técnica ou a limitação é de garantir que não tem visibilidade para planejar? 
+Speaker A: Tem visibilidade para planejar, mas assim, limitação técnica com pessoas novas na área, se perder um pouco de conhecimento, e as pessoas que estão aqui hoje estão apagando incêndio, estão fazendo o dia a dia, então assim, o que o Lauro está pedindo de ajuda, fora da operação, para voltar a trazer controle. Ele falou assim, ele saiu de férias duas semanas, ele falou, Vinícius, eu quero saber, 4.700, como que vai ser o plano de execução. O que vai ser em cada máquina? Vai fazer campanha? Ah, tem o SKU A, eu vou ter que fazer 200 tons, eu vou fazer 50 por semana, ou esse SKU eu vou entrar com ele em máquina na primeira semana, faço 100, Na segunda semana não produzo nada para entrar outras coisas, na terceira eu faço 50, na quarta faço 50. Então a cadência da produção, como que balanceia, Então, lá atrás, em supplier, a gente tinha o que a gente chamava de perfil de máquina, que é o que você está falando. Então, a máquina A, eu sabia quanto que era, quais eram os mercados, quantos tons por mercado. Então, assim, não precisaria entrar no SKU para te dar uma resposta rápida. Você fala assim, essa máquina está alocada para fazer 60% de café. 60% do tempo dela ela vai produzir café. Se a hora que vem a demanda eu vi que o 60 virou 70, como que eu respondo se eu consigo absorver os 10%? Eu consigo fazer em outra máquina que não é de café, que é o que você está me perguntando? Ou eu tenho que voltar no cliente e falar, ó, aqueles 10% que você quer mais, Meu lead time padrão é de 30 dias, só que esses 10 adicionais eu consigo te entregar com 60, porque ele vai ter que pegar, se ele não conseguir balancear, ele vai ter que jogar para o mês seguinte. Então, esse tipo de inteligência de análise se perdeu muito em supply. Porque eu tenho conversado com o Lau, agora eu estou entendendo, estou acionando, bati um papo com o Daniel lá ontem. 
+Speaker B: Então, tem uma limitação técnica pelos ativos, você não tem a máquina pra absorver essa demanda. Tem uma limitação de colaboradores também, né? Porque você tem pessoas... 
+Speaker A: Quando você fala que tem pessoas, todo mundo fala que não tem um bom diogo, não tem um headcount. 
+Speaker B: É, você tem... Tem caras trabalhando em supply chain e não tem background de supply chain. Sim, praticamente... E além disso... Você vai 
+Speaker A: bater um papo aí e você tira a sua conclusão. Estou falando com você assim. 
+Speaker B: Sim, sim. 
+Speaker A: Quem tem background desse, o patinho, é o Daniel Vila, que sempre trabalhou com supply chain. As pessoas têm background de anchor. Na Cabura, já tem 10, 12 anos de empresa. A Patrícia tem mais de 10 anos aqui, só que ela era da área de operações. Então agora, Customer Service, ela tá entrando, tá vendo como que ela vai ajudar, mas ela não sabe fazer como que é um ciclo do pedido, como que chega o pedido, como que dá prazo, o que que você tem que ver, protocolo logístico, esse cliente quer receber carga refrigerada, não quer. 
+Speaker B: E aí, o projeto de Mercury, O 
+Speaker A: projeto Mercury é para facilitar, a princípio, o scheduling. Então, quando eles falaram lá assim, vamos começar com a programação mesmo, antes de falar de planejamento. Porque assim, por mais que você tenha um processo que você planeja, Ele é como uma referência. Esse é a maior dor, porque assim, o pessoal quando vai executar, ele não pega esse 4.700 e desdobra o plano. Ele tem uma ideia que vai ser 4.700, só que o que vai ser a base para ele programar é a entrada de pedidos. Então assim, ele tem um norte, esse mês de julho vai ser 4.700, só que se entrar 4.200, Ele vai programar para 4200, que a gente chama de Order Intake. 
+Speaker B: Isso, eu vi, eu vi. Então aí, só para entender o processo, o macro. 
+Speaker A: Macro, estou te falando macro. 
+Speaker B: Você tem uma ideia de quantas toneladas tem que produzir daqui aos próximos 3 meses? 
+Speaker A: Sim. 
+Speaker B: Começam a chegar as ordens dos clientes? Hoje, o processo hoje, né? 
+Speaker A: Isso. 
+Speaker B: O que acontece depois? 
+Speaker A: O que acontece depois? Hoje, como você não tem controle, na minha visão, aí se confirma que não tem controle. Hoje a porta de entrada é o Customer Service. Então assim, o que eu estou te falando aqui, aqui é o mercado, vamos falar de mercado. Café, quando se planejou aqui, nas 4.700, você falou que você poderia receber no máximo 500 tons de café, por limitação de máquina. Só que isso aqui é um planejamento. Se no dia-a-dia, vamos falar do mês que a gente vai entrar em junho, no mês que vem. No mês que vem de junho, vamos supor que aqui fosse R$4,500, em junho, né? Quando a gente pega aqui junho, vamos falar que aqui seria o café, as 500 tons para junho. Quando a gente pega o OIT, que é o Order In Take, que já tem na carteira, Você pode... você está, sei lá, há 25 dias de começar em junho. Você pode pegar a carteira aqui e ter uma surpresa que você já tem 600. Por quê? O cliente foi colocando o pedido, Customer Service não travou, não falou assim, putz, entrou 100 toneladas a mais aqui. Dou o aceite para o cliente... 
+Speaker B: Mas quando o Customer Service Porque, imagina, o Customer Service participa desse planejamento. Ele te diz 500. 
+Speaker A: O planejamento aqui deu 500, planejado. 
+Speaker B: Deu 500. 
+Speaker A: Isso. 
+Speaker B: Planejado. Mas no atual, que é o ordem inteiro, é 600. Como pode ser que o... Eu sei como pode ser, mas... O Customer Service não tem essa discussão com o cliente de... Puta, se vai trazer... Vai colocar mais pedidos, me avisa. Com um tempo de... Não sei lá, 15, 20, 30 vezes, ou o que seja. 
+Speaker A: Deveria, não tem. Tá, não fala que não tem. Tem, mas... 
+Speaker B: O cliente é o cliente. 
+Speaker A: O cliente é o cliente. Ah, você é o cliente, se liga lá pro Marcel Kroos, que é o General Manager. Ele nem sabe aqui no grano quem tá falando. Aí vai falar, por que que a gente não vai se atender? Eu tô tentando pôr pedido com você, você não quer me atender? Aí vai falar, tem que atender. Aí o Customer Service cadastrou. Uma vez que ele cadastrou, você não tem essa capacidade pra fazer 100 tonelas a mais. A não ser que alguma outra máquina esteja ociosa, que faça a mesma tecnologia, o mesmo mercado, você consiga balancear. Senão, você tem que ir reaprasar pra frente. E aí, é um pouco do dia a dia. O que é um pouco do dia a dia? pedidos acima da capacidade em alguns mercados, café é um mercado claro, pra você entender, e pedidos abaixo da capacidade em outros mercados, que tem máquina pra fazer, você tem capacidade, tem turno, tem pessoas trabalhando na máquina, só que o pedido não entra conforme é planejado. Do mesmo jeito que aqui é assim, vai ter mercado que pode ser, o planejado era 400, na hora que você pega o order and take só tem 200. 
+Speaker B: E o order and take ele é diário? 
+Speaker A: Diário. Diário, todo dia chega o diário. 
+Speaker B: Diário e te manda de hoje pra hoje ou de hoje pra... Lead time 
+Speaker A: padrão são 30 dias, pede-se, mas vai ter mercado que entra, às vezes você tem já alguns mercados que você tem... Vou dar um exemplo, se você for falar com o pessoal da planta de Rondolópolis, que é o mercado de proteína, às vezes eles já deixam o produto semi-acabado pronto. Então o cliente só precisa confirmar o pedido, ele precisa só personalizar aquele semi-acabado, por a arte do cliente. Então esse você tem lead time de 10, 15 dias, pode entrar no decorrer do mês. Mas de uma maneira geral, se você bater um papo, todo mundo vai falar o lead time padrão 30 dias. Então assim, agora em junho, a gente já deveria ter um order and take de quase 100%. que a gente tá a 25 dias de começar o mês. Só que na realidade, se você vai ter um papo com o Daniel Vila, você pode ter um ordering take de 80, só que ao mesmo tempo você tem backorder, que são atrasos, desse exemplo aqui de alguns clientes que você tá atrasado. você tem coisas que se antecipou no faturamento do mês, que se adiantou, e aí começa a entrar o dia-a-dia, que é o que o pessoal fica resolvendo esses problemas. Coisa que está atrasada, coisa que antecipou, e agora a gente tem que ver como que ele vai programar a máquina, porque ele, para não parar a máquina, ele antecipou a produção do mês seguinte, ou daqui a dois meses, aí fica nisso. Então, assim, o APS Ele deveria ver já pra ajudar a conectar o planejamento com o scheduling e aí ele mesmo vai falar assim, pô, aqui essa máquina já tá 90%, olhando pra frente, você vai ter os 10% pra encher ela ou não? Você consegue balancear a máquina que tá estourando ou não? Então, hoje tudo isso é... Excel, a pessoa vai... Então, tem muito erro humano. O que acontece hoje? O pedido chega por e-mail. Você vai ver que a maior dor de customer serviço ou da outra área vai falar assim, ah, o pedido ficou engavetado. O que é isso? A pessoa recebeu o e-mail, não cadastrou no sistema, começou... pro cliente começou a contar o lead time, 30 dias. Então o cliente passou o pedido dia 20 de abril. Se ninguém foi lá e subiu no SAP, no sistema, Já está há 15 dias na máquina do análise de canto. Então, essa é uma das maiores dores aqui da área hoje, né? 
+Speaker B: É. Ok. Ok. E então, aí, vamos usar café 500, óleo 3600. Tem mais 100. O que acontece depois? Scheduling. 
+Speaker A: Scheduling. 
+Speaker B: Quem faz? Como faz? 
+Speaker A: O que acontece depois? Se for uma máquina que tá aqui no outro mercado, ah, o que acontece? O cliente do café tá gritando muito. Então vamos pegar o biscoito, vamos tirar daqui e absorver. Você vai falar pro cliente do biscoito que você teve algum problema e... 
+Speaker B: Mas pra operação, você mudar o scheduling de um dia pra outro é viável? 
+Speaker A: Não, eles deveriam ter um período congelado de 48 horas, pelo menos. 
+Speaker B: Por quê? 
+Speaker A: Porque depende de cilindro, gente, tinta, matéria-prima. Só que no dia-a-dia, se você falar com a Sabrina, que é PCP, tem programação que muda mesmo. Se já tem o cilindro que tá pronto e tá uma crise que escalou no General Manager, que é só atropelar, que eles falam, né? Ah, precisa então tirar o biscoito que vai entrar na sequência ou não entra na sequência e continua produzindo café e isso acontece. Você não mede o plano de aderência, que é o indicador que o Lauro tá pedindo. Então, qual que é a dor do Lauro que ele comprou pra mim, cara? Em tonelagens absolutas? O pessoal tem. Que nem eu tô te falando dois exemplos aqui, 600 e 500. Só que no dia a dia o cara tá ligando pra ele falando assim, ó, o SKUA que era pra você me fazer 100... 
+Speaker B: Tô te pedindo 500. 
+Speaker A: Eu tô te pedindo 200 e você não tá me dando visibilidade. Então assim, aí ele vai no gerente de PCP nosso e fala assim, como que tá a aderência do plano de produção? Não tem. 
+Speaker B: Quem é o gerente? 
+Speaker A: É a Sabrina. 
+Speaker B: Sabrina que tá no projeto. 
+Speaker A: Então assim, minha esperança é que o DTS vai começar a trazer isso, mas assim, até em paralelo pra conectar o que eu tô vendo com o DTS, eu comecei a voltar agora essa semana, bati um papo com o Daniel Vila ontem, bati um papo com o Vitor, então pra entender assim, quais QPAs que as áreas já tem, o que que na época que o Air Supply existia, eu tô falando assim, ainda tá atualizando isso? Na época que o Air Supply, A gente tinha um perfil de máquina, que é o que eu tô te falando. Então, por máquina, eu sabia quais os mercados, quais os clientes que eram produzidos. Não se atualiza mais. Então, assim, tem um trabalho pra voltar a fazer. Muita gente tá notificando que saiu muita gente de supply, tá com menos pessoas do que tinha, falta de headcount, mas enfim. Isso aí pode ser uma desculpa, mas se você tiver o processo, você agiliza. Você não precisaria nem ter tantos reticulantes se o processo, a ferramenta funcionasse bem, né? Então, eu acho que o que o Lauro está me pedindo é uma ajuda nesse sentido. 
+Speaker B: Então, o DTS, ele vai te... Praticamente, o que ele vai te dizer é... E se o tempo que você tem disponível de cada uma das máquinas, você vai colocar o café, o biscoito, o que seja nesse tempo e vai dar pra mexer também e mudar entre máquinas. Que hoje é feito só em Excel, manual. 
+Speaker A: Só que aí, por que a gente bate muito no Master Data de DTS? Porque assim, o que tá cadastrado no sistema, às vezes não é o que é a realidade. Então assim, às vezes você fala assim, o café faz 500, Beleza, vamos supor que nesse exemplo aqui, o café faz 500 e o ordem de tempo está de 500. 
+Speaker B: É, mas quanto tempo você demora para fazer? 
+Speaker A: Isso, só que assim, uma coisa é planejado 500 em 30 SKOs. Vamos começar a entrar em mais detalhe. Ah, só que entrou 500 em 50 SKOs. Aí é que você tem 20 setados a mais, 160 cilindros a mais, porque pra cada escala você tem um jogo de 8 cilindros, aí começa a complexidade. Pô, que o Lauro fala assim, puta, o diretor de operações que é o Lauro vai falar assim, não, você falou que o planejamento era 500, comercial trouxe 500. Ah, só que você falou que era 30 escala, eu trouxe 50. Então os 500 aqui eu consegui entregar 420. Eu furei, Tantos por cento, porque... 
+Speaker B: Poderia ter entregado 500? 
+Speaker A: Poderia. 
+Speaker B: E entregou menos. 
+Speaker A: Isso, então assim, aqui a gente tá falando no macro. Quando a gente desce um nível, aí você vai falar assim, como que tá planejado por SKU? É bem importante falar de SKU, tanto no DTS quanto de maneira geral, porque envolve cilindro, envolve essas... Por isso que a gente bate muito em cilindro. 
+Speaker B: E forca sacra se é por café ou por SKU? 
+Speaker A: É por família, por produto. 
+Speaker B: Café... 
+Speaker A: É tipo assim, café, aí aqui você tem um, não sei se você já ouviu falar, que a gente chama de techspec. Techspec. Então assim, dentro de café, você vai ter o café, que é o café stand-up pouch. Stand-up pouch, que é a tecnologia do café. Dentro do stand-up pouch, você tem 10 SKUs. Tá? Só que pra você fazer o forecast accuracy, você mede aqui, ó. Que aqui a gente chama de techspec. Ele vai colaborar nos SKUs e aí ele vai trazer para um nível acima que a família. Sim, me entendi, sim. 
+Speaker B: Então, deixa eu só escrever pra entender. Você tem as toneladas mensuais por, vamos dizer, 5 mil? 
+Speaker A: Isso. 
+Speaker B: Desses 5 mil vão para... Café. 
+Speaker A: É, que você abre por mercado. Café, tomatado. 
+Speaker B: Mercado, mercado. Isso. De café tem o Texpec. 
+Speaker A: Que é estrutura, isso. Estrutura. 
+Speaker B: Texpec. E pode ter muitos, né? 
+Speaker A: Sim. Pode ter muitos. 
+Speaker B: E leumipismo aqui, ó. 
+Speaker A: Isso. 
+Speaker B: E de Texpec tem os Cayu. 
+Speaker A: Cayu, sim. Cayu, muitos, muitos. 
+Speaker B: Tá. É isso. E o DTS. 
+Speaker A: O DTS, ele vai vir por SKU. Aí ele vai vir por SKU... E 
+Speaker B: o SKU que tem o change over time, a quantidade de cilindros, na verdade é cilindros, né? 
+Speaker A: É, uma média assim, cada SKU são um jogo de 8 cilindros. 
+Speaker B: 8 cilindros, sim. Isso. 
+Speaker A: E hoje a nossa capacidade de produção de cilindros são 2.300 por mês. Então se eu pegar assim, 2.300... dividido por 8, você conseguiria atender 300 SKU. De uma conta geral, né? 
+Speaker B: E o DTS vai fazer 3, Vai planejar cilindro. 
+Speaker A: É fase 3, cilindros e tintas. 
+Speaker B: E tintas também é? 
+Speaker A: Tinta é no SKU. Tem um SKU que você usa a tinta branca importada. Tem um SKU que você usa a tinta convencional. 
+Speaker B: Então, fase 3, cilindro e tinta. Fase 2, que seria essa parte aqui. 
+Speaker A: Isso. Plane. E a fase 1 já é o scheduling aqui dos SKOs. A fase 1 é isso. Isso aí. 
+Speaker B: Bom, desculpa. E o planning envolve esse negócio aqui também? TecSpec ou não? 
+Speaker A: Vai envolver pra ver matéria-prima. Então, assim... Por que que é importante quando você pega isso aqui pra abrir a TecSpec? Porque o Nakamura, que é o material planning, ele precisa saber assim... Pra eu fazer isso aqui, quanto eu preciso comprar de alumínio? que é a estrutura aqui, quanto eu preciso comprar de polietileno e assim por diante? 
+Speaker B: O MRP. 
+Speaker A: O MRP deveria ser aqui. 
+Speaker B: Você está na fase 1 que é MPS. Isso. Entendi. É complexo. É bem complexo. 
+Speaker A: E assim? 
+Speaker B: Desculpa, você falou de Master Data. Master Data de que? De produto? 
+Speaker A: De cliente? SKU duplicado tem hoje aqui, que é uma dor. Mas acho que o que pega mais pra gente falar de Mercury é dados de máquina. Porque assim, eu faço 500 considerando que meu parque de máquinas vai rodar a 120 metros por hora, o OE daquela máquina é 70%. Só que aí, na realidade, você vai lá, não tá rodando a 120, tá rodando a 80. 
+Speaker B: É isso que vai precisar no DTS. Isso. Jogar no DTS. 
+Speaker A: Jogar no DTS, que é essa parte, assim, o Edison, o que que ele fez? A primeira, que a gente tá chamando lá de fase zero. Ele fez a interface, então ele pegou assim, tudo que tá no SAP hoje, que foi o critério para a implementação a todas as plantas do SAP. Então, tudo que está cadastrado no SAP, ele e o time da Simon, eles configuraram, fizeram a interface para o software. Então, eles ficaram quatro meses fazendo a interface. A Mac, café, tem tantos SKUs, quais são as rotas de cada SKU, qual máquina que ele vai. Então, ele configurou isso. Agora lá, que vai começar, começou a fase 1 do scheduling, vai começar a planejar lá, a programar lá, desculpa, vai fazer a programação lá. E vai começar a falar assim, puta, quando eu jogo nessa máquina, pela velocidade da máquina, pelo OER, ele fala que a capacidade seria 600 de KFR. Só que quando é boa na prática, só faz 500. Por quê? A velocidade que está cadastrada no sistema está acima da realizada. O OE está melhor do que está na realidade. 
+Speaker B: Mas aí, então, o Governance tem um rol, tipo, super crítico. 
+Speaker A: Super crítico, é a parte mais crítica do projeto, porque assim, o software é excelente, só que se o dado que a gente estiver configurando lá não condiz com a realidade, a gente vai... E olha que jogaram o software, pode falar assim, pô, o Brasil pode fazer 6 mil toneladas, por que vocês estão falando que só faz 4, 5 mil? 
+Speaker B: Não, mas o meu ponto, eu sei, eu concordo que a marca da data é o Enabler, de tudo, mas minha pergunta é, você limpa a mostrelada? Tudo certinho? 
+Speaker A: Só que você limpa a base histórica. Você tem que garantir que daqui pra frente ela vai ter uma manutenção contínua. 
+Speaker B: É isso que tu quis falar do Gobernos. 
+Speaker A: Do Gobernos, sim. 
+Speaker B: E pra mim, se isso fica tudo localmente... Sim. 
+Speaker A: E aí até um ponto, quando eu entrei no projeto, eu falei assim, ah, por que vocês não começaram por uma planta só? Por que tirou os cilindros? Uma das coisas que eu conversei com o Luiz Filhos, com o Raul, assim, estão querendo atacar três plantas de uma vez. 
+Speaker B: Porque é o Andonopolismo, ou aí Londres... 
+Speaker A: Londres, Londres é gigante. A instalação era assim, ah, primeiro foi tudo pra fazer por fase, então pra fazer interface, em vez de fazer só a interface de uma planta, depois scheduling, depois planning, faz interface em todas as plantas, depois faz scheduling de todas, depois faz o planning em todas. Então foi essa a estratégia que eles adotaram lá com o Martin e tudo, não vou nem entrar nesse mérito. Só que agora, o que a gente vê no dia a dia? A gente pode bater um papo com o Edison que ele tá trabalhando muito nisso. Quem precisa alimentar a Master Data é o PCP. O PCP vai falar assim, ó, eu fui programar aqui, pelo software, fala que faz 100 toneladas na máquina. Essa máquina nos últimos três meses tá fazendo 80. Na realidade, eu tenho 20 tons de grepe, é o que? É a velocidade da máquina? É o OEE? É o cadastro do SKU que fala que roda em tal velocidade e na prática não roda? Então, isso assim, só que quando acontece uma situação dessa, no dia a dia, o que é o correto? O PCP tem que falar, ó, tô com o SKUA aqui, Falando que faz 100, ele vem fazendo 80. Master Data ajusta para a hora que eu receber a programação, no software aparecer que faz 80, que é a realidade, e não o software me falar que consegue fazer 100. 
+Speaker B: Quem faz isso hoje em Master Data? 
+Speaker A: Poucas pessoas. Porque assim, quem é o supervisor que tem bastante experiência em mão dele? É o Alexandre Brito. Pelo que o Edson me fala, ele abre muito chamado quando acontece isso. 
+Speaker B: Alexandre Brito faz o seu requerimento. 
+Speaker A: Ele e o time dele. Ele vai chegar no time dele e fala assim, quando você vê que tá tendo muita inconsistência do que você vai pegar do planejado pra programar, abre chamada pra master data, vamos lá. 
+Speaker B: Alessandro é o que? 
+Speaker A: Supervisor de PCP. Elonzena, sim. Mas assim, aí eu falei, em Mauá, quantos chamados estão abrindo? 
+Speaker B: Poucos. Ok. 
+Speaker A: E aí eu vou dar um exemplo, poucos, porque ou tá tudo certo, ou ninguém tá levantando a mão. 
+Speaker B: É mais provável que ninguém está levantando a mão. 
+Speaker A: É mais provável que ninguém está levantando a mão. Então assim, de cara, eu já te falo que a nossa maior dor aí vai ser corrigir uma base histórica, que a gente está falando que o SAP foi implementado tem 5 anos, 4 anos, então assim, tem muito SKU que deve ter sido implementado lá 4 anos atrás com uma velocidade, com OE, que ninguém fez a manutenção, ninguém voltou lá e falou, pô, será que isso aqui na realidade está de acordo? 
+Speaker B: Por quê? Muda tanto. 
+Speaker A: Por que que muda tanto? 
+Speaker B: Quer dizer, por que o Alessandro Ebrito deveria pedir tantas mudanças? 
+Speaker A: Porque eu vou dar um exemplo. Que nem você perguntou aqui, ah, se isso aqui está 140%, eu não posso mandar para outro? Então ele vai lá e fala assim, puta, esse SKU estava cadastrado para mim na rota prioritária que é essa. 
+Speaker B: Não tem cadastrado secundário. 
+Speaker A: Essa é a rota 1. A rota 1, a velocidade dela é 100 metros por minuto, sei lá. Puta, mas aqui eu não tô conseguindo fazer, então eu vou ter que jogar numa rota alternativa. Quando ele joga na rota 2, o que era 100, pode ser que caia pra 80. Porque a máquina não é tão... Ah, essa máquina é mais nova do que aquela. 
+Speaker B: E isso vai dar pra gastar no DTS? Tipo, o DTS vai... Se você muda de rota... 
+Speaker A: O que o DTS deveria ajudar a gente, acha? Eu tô indo com a demanda muito acima quando eu olho a rota prioritária. Se eu jogo pra rota secundária, o meu lead time sai de 15 pra 20 dias. Porque quando eu vou pra rota secundária, eu perco 5%. Eu perco 5 dias por velocidade, por OEE, outras variáveis, entendeu? Então, assim, no meu ver também, que a gente precisa começar a envolver no Mercury, é o time de... Não, o time Brugge, eu não sei o que é com o Arthur Ambrosin, 
+Speaker B: é o... Ah, Reliability. Reliability. 
+Speaker A: Porque assim, vai estar aqui o time de PCP, que são os key users, mas eu acho, é a minha visão, se puder me ajudar nisso, tem o Pedro, que até bati um papo que é do time do Arthur Ambrosin, que ele poderia ajudar esse check de confiança, de tudo, entendeu? Como que tá essa questão? Porque o Master Data ou o Damian, ele é cara crachá, ele vai pedir, você vai pedir e ele vai mudar o sistema. Mas assim, com que base técnica? Porque o Supervisor tá falando, ou se o Conqueror realiza a habilidade daquilo ali. Eu acho que seria bom trazer eles em algum momento pra ajudar nisso. 
+Speaker B: Sem dúvida. E a pergunta é, quando Alexandre Brito faz o pedido, quem atende esse pedido? 
+Speaker A: Ele vai entrar na lista do Master Data. 
+Speaker B: E a lista do Master Data, quem dirige? 
+Speaker A: Tem um supervisor que é o Robinson Cavalieri. Aí, dentro de Master Data, tem pessoas de Master Data que só mexem com o roteiro. Tem pessoas de Master Data que só vai... cadastrar fornecedor novo, cadastrar quem está dentro de Master Data, eles têm uma estrutura lá. Ah, um time mexe com rota, outro time mexe com cadastro de fornecedor, outro time mexe com criação de novos SKUs, que é outra demanda, quando chega um novo item que precisa cadastrar. Então, o time de Master Data é grande. Grande, sim. Deve ter mais de 20 pessoas. 
+Speaker B: E ainda assim? 
+Speaker A: Ainda assim, só que a demanda também é alta. 
+Speaker B: Como assim? Por que tão alta a demanda de... Aonde vem? Qual é o maior? 
+Speaker A: Em grandes números você deve ter uns 300 SKOs que nascem novos por mês. Criação, alteração. Qualquer coisa que se altera você tem que mexer no SKO. Vou te dar um exemplo. O código vida. Quando você ouve isso aqui é o código vida. Código vida é assim. Eu tenho um produto que ele começa com A AXZ versão 1. Esse é o código vida. Aí o cliente falou assim, eu quero alterar a fonte da embalagem, eu não quero mais calibre, eu quero que muda para o areal. Então aqui, você vai pegar o código vida do mesmo produto, esse aqui é o SKUA. Aí você vai ter o SKU do mesmo cliente, que vai ser o AXZ versão 1.1. Porque o cliente trocou a fonte, só que virou outra SKU, SKU-B. 
+Speaker B: E o SKU-A já não... já... já... 
+Speaker A: Sobrepõe, né? 
+Speaker B: Sobrepõe. 
+Speaker A: O que ele deveria fazer no Master Data? Ele deveria desativar esse... 
+Speaker B: Exatamente. 
+Speaker A: E deixar só ativo esse. Então hoje, com certeza, tem um monte de coisa que está ativo que a gente não fatura seis meses do ano. Também tem isso. Então, assim, quando eu falo assim, a parte de sanitização de dados é um... Bate um papo com o Daniel Vila, que ele é o gestor da área de Master Data, mas assim, eu ouço dizer que tem muita coisa, não vou falar errado, desatualizada, quando a pessoa vai fazer esse processo, ela não desativa, às vezes por falta de conhecimento, por instrução, então, a gente tem uma base suja, que acho que é o nosso maior desafio. Por isso que eu até falei com o Elson, cara, dependendo como tiver o projeto, às vezes é melhor a gente falar, faz um blackout nessa fase aqui, que a gente vai precisar de 40 dias pra limpar a base. É que eu não sei se vale a pena, aí eu preciso dividir por lá, ou com vocês, o que vocês acham, e trazer dados e fatos. 
+Speaker B: Meu ponto é, número 1, a gente tem que trazer os dados de fato. A gente tem riscos de duplicados, riscos de ativo que não é faturado a 6 metros. Tem que ter o aziz, como que a gente está hoje. Segundo ponto, A gente tem que ter o time dedicado pra fazer isso durante 30 dias, 40 dias. 
+Speaker A: Isso. Que também tá difícil fazer por outras demandas. Implementação de SAP, implanta... 
+Speaker B: Mas, a gente pode pedir ajuda externa. Vamos pedir ajuda externa. Tipo, deixa o cara fazer o que tá fazendo. Porque a gente já fez isso. 
+Speaker A: Contratou o temporário pra fazer a atualização. 
+Speaker B: A gente contratou o SKF. só pra limpar a massotagem de spare parts rígidos. Os caras sabem, tipo, então tá, deixa pra ele. Agora, o terceiro ponto pra mim é, não adianta limpar nada... E continuar entrando 
+Speaker A: errado, e ninguém levantar a mão... Se 
+Speaker B: você não tem o governo. 
+Speaker A: Esse é o principal. 
+Speaker B: Não adianta. 
+Speaker A: Senão é enxugar gelo, que a gente fala, né? 
+Speaker B: Não, vai acontecer de novo. Se você limpou a casa, tipo, voltou a... 
+Speaker A: A sujeira, ninguém tá deixando a sujeira acumular, né? 
+Speaker B: Mas pra mim aí, tem que ter na cabeça isso, de pedir primeiros dados. É assim como a gente está. E ajuda externa. 
+Speaker A: Ajuda externa pra limpar. 
+Speaker B: É o momento de pedir ajuda externa. 
+Speaker A: E como a governança vai garantir que pra frente não se repete. Então assim, na minha cabeça, ah, vamos rodar aqui o esqueleto, né? Mas a gente deveria fazer uma auditoria do software. Então assim, rodou o primeiro mês, Quanto que estava no software? Quanto que foi planejado? E quais são as discrepâncias? Faz uma curva BC aqui. 
+Speaker B: O diagnóstico atual, de como é que a gente tá hoje. Mas pra mim, esse... Porque se a 
+Speaker A: gente já tivesse um plano de aderência, a gente já conseguiria ter uma ideia, entendeu? Vai jogar pro software, esses problemas vão aparecer. 
+Speaker B: Eu tô trabalhando em paralelo com a Sabrina, com uma automatização, pra ela conseguir esse número, tá? Porque hoje tinha o problema de que não dava pra deixar fixo quando foi a primeira, contra que comparar? 
+Speaker A: Sim. 
+Speaker B: Entendeu? Então, a gente já tá em 90% e ela já perdia uma hora e meia, duas horas por dia só fazendo esse negócio. 
+Speaker A: Tá. 
+Speaker B: Agora, vai ser totalmente automático. Então, já aí a gente vai ter um número É, pode pedir pra ele. Mas que a minha sugestão pra você também, você é o referente do projeto. Então, cara, tem que voar, tem que ver o bosque, não só o árvore, entendeu? Sim. E aí, cara, é aí que tem que falar de, puta, Master Data. recurso externo. Tem que parar. Eu sei que tem que levantar a mão e parar isso no projeto. Porque o capitão é você. Eu estou para te ajudar, para destravar... 
+Speaker A: Destravar porque é a Guilhermina. Então, gente, a Guilhermina está me ajudando com o change manager para tirar alguma coisa da minha agenda. Ela ajuda para eu conseguir entrar agora nesse grano e falar assim, ó, o que eu já vi até agora, na minha opinião? Não sei se já é hora de parar, porque assim, a partir de segunda-feira, a Carolina vai ficar 100% focada no projeto como Master Data. 
+Speaker B: Carolina quem? 
+Speaker A: A Carolina que já é do time de Master Data, só que ela estava part-time no projeto, agora vai ficar full-time. Só fazendo essas atualizações que a gente está falando. 
+Speaker B: Carolina quanto? 
+Speaker A: Ficaram ali mais cedo, se eu não me engano, eu vou confirmar aqui o sobrenome dela. 
+Speaker B: Então, ela vai estar limpando as datas, é isso? 
+Speaker A: Limpando, cadastrando corretamente, vai estar fazendo tudo que for de base de dados. 
+Speaker B: Sanitização. 
+Speaker A: Sanitização, vamos chamar de sanitização. Só que assim, se ela começar a falar, puta, estou conseguindo fazer 15% do que precisa. Talvez a gente vai ter que falar assim, vamos contratar SKF pra ajudar a gente por um mês, limpar a base. Enquanto isso a gente vai ver daqui pra frente pra não entrar sujo. Então isso eu vou chamar pra você e pro Raul pra falar. A minha sugestão deveria fazer isso. 
+Speaker B: É isso. Esse seu horror. A minha expectativa do seu horror é esse. 
+Speaker A: É isso. Eu vou levantar a mão e falar. Na minha visão a Carolina é muito boa, mas ela tá overloaded. 
+Speaker B: E me chama antes. Nem precisa passar na reunião. Me fala antes, ó, tô vendo isso. Como que a gente estrategicamente coloca isso na mesa. Entendeu? Porque eu talvez tô vendo outra coisa que você não tá vendo. Entendeu? Fala comigo, pô. 
+Speaker A: Sim, sim. 
+Speaker B: Eu não sei, é difícil te ajudar. 
+Speaker A: Não, traga o problema pra mim e depois a gente vai achar uma solução juntos. Exatamente. 
+Speaker B: Tá, tá bom, tá bom. E a parte de... O que me preocupa é a parte governance também. Tipo, como é que a gente vai fazer... 
+Speaker A: É... Pra segurar o que vai ser daqui pra frente, né? 
+Speaker B: Eu não sei. Porque o pior que pode acontecer aqui, ó, é que você me... Que a gente fale de... Ó, a gente implementou a fase 1, já tem uns quadros feitos. E, de repente, você tá entregando 4 mil toneladas. 
+Speaker A: Tem. 
+Speaker B: Entendeu? Então aí... a gente tem que ter esperto nesse negócio. Tem que pensar bem... Como assegurar. Porque o resultado é esse, 4.500. Esse é o norte, tá? 5.000, vamos dizer. Mas o que vai nos levar lá é assegurar a Master Data, os Key Users, o Governance. Esse aqui é o que a gente controla. Os 5 mil a gente nem controla. 
+Speaker A: Vai ser consequente. 
+Speaker B: Entendeu? Então... A gente tem que segurar como que vai ser o governance. Vocês já tem falado alguma coisa de governance? 
+Speaker A: Tem falado com o Edson. Então quando ele fala assim, ah, tamo no EQ9, que é qualidade, ele tá fazendo justamente uma amostra pra ver se tá conduzindo com a realidade. Só que ainda é uma amostra. 
+Speaker B: Quando ele fala que eu estou em 
+Speaker A: um ambiente equinóbil, ele está falando assim, está pegando do esquerdo, jogando, vendo com a realidade. Se eu subo isso aqui, está dando, não vai saber 400, 500, mas se eu subo esse mercado aqui, está dando 200, e o mercado é 210, está 90%. Então, quando ele fala em equinóbil, ele está vendo isso. Só que eu vou entrar mais agora fazendo push, agora que eu estou interado do projeto, tudo, eu preciso garantir isso que a gente tá conversando. Ah, vai ter algum momento que a gente vai ter que chamar CI ou o time do Arthur pra ajudar nisso, ou ter que trazer pra meia-dama, o que que cê acha? Comprei do Pedro, comprei do Arthur pra eles entrarem nessa parte... Tem, vou te 
+Speaker B: passar um nome que é o Michael... 
+Speaker A: Onde que ele fica? 
+Speaker B: Já te falei, só um minutinho, deixa eu ver o plano. Michael... Ok. Michael Martinezki. Esse aqui, ó. O de cima. 
+Speaker A: Michael Martinezki. 
+Speaker B: Anota esse nome. Esse é o cara que tomou a minha posição anterior. Eu era diretor de CI. 
+Speaker A: Ah, você era diretor de CI em Guixtos? 
+Speaker B: Em Guixtos. Agora ele... eu virei diretor de Giga Transformation. Ele é o novo diretor de C.A.I. pros dois. Rígidos e flexíveis. 
+Speaker A: Mas ele já era anchor ou ele veio... 
+Speaker B: Ele veio de fora. 
+Speaker A: Ah, tá. 
+Speaker B: Vem da... PGE. Acho. Cara... cara legal. Mas esse cara, eu acho que também tem que estar... Patrocinando o projeto. Entendeu? 
+Speaker A: Até pra ele falar, não, vou pegar um recurso do meu time pra te ajudar, né? 
+Speaker B: Porque aqui tem... Você concorda com esse meu ponto, né? Eu concordo, 100%. 
+Speaker A: Porque assim, a confiabilidade... Eu não sou o cara técnico pra falar se deveria ser 80 ou 78, entendeu? Eu preciso de um parecer de um cara desse ou do time dele pra falar, não, a gente... 
+Speaker B: A gente tem que ter qual é o teórico da máquina, o que o fornecedor te fala. 
+Speaker A: Nominal, velocidade nominal. 
+Speaker B: Nominal. 
+Speaker A: E quanto que a gente dá depois 
+Speaker B: de 3, 15 anos de equipamento. Esse dado aí... Fundamental. 
+Speaker A: Porque ele vai falar assim, ô Vinícius, aqui eu tenho, eu posso fazer um projeto pra melhorar em 5 pontos o OEE. Ou ele vai falar, não, aqui já tentamos de tudo, esquece essa velocidade nominal, é uma máquina que tem 30 anos de uso, você nunca mais vai chegar nessa velocidade, você tem que trabalhar com essa realidade. Só que ele vai ter que falar, né? 
+Speaker B: Mas é você que tem que levantar a mão. 
+Speaker A: Eu vou levantar a mão. 
+Speaker B: Entendeu? 
+Speaker A: Eu vou chamar o auxílio da sua ajuda nesse grupo de máquinas aqui. 
+Speaker B: Minha sugestão, porque aqui é muita política, né? Minha sugestão é, quando são casos assim, tipo, sensíveis, fale com ele antes. Cara, o contexto é esse. 
+Speaker A: Taca, taca, taca. Tô fazendo um projeto assim, eventualmente eu vou te acionar pra ver se eu tive pra me ajudar. 
+Speaker B: Não tem pior coisa que se interar na reunião, na mesa, sem que você saiba nada. 
+Speaker A: Isso é ruim, porque já o cara vai ficar... Não, e eu acho que até politicamente é legal já bater um papel. Você tem 15 minutos, tá acontecendo um projeto aqui em Supply Brasil. Esse é o escopo, a gente vai configurar um software, lá vai ter OE e tal. Eventualmente eu vou te chamar pra fazer um challenge de coisa que tá no manual da máquina, que na realidade não tá acontecendo. Tudo bem pra vocês? Então vocês já sabem o que vai estar acontecendo e pode ser que eu te acione. Pronto, o caso já tá parado. 
+Speaker B: Exatamente. Exatamente. E outra coisa que eu tinha dúvida é, enquanto a expectativa, né, também, porque Tipo, fase 1. O que vai acontecer com fase 1? Quer dizer, fase 1 a gente vai chegar em 4.700, fase 2 em 4.900, fase 3 em 5.000. Entendeu? Qual é o norte? Em que momento a gente pode falar de que, ó, fase 1 foi feita? Algo simples pro cara que tá lá em cima, que não entende porra nenhuma. Qual o milestone desse negócio? Quando a gente pode falar de que a fase 1 foi feita, foi executada e tá... Isso eu não tenho claridade desse negócio. Porque eu não sei aonde está a gente hoje. 
+Speaker A: Eu, sendo bem honesto, estou entrando, vou ter que ir buscar dados para a gente fazer junto. Com o que eu entendi aqui, o nosso milestone deveria ser medido aqui, aqui e aqui. E hoje a gente está aqui. 
+Speaker B: Entendeu? É pra isso que você tem que liderar o projeto. Você é o cara que lidera o projeto. Você não tem que estar no dia a dia... Não, porque o ex caiu e nunca... 
+Speaker A: Exatamente. 
+Speaker B: Exatamente. Entendeu? Tem que mostrar essa liderança do projeto. Eu acho que é a expectativa que a gente tem de você no projeto. Entendeu? Faz sentido eu te falar, não? 
+Speaker A: Faz muito sentido. 
+Speaker B: Entendeu? Porque o povo fica mais tranquilo, inclusive. Tipo, quando a gente fala aí dois números, é bem mais fácil pra todo mundo. Agora, se eu começo e eu falo assim, não, porque a fase 1, que a máquina, que o triplet... 
+Speaker A: Perdeu. Não, aí entra muito no... 
+Speaker B: Perdeu. Isso aí a gente tem que ter uma boa claridade desse negócio. Eu não tô vendo ainda. 
+Speaker A: Não, não tem ainda. Na verdade, assim, como a fase 0 foi totalmente operacional, a escala do programa para o programa, vai começar a fase 1. Começou a fase 1, só que agora eu tenho que sentar com o consultor e com o Edson. O que ficou definido como Milestone aqui? Na verdade, eu vou voltar a pergunta para o consultor, para saber assim, para você, o que é entregar a fase 1? Porque às vezes o cara vai falar que entregou a parte dele, Exatamente, qual é o contrato com o cara? 
+Speaker B: Mas pra você negociar com o cara, qual é a facilidade? 
+Speaker A: Tem que saber primeiro com o Edson. Edson, o que que você tá considerando quando você tá fazendo um E-Q9 na qualidade? Que que é um bom teste pra você? Você subiu aqui, deu 95% do que deveria dar do número geral? Você nem tá olhando isso, você tá... 
+Speaker B: Você tem o cliente do cara da consultoria? E mais importante ainda é o Edson, o Lauro e o Marcelo. Só esses três caras que vão te dizer se o projeto tá dando certo ou não. Acabou. Então você tem que sentar com o Lauro, tem que alinhar. Entendeu? Olha, Lauro, a gente tá propondo isso. Tá tudo certo. É isso mesmo. Vamos lá. Fechou. Locked. Nem Marcelo, porque o Lauro mesmo, ele vai. Tem que ser inteligente nesse negócio. Tem que dar... O Lauro, é, serve. Vai pro... E cara... Tanto mais simples, mais rápido, mais fácil, é de mais feliz quando tá alinhado com os caras de lá. É bem mais fácil. Não tem que tá puxando tudo no negócio. O Edson faz parte, sim. Mas o nosso cliente... É o Lauro e o Marcelo mesmo. Então aí é onde você tem que mudar a tua cabeça. O que quer o cliente? O que quer o cliente é que a gente tem que botar e falar pro cara. Isso hoje eu... Com o Martim, não tinha essa possibilidade. Hoje não tem, mas... Mas eu queria alinhar isso com você, para entender. 
+Speaker A: Você nunca chegou a falar disso com o Martim hoje? 
+Speaker B: Nunca. 
+Speaker A: Porque o que eu sinto... O Martin pôs o Edson legal. O Edson é um cara técnico, mas ele é um cara nível especialista. Essas papos nem dá pra ter com ele. Ele vai ajudar a trazer os dados pra esse papo interno. 
+Speaker B: Ele é o executor. Você fala o que quer e ele faz. 
+Speaker A: Só que quem vai desafiar e quem vai pedir o que ele precisa fazer sou eu. 
+Speaker B: E você vai desafiar ele em base ao que o Lauro... 
+Speaker A: Isso, qual que é a expectativa do Lauro e como que ele vai alimentar o Marcelo. Então, é resumir pra... Vamos pensar, o Marcelo tá longe da realidade, então como que ele vai entender o que a gente quer falar pra ele? 
+Speaker B: Não só como ele vai entender, mas como ele vai contar... Pensa mais ainda. Como ele vai contar pra Rubem... Como 
+Speaker A: tá o estado do projeto... 
+Speaker B: É, que bom que esse é o time fazendo negócio... Entendeu? E Rubem fica tranquilo. E Marcelo fica tranquilo. Laura fica tranquilo. E você é mais feliz. Entendeu? Então, sim, é política. Não é técnico o negócio. Com o Edson, é o técnico. 
+Speaker A: Com esses caras... 
+Speaker B: É, mas, de novo, minha sugestão é... Você tem que sair... Da porrada do dia a dia, entendeu? Tem que pensar... Puta... O meu cliente quer isso. O que a gente tem que fazer pra isso? Vamos falar pra isso. 
+Speaker A: Porque senão a gente não tem... 
+Speaker B: Eu não tô vendo o... Como que chama o arco? O... Não sei pra onde... Pra eu chutar a bolha. Cadê o... A bolha... Não, vou ler. O... Como que chama? Puta. 
+Speaker A: O gol, sei lá. 
+Speaker B: É, o gol. Cadê o gol? Tipo... É pra lá? É pra lá? Entendeu? É isso que tá falando. e o bloqueio dos mais. Fazer um, gente, fazer um a gente não vai dar cinco mil. Peraí. 
+Speaker A: Por que não? Que precisa. 
+Speaker B: Tá? Tipo, fazer um é isso. Fazer dois é isso. Fazer três é isso. Tá tudo certo? Tamo toda alinhada? Então tá. Me deixa trabalhar. 
+Speaker A: Entenderam? Você estava pensando nisso, só preciso agora pensar como estruturar para refletir isso pra cima. 
+Speaker B: Tem que ser assim. 
+Speaker A: Porque é muito técnico. É muito técnico, porque eles não querem saber o técnico, eles querem saber... 
+Speaker B: Eu sou de... sou formato... sou engenheiro industrial. E a vida toda eu trabalho em planejamento. Tipo, Splat Chain. Depois passei para operações, melhoria contínua e agora estou na parte digital. E cara, não é fácil. O MPS, o MRP, o CRP, o PAC, é tudo. Mas enfim, é complexo o projeto, vamos tentar de pôr um... 
+Speaker A: Não, eu vou bater no palco com você, eu vou marcar um touch point 
+Speaker B: semanal... Você me dá um toque e 
+Speaker A: a gente fala... Você me dá um toque e gente a fala... Nem sobrar... Nem sobrar... Nem sobrar... Nem sobrar... Nem 
+Speaker B: sobrar... Nem sobrar... Nem sobrar... sobrar... Nem 
+Speaker A: sobrar... Nem sobrar... Nem sobrar... Nem sobrar... 
+Speaker B: Nem Nem sobrar... Nem sobrar... Nem sobrar... Faz o Nem que? Porque eu falo lá em cima também. 
+Speaker A: Aí você fala para o Santiago, ajuda também, vai precisar de ajuda ali, vai precisar contratar um... Porque se não tem 
+Speaker B: o Santiago... Ó, vai para o Brasil, sobrar fala com o Vini, fala com o Daniel, fala... Tranquilinho. A gente está trabalhando, tá? Bom, ficou mais claro. Vamos gerar essa interacção. E... Cara, só por curiosidade também. O que está fazendo de Iá? 
+Speaker A: E a gente contratou um SaaS, que é assim, como se fosse um website, uma plataforma Anchor, e lá dentro a gente vai ter agentes, vai ter então assim, você quer criar um prompt. Fala assim, quero mapear o processo de PCP, vou te perguntar, você me envolve com três sugestões, vou te perguntar novamente e tal. Então, prompt de desenvolvedor de processo. Eu estou chegando na área e quero mapear. Eu vou interagir com a IA, Aí é tão legal, depois eu vou marcar com você e eu te mostro. Então é até para você se interar. Então assim, quero que analise uma DRE. Eu falei DRE, ele vai pegar o robô e vai falar, financeiro? Porque ele vai, com base no que eu pergunto, ele vai ver do robô qual o skill que o robô precisa ter para me dar resposta. Então assim, vamos falar de supply chain. Então eu vou falar assim, eu preciso fazer um MRP. Ele vai falar supply chain. Aí você vai falar, para o planejamento logo, você está falando de S&OP, de uma empresa, de embalagens B2B. Aí ele vai começar a pegar o skill, o robô vai trazer o primeiro draft para você. Puta, legal. Aí você começa a alimentar o robô, ele vai refinando. Aí você fala assim, agora já fez para mim no Miro. Não sei se você já trabalhou. Ele faz um flowzinho, tudo bonitinho. Essa é uma das coisas, quero criar um agente de... Preciso criar um site. para o supply chain regional mostrar tudo o que está acontecendo na região. Então ele me alimenta com duas informações. Quero o columinho da Anacor, quero um compositor do supply chain. Ele vai lá e cria uma página para a intranet. Quero criar um deck de apresentação, quero que o modelo seja esse. Então vai ter dentro desse website, que é o que a gente está falando, a gente vai ter várias plataformas de IA. Então você fala assim, Eu quero ler um contrato que você me resuma esse contrato. Ele vai falar assim, pra contrato, ele mesmo vai falar assim, eu sugiro você usar o desktop LM porque é melhor. Ah, eu quero fazer uma imagem. A imagem, você vai usar o Nano Banana que é do Gemini e tal. Então, dentro, hoje o que o pessoal faz aqui? Tem o Copilot, que é algumas pessoas, que é do Teams. ou o cara vai no chat e é PT. Então, nesse ambiente seguro, né, da ANCOR, que foi criado, que a gente vai pagar, ele vai te direcionar qual a melhor ferramenta de IA para o trabalho que você quer fazer. 
+Speaker B: E vai se alimentar de onde? Com documentos da ANCOR? 
+Speaker A: Vai ter a data base da ANCOR, sim. Ele não vai ter nenhum API. Por cybersecurity, ele não pode conectar direto num SAP, ele não pode conectar num Salesforce, não pode. Então, assim, Vou te dar um exemplo. Vai ter muita ferramenta que a gente chama de front-end. O gerente fiscal ali, o Márcio, hoje ele tem um relatório que tem o SAP, só que ele não consegue buscar o número da P.O. Porque do jeito que está configurado no SAP, a transação, às vezes o número da P.O. está na coluna A, às vezes está na coluna D. Então ele vai criar um robô para ler o SAP para facilitar o que ele faz de forma manual. Então o que esse robô vai falar? Qual que é o denominador comum? Tudo que você busca aqui, eu preciso do número da PIO, independente se ela está na coluna A, C, F. Aí ele já vai trazer um relatório formatado com os dados que o time dele precisa trabalhar. Então você cria um robô de leitura de um relatório SAP pra trazer pra você a informação traduzida. Eu te mostro, eu vou pegar um pilotinho e eu te mostro. 
+Speaker B: Qual é a impressa? 
+Speaker A: Adalink. 
+Speaker B: Ok. Meu... Vamos falar desse negócio também, porque a gente tá fazendo várias coisas também. A gente tá testando o cloud corporativo. Tem muita coisa de front-end pra que a gente... A gente tá com um programa de Citizen Developer, que é tentar deformar algumas pessoas em Power Platform. É... o que eu tô sentindo é que cada um tá fazendo em siglos, 
+Speaker A: tá trabalhando em siglos, né? 
+Speaker B: Então eu acho que esse negócio tem que se centralizar, de algum jeito. Porque pode acontecer esse negócio, isso que você falou, tipo, ó, o cara de lá, ele queria um dashboard de... e o outro dashboard, de repente, tem uma proliferação de dashboards que ninguém usa, só o cara. Entendeu? Então, isso pra mim é perigoso, um 
+Speaker A: negócio de... Então, assim, até estou com um ponto legal. Essa plataforma, a gente tem quatro perfis. O administrador, que vai conseguir fazer tudo. O criador. O usuário. O usuário, assim, não consegue criar nada. Porque se eu liberava pra todo mundo criar, O cara cria um relatório que ele usa uma vez por quarter, vai consumir token da minha assinatura e só aí ele usa. Faz sentido? Ele tá pagando... 
+Speaker B: O meu ponto é que a gente já tem um... Temos que pensar, né? Porque a gente tem... pessoal técnico que está fazendo esse tipo de desenvolvimento. 
+Speaker A: Na região, você fala? 
+Speaker B: Na região, isso. E mesmo o corporate, a gente tem uma função que chama-se de Modern Workplace, tudo baseado em Microsoft Platform. Que tem Power Apps, Power BI, Copilot Studio, Cloud, agora vai ter também, e Power Automate. Tem muita coisa ali que dá pra fazer dentro do... 
+Speaker A: Quem que lidera? 
+Speaker B: Seu time? É, tá. Entendeu? Então, pra mim, que o Brasil for pra um outro fornecedor, eu queria entender realmente o que tá acontecendo com esse fornecedor. Quem que tá liderando o negócio? É a Akira? É a Akira. Tá, então vou falar com a Akira. 
+Speaker A: Mas vamos bater o papo, a gente mostra a plataforma porque até o que eu entendi do Akira, era fazer o piloto aqui, mas estender pra região. Não sei como que vai ser acesso e tudo mais, mas é uma das ideias. 
+Speaker B: Bom, vou falar com a Akira também, galera, desse negócio, porque, de novo, eu governo, volto duas coisas, eu governo desse negócio, e o segundo ponto é que eu prefiro trazer uma ferramenta para uma dor, Tipo, escutar qual é a dor que a gente tem. Que trazer um pacote de ferramentas que a gente não sabe ainda pra que, mas trazer o pacote. Entendeu? Tipo, não é simplesmente ferramentas. 
+Speaker A: E a metodologia da IA, como é que é essa? Primeiro você explica qual que é a sua dor, como que a IA vai resolver ou como vai amenizar. 
+Speaker B: Eu acho que é, qual que é a sua dor, tá? Tem um standard, tipo, eu não posso pralejar... tá, peraí. Tem um estándar de como deveria se planchar? Não. Então faz o estándar. 
+Speaker A: Faz o estándar, sim. 
+Speaker B: Se tiver o estándar e está errado, então... 
+Speaker A: Esse é um ponto que eu ia até levar para o Lauro. Hoje, na região, você tem estándar de processo? O cara entrou em PCP. Qual é o estándar PCP ancor? Não tem. Vamos usar a IA para criar? Por quê? 
+Speaker B: Porque ainda depende de mim, pois. 
+Speaker A: Não, e vamos usar a IA para criar? E vai ser para todos os países? Está de acordo com o Santiago? Então aqui aí a gente vai criar os principais processos de supply. 
+Speaker B: Beleza. 
+Speaker A: Pega os gerentes responsáveis, eu ajudo, criou. Falou de processo. 
+Speaker B: Legal. 
+Speaker A: Aí qual que é a ideia que eu vejo? Hoje, o que todo mundo fala, não tem o headcount, não tem o headcount, a gente tem que fazer 80-20. O que é 80-20? Hoje, talvez, 80% das coisas rodam bem só porque são manuais. E todo mundo tá gastando tempo aqui pra resolver esses 20. Só que como isso aqui é muito manual, o cara não resolve esse e fica sobrecarregado nesse. Então se a gente tiver uma IA, do que já roda bem manualmente e automatiza isso, eu libero o tempo do cara para ele trabalhar no que é os 20, mas talvez os 20 seja relevante para a área, entendeu? É uma dor que todo mundo reclama, entrada de pedido. Putz, como que eu resolvo? 
+Speaker B: Mas esse negócio, por exemplo, que você falou para mim, customer, receber o pedido por e-mail e às vezes... 
+Speaker A: Na gavetada. 
+Speaker B: A gente já tem o robô. 
+Speaker A: Tem o Edu. Só que não implementaram. Fizeram um pelo outro. Não sei se você bateu papo com o Daniel Doval. Era pra fazer pra alguns clientes e depois era pra estender. Então isso aí não decolou ainda, né? Porque esse robô já deveria... resolver o que tange a entrada de pedidos, que hoje consome 80% da área e está mal. Então, só quer resolver 50? O que é o agotador de custo? Você libera a hora do time para 
+Speaker B: atacar o que importa... E além disso, a Sabrina, por exemplo. Vamos supor que a Sabrina quer gerar essa automatização de Adalink. Provavelmente vai ter que pedir para alguém de Adalink Sim, desenhar. Isso é dinheiro. A gente já tem o recurso em-house. Pra fazer isso. 
+Speaker A: É só dar o acesso pra ele na ferramenta que ele já desenvolve. 
+Speaker B: Entendeu? 
+Speaker A: Fala qualquer um, marca eu, você e ele. 
+Speaker B: Me marca, por favor. Puxa aí só pra uma demo do que a gente tem. De novo, a ideia não é matar nenhuma iniciativa, é simplesmente tentar nos organizar, porque depois isso aqui vai ser ingovernável. vai ter um monte de gente tentando fazer alguma coisa. Já aconteceu com os Power BI. A gente entregou 90 licenças. Vou te dar os dados. A gente entregou 90 licenças. Cada licença tem o custo... Cada licença tem o custo de 1.100 dólares por ano. 90. Quase 100 mil dólares. Dessas 90 licenças, você sabe quantos criaram um Power BI que fosse tipo... 15. 5. O resto ou não criou, ou criou uma merda que tinha source de um Excel que tinha um cara no escritório. Entendeu? 
+Speaker A: Sim. 
+Speaker B: Então a gente tem que governar esse negócio. Esse é o meu mérito. 
+Speaker A: E com faturidade, que é o que você tá trazendo. 
+Speaker B: Eu falei pro Ruben, tipo, você tá gastando, eu sei que 100 mil dólares pra... Não, meu. 100 mil dólares. Ano 1, ano 2, ano 3. Então, esse meu método. E o consumo de tokens também, agora não é, mas vai ser... Vai. 
+Speaker A: Não, então assim, só pra você entender, esse bootcamp foi com os Key Users, 32 pessoas. Aí a nossa dúvida, que a plataforma vai entrar no ar mesmo essa semana, a versão dele, que eu estou te explicando. Vamos dar acesso para os 32 e criador? Aí o Aquila falou assim, vamos dar para os 32, vamos esperar 40 dias, vamos pegar na lista dos 32, Vê quem criou alguma coisa, quem criou uma agenda. 
+Speaker B: A gente treinou? Treinou. 
+Speaker A: Dois dias, a golinha abriu. A gente foi no escritório da DALINK, eles foram treinados, explicaram, só que eles ainda não começaram porque a plataforma vai pular amanhã é o sexta. 
+Speaker B: E já tem falhado com o pessoal de TI? 
+Speaker A: Sim, tem duas pessoas do Akira que vão ser de suporte, o Matheus e o Lucas. Então você vai buscar uma agenda semana que vem, a plataforma já vai estar no ar, a gente já te mostra e a gente conecta essas ideias. 
+Speaker B: Tá ótimo, Viní. Vamos lá então. Bom, obrigado Will, mas... 
+Speaker A: Não, obrigado a você, acho que agora... Prazer te conhecer pessoalmente, eu vou te acionar mais também. 
+Speaker B: Obviamente. 
+Speaker A: Porque, querendo ou não, isso aqui ainda tá consumindo 80% do meu tempo. Agora, coisa que andando com o pessoal já acessando a plataforma, eu vou entrar pra estruturar os mais, vou entrar... O que precisa ser feito lá no DTS? Porque a gente fala de setembro, mas setembro são quatro meses, tá aí. 
+Speaker B: Vou te falar uma coisa. Você falou de 80 a 20. Dentro desse 80, tá o DTS. Tipo, quer dizer, se no final do ano, você fala, a gente implementou o Bootcamp, mas o DTS deu merda, se fudeu. 
+Speaker A: Sim. 
+Speaker B: Vai dar merda. 
+Speaker A: Porque é um projeto com visibilidade. 
+Speaker B: Agora, se você me falar, o Bootcamp foi uma merda, mas a gente tem fase 2 de DTS, bom, fechou. É isso que eu tô te falando, só pra você ter na cabeça. Porque lá na região, com o Rubem, tem o Atlas, tem o Mercury e tem o Venturi Valle. Esses três caras são os que estão na cabeça dele. 
+Speaker A: E se 
+Speaker B: tiver que entrar dia a dia cá, o que eu te peço é... 
+Speaker A: Não, vou levantar a mão, vou levantar a mão e falar, Damian, vamos alinhar. Tô tendo que entrar aqui, ó, não tô conseguindo fazer o mais como deveria. Você quer ajudar, eliminar ninguém? Aí eu levanto a mão e te faço a ajuda. 
+Speaker B: Porque se você não levanta a mão, 
+Speaker A: pra mim... Tá tudo bem. Tá tudo bem. Sim. Porque se eu entrar no dia-a-dia... Ah, 
+Speaker B: e se tá tudo bem, e os resultados não tão, então tudo errado. 
+Speaker A: Não, quer me falar como que ninguém levantou a mão? Vai chegar lá em setembro, não vai dar pra dar o live político. 
+Speaker B: Eu tô te falando de coisa técnica. 
+Speaker A: Sim. 
+Speaker B: É política. Tem que ser experto nesse negócio. Tipo, ó meu, eu não posso. Perdi alguém de fora. Preciso de ajuda de fora. 
+Speaker A: Então tá. 
+Speaker B: Um cara absurdo, né? Ninguém pode falar que... Tu não levantou a mão. Entendeu? Vini, tá certo, tá? 
+Speaker A: A gente vai falando aí. Você vai ficar até sexta? 
+Speaker B: Vou ficar até... só amanhã. 
+Speaker A: Amanhã você fala com... 
+Speaker B: Amanhã eu vou estar aqui e tenho uma entrevista. 
+Speaker A: Vai falar com o Daniel, com o Tito... Tudo. Depois me fala suas percepções. 
+Speaker B: Falou. 
+Speaker A: Tá bom? Valeu. 

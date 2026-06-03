@@ -1,0 +1,234 @@
+Meeting Title: Patricia Souza
+Date: May 6
+Meeting participants: Damian Rotondi
+
+Transcript:
+ 
+Speaker A: oportunidades em quem? 
+Speaker B: Por exemplo, fluxo de processo, da forma que a gente faz programação, da forma que... Hoje o nosso maior programa é em Londrina, que é a nossa maior fábrica. Hoje o PCP é dividido por cliente, não por linha de produção, diferente das outras plantas. Eu tenho tido muita dificuldade disso, porque Várias pessoas programam a mesma linha, a mesma máquina. Então, se acontece um problema num cliente, ele vai lá e fura o cliente do outro. Por exemplo. Então, isso é... Eu acho que tem um conceito errado, mas... 
+Speaker A: Mas não tem um planejador... Por linha. Por linha. 
+Speaker B: Não, o planejador ele tá por cliente. Só que a Maquinze veio com isso e pediu pra mudar, acho que foi 5 anos atrás. Aquela marquinha se veio, viu essa oportunidade e não percebeu que tinha que ser por cliente. Mas hoje eu vejo que não tá dando certo. Então tem importância a gente reestruturar a forma que a gente trabalha. Então acho que esse é um ponto. Hoje a gente não tem os controles, que acho que o que mais me interessa é que a gente hoje não tem visão nenhuma. Então hoje eu não sei te dizer quantos bilhos eu tenho atrasados hoje. Não tem nenhum lugar que eu entre hoje e falhe. Eu tenho, vou chutar aqui, 4 mil toneladas na carteira e eu tô com 300 anos atrasado. Eu não sei, eu sei quanto eu terminei mês passado, mas agora eu não tenho. Então, a dificuldade da gente conseguir gerir isso, são quantos itens atrasados, são quantas OPs, são quantos clientes, tá atrasado quantos dias? Uma coisa é atrasado um dia, outra coisa é atrasado 20 dias. É atraso por matéria-prima, atraso por processo? Então, a gente hoje tem muita dificuldade de visibilidade, não só de problema, da situação real. Então, a gente tem tentado criar coisas nesse sentido, bem manual ainda, bem mixado, pra depois conseguir passar pra Power BI. Mas eu acho que esse é um outro ponto. A gente tem muitas reuniões, mas as reuniões elas não são com visão gerenciais, elas são com visões operacionais. Então, o tempo todo, eu, a sabana que a gente produz, os supervisores, eles entram para resolver um problema. Então, eu estava em reunião agora há pouco, porque faltou matéria para eu mandar um elever. E terminou falando que o senhor resolveu não tinta nesse copo. Você tinha que resolver isso. 
+Speaker A: É. Só que posso desenhar uma coisa, só pra entender se eu entendi o processo. Você que sabe de... Basicamente, a gente tem, vamos dizer, 5 mil toneladas, mês. 
+Speaker B: Hoje tá 4,700. 
+Speaker A: Então, essas 5 mil toneladas, Você tem que dividir para os mercados, né? Mercado de café, mercado de... Primeiro a 
+Speaker B: gente divide por planta, depois divide por mercado. 
+Speaker A: Ah, ok. Então, por planta... Londrina, Mauá... Londrina... Mauá... Andonópolis, tá. 
+Speaker B: E aí a gente divide por mercado. 
+Speaker A: Então, você divide café... Atomatado. Atomatado. Enfim. 
+Speaker B: É ração. 
+Speaker A: Lo mismo para esta aqui. Depois daqui do café você tem... Spec. Tec. É isso. O café tem diferentes... 
+Speaker B: Especificações. Só para que vocês tenham noção, olhando para a Londrina, a gente programa por mês quatro mil ordens. 
+Speaker A: Ordens. 
+Speaker B: Ordens. Quatro mil... Por mês. Tudo manual. Se uma atrasa, porque eu tenho o processo de extrusão, eu tenho o processo de impressão, eu tenho o processo de laminação, eu tenho o processo de corte, eu tenho o processo de pouch. Dependendo do produto, eu tenho que usar essas cadeias. Então, são cinco cadeias. Se uma atrasa, eu tenho que reprogramar todas as linhas, porque eu ocupei espaço delas na frente. Então, hoje é muito difícil a gente conseguir gerenciar isso. Não tem hoje um sistema que gerencia isso. Vai ter o APS, que é o que a gente tá fazendo, né? É a implementação. Começa em setembro, esse ano, e o resto, o ano que vem. 
+Speaker A: Isso vai ajudar. 
+Speaker B: Isso vai ajudar muito. 
+Speaker A: Só que aí, ó, peraí. Depois do Supertec, você tem SKU. 
+Speaker B: SKU. 
+Speaker A: Não é? E depois do SKU, você tem cilindro e tinta. 
+Speaker B: Tinta. E artes. 
+Speaker A: E artes. É isso? 
+Speaker B: Isso. 
+Speaker A: Então, o... Desculpa, vou usar mais. 
+Speaker B: Não, não precisa. 
+Speaker A: Então, o DTS, o projeto de Mercury, que chama a gente, vai ter três faces. 
+Speaker B: Tá? 
+Speaker A: Uma face de... Cleaning. Scheduling. Scheduling. Primeiro. E o Scheduling tem que ir... Vai pegar... Aqui, ó. Scheduling é MPS. Seria esse aqui. Depois vai ter uma outra face que é de Planning, que é de Madriéis. Não é? É aquilo? 
+Speaker B: Não. É na Nespec ali. 
+Speaker A: É na Nespec. Essa é face 2, que é Planning. Essa é face 1. E depois vai ser face 3, Com? 
+Speaker B: Cilindros. 
+Speaker A: Cilindros. É isso. Só que o meu ponto é, como você sabe que a linha gilandrina que faz café e faz esses caiu, A velocidade da linha teórica, ou real, é a mesma que a velocidade que você está planejando. 
+Speaker B: Então, hoje eu tenho um problema disso, então eu vou te dar exemplo, que a gente analisou semana passada. Hoje o SOP de janeiro, é, senhor, de janeiro, abril, eu estou devendo quatro mil metros nas cinco impressoras que eu tenho em Londrina. Pelo que o SOP planejou. Pelo que o SAP planejou, porque é a velocidade de cada estrada, eu estou dizendo 9.000. 
+Speaker A: Puta. 
+Speaker B: Porque hoje... A gente está até discutindo isso, a gente não se junta com o SOP. Hoje eu não programo conforme o SNOP, eu programo conforme o que cabe, o que está no SAP programado. E hoje não há uma atualização contínua, do que assim, não é essa velocidade que eu estou rodando, ou não é isso aí, ou não é essa perda. Então, Hoje, o sistema, ele aceita. Então, vou pegar a principal máquina lá, que é a Corsair E12. Eu estou programando 1.800 metros para ela todo mês. E ela está fazendo 1.400, 1.300, todo mês. Então, desde janeiro, eu já comprei duas mil. 
+Speaker A: E a gente pergunta, então, o que acontece? Para fechar essa irada. Porque, além do táctico, né, que a gente vai fechar, como a gente corrige? 
+Speaker B: Então, o que a gente falou hoje, o que eu falei hoje com o Daniel Vila disso, é assim, como que a gente tem uma atualização contínua do SAP, do Master Data. 
+Speaker A: Contínua tem que ser. 
+Speaker B: Talvez assim, a cada três meses, seis meses, ou se aconteceu alguma coisa ele lá atualizar, mas é que hoje a gente não atualiza nunca. 
+Speaker A: Porque a gente tem pessoal de Master Data aqui, ou não? 
+Speaker B: Tem, só que o pessoal de Master Data precisa receber informações de processos, né? Processos que tem que passar qual que é a velocidade, qual que é a perda, qual que é o OE... Processos industriais. 
+Speaker A: Processo, manda pro... Master Data Master Data Master Data Cadastra Atualiza em SAP Isso Só que processo é... quem é o cara de processo? 
+Speaker B: Hoje é o Bonetti Bonetti? Luiz Bonetti De Londrina é o Bonetti 
+Speaker A: Ah, não, eu tava pensando de Mauá, quem é? Pode ser... Alessandre Brito? 
+Speaker B: Não, Brito é o PCP de Londrina. 
+Speaker A: Brito é o PCP? 
+Speaker B: Supervisor de PCP. 
+Speaker A: Mas Brito não é que fala... Brito 
+Speaker B: é o que programa as máquinas com base no que tá no SAP. 
+Speaker A: E quando ele vê que tem algo errado no SAP, ele que pede pro processo angular? Quem faz o requerimento a esse ponto? 
+Speaker B: Não, é porque ele não sabe que a máquina está com uma velocidade menor. Ele não sabe. O que a gente combinou é que a partir desse mês ele não pode programar nada com base na velocidade do SAP. Ele tem que programar o que está no S ou no π. Aí o que vai acontecer? Teoricamente, a gente vai ter uma ociosidade nas máquinas. 
+Speaker A: Não, por quê? 
+Speaker B: Porque assim, se o SAP, vamos colocar 2.000 metros, se a máquina, se o SAP diz que eu posso fazer 2.000 metros, e o SNOP está falando que eu posso fazer 1.500, teoricamente sobra uma semana do mês. 
+Speaker A: Teoricamente, é. 
+Speaker B: É que não é a realidade. Mas aí eu falei isso pro Grito, você vai programar conforme o SNOP, e vai sobrar uma semana do mês, você não vai colocar nada nessa uma semana do mês. Porque quando ele for programar, como o sistema está com um tempo menor, ele vai conseguir fazer 1.500 em menos tempo, não em 37 dias, vai fazer 1.500 em 25 dias. Então você vai cinco dias, você não vai programar nada e vai começar a programar as outras horas para junho, esquece maio. O que vai acontecer durante o mês? Todos os atrasos que a gente tiver, você vai ter uma gordura no final do mês. O que acontece é que, só que aonde está todo o problema? Hoje o S&OP passa pra gente uma quantidade de produção. Então ele falou pra gente que a gente vai produzir 4.500 toneladas. Os clientes estão colocando mais pedidos. 
+Speaker A: Essa é outra coisa, tipo o S&OP, ele te diz 500 e depois tem o Order Intake que te fala 600. 
+Speaker B: Eu aceito. 
+Speaker A: Então... Está errado. Porque tem que ter um lead, né? 
+Speaker B: Não, porque... Como que acontece hoje? O pedido entra pelo customer service. O customer service recebe o pedido. Aí o customer service pergunta para o PCP. Eu tenho capacidade? Como ele olha no SAP que ele tem capacidade pelas máquinas e fala, eu tenho. Pode aceitar o pedido e o prazo é tanto. Então o customer volta para o cliente e aceita o pedido. Só que aí a gente já errou todo o processo, porque eu aceitei acima do forecast de matéria-prima e de planejamento de máquina, porque o SNUP já viu que eu não tinha capacidade e eu também não assinalizei matéria-prima que vai... Pode ser que eu tenha matéria-prima agora, mas seja do mês seguinte. Então eu consumo a matéria-prima que não é do mês, eu utilizo uma máquina que eu não tenho, E eu passei manada pro cliente. Então hoje... Então a gente já descobriu o que tá nessa bagunça toda. Então o que a gente comeu a partir do mês de agora de maio, desde o dia 1º de maio, eu só programo o que tá na escenopia. Primeiro ponto é isso. Então se eu estou procurando o que é R$1.500, é R$1.500. 
+Speaker A: Acabou. Além de que eu tenha folga na... 
+Speaker B: Não vai programar. Aí a gente vai levantar a mão, vai fazer um folga e vai analisar se de fato é uma folga ou não é uma folga. Porque na Sanupi a gente consegue ver. Quando está de ocupação, né? A ocupação dela está 100%, não vai programar. A ocupação que está 80%, dá pra programar porque a Sanupi está dizendo que tem folga. Então a gente vai fazer essa análise. Esse é o primeiro ponto. E segundo ponto, o time de CS não pode aceitar pedido acima do Forecast. Porque a gente está aceitando, não pode nem perguntar pro PCP. Então, a gente criou um curso junto com o pessoal de SNOI, que precisa analisar todos os pedidos acima do foro, que a gente precisa mandar para esse time, para que esse time analise capacidade de máquina e esse time analise matéria-prima. E aí vai dizer se dá ou não dá e qual que é o lead time. Acima do foro pode ser um lead time diferente e assim por diante. Então, a gente agora, a partir desse mês, criou esses dois pontos. A gente começa a ver ganho a partir de junho, porque esse mês já tá tudo programado. Hoje eu tô programando por até 30 dias, né? Então eu espero que a gente consiga ver o ganho mês que vem. Mas porque tá tudo errado. Eu não sigo o processo. É muito... 
+Speaker A: Não, não, mas eu tô entendendo. Agora a pergunta é... Por que que tá tudo errado? 
+Speaker B: Porque hoje não está, como eu comecei falando, hoje não tem o fluxo dos processos bem definidos que cada um tem que fazer. 
+Speaker A: Aí te pergunto, o fluxo, desculpa, interrompei. 
+Speaker B: Não, por favor. 
+Speaker A: O fluxo, o processo é que não está definido ou o processo é que ninguém está seguindo? 
+Speaker B: Eu acho que hoje o processo não está bem definido e, consequentemente, ninguém está seguindo. Hoje acho que cada um está fazendo o seu, a Sonopi faz a parte dele, O PCP faz a parte dele e fez. Acho que cada um tá fazendo o seu e a gente não tá conseguindo, como área de supply, juntar tudo isso. Não estávamos, porque agora a gente começou esse mês a redesenhar isso. A gente não estava e a expectativa agora é que a gente realmente consiga fazer isso rodar, né? Cada um com as suas responsabilidades. 
+Speaker A: E aí também tem o fator de pessoas, né? Não, não, mas em planejamento. Isso também faz parte. 
+Speaker B: Ou pessoas que não tem conhecimento do que deveria. Então, foi o que eu te falei. Faz três meses que eu cheguei na área. Então, eu até falava pro Lauro. Lauro, eu tenho as minhas dores de supply como gerente de planta, mas Eu quero chegar na área para entender quais são as dores que a área tem, que trazem essa consequência para os times de operações. E aí, quando eu cheguei na área, depois de três meses e pouco que eu tô na área, que eu percebi o quão bagunçado a gente tá. Então, nós temos pessoas... Então, tem uma área de sanupi, tem uma área de matéria-prima, tem uma área de SOE, tem uma área de PCP 37, mas as áreas não se conversam. Entre si. 
+Speaker A: Até o processo de exaupir tá quebrado? 
+Speaker B: Tá quebrado. Hoje eles fazem um trabalho, um esforço, mas ninguém faz nada com informação. Ninguém faz nada com informação. Então não adianta de nada, não precisa ter exaupir. E eu falei isso pro Lauro. Logo que eu cheguei. Falei, Lauro, ninguém acredita em exaupir dentro da empresa. Ele ficou puto, lutou comigo. Falei, Lauro, eu tô aqui. pra gente, pra eu te falar o que acontece, e a gente precisa entender junto que não vai mudar. É que eu não tinha conseguido entender antes o que tinha que fazer pra mudar, mas agora a gente entendeu se tem que cuidar, se tem com todo mundo, se a gente precisa fazer com que todo mundo acredite, porque isso é muito importante, é isso que rege a fábrica. Então a gente precisa fazer da sede, então as coisas que a gente fez esse mês, que a gente já começou, que a gente realmente tem um resultado diferente. Mas começa aí, o SOP está quebrado. Então, eu não utilizo a visão do negócio, nem por marca, nem por cliente. Eu não uso essa informação para os outros processos. 
+Speaker A: O Lauro entendeu que o SOP está quebrado? 
+Speaker B: E já comprou? Não, agora já comprou. É que não começou, não. Era eu de fora falando. 
+Speaker A: Mas comprou. 
+Speaker B: Mas agora comprou. 
+Speaker A: E aí a gente calculava assim, não tem como, tipo... Pra mim é chato, o processo de solpir é... 
+Speaker B: É, então, a gente agora começaram... Então, são dois pontos que eu te falei. Tanto o UCS quanto o PCP começaram a utilizar isso no dia-a-dia, que antes não utilizava. 
+Speaker A: Esse é o primeiro ponto. 
+Speaker B: E o segundo ponto é, como a gente faz com que as informações que estão nesse ordenador de pi, elas estão coerentes? Porque daí quando eu começo a programar, E começou a falar assim, não, mas esse aqui não roda nessa máquina, ele tá programando nessa máquina. Não, mas isso aqui não acontece assim. Então a gente também começou a ver algumas falhas na Sonopi que a gente não via antes porque a gente não utilizava. 
+Speaker A: Então onde vem essas falhas? 
+Speaker B: Eu acho que talvez o time que tá na Sonopi não tem tanto conhecimento técnico e a operação que deveria validar não tá participando como deveria. Porque como a operação não acredita... Tá, 
+Speaker A: mas eu puxo a data do sistema. Se eu não conheço nada, se eu não sei nada. 
+Speaker B: Não, mas o que eu tô querendo dizer é o seguinte, eu abro o senopi e aí eu vou ter lá assim, que eu vou produzir na máquina C15, que é a Corsair 15, que é uma coisa de londrina, eu vou produzir, vou falar em toneladas, 60 toneladas de Mars, que eu vou produzir 100 toneladas de JDE, que eu vou produzir 20 toneladas de Unilever. Quando eu abro, por exemplo, a gente abre e fala assim, mas eu não produzo Unilever nessa máquina, essa máquina não pode produzir Unilever, porque ela tem nove cores e a máquina só tem oito. 
+Speaker A: Só que quando alguém planejou isso no Excel, nessa máquina, o Excel... 
+Speaker B: Afeta tudo, exato. Então falta talvez um pouco de conhecimento técnico de quem está planejando isso e falta um pouco da fábrica poder vir daqui e falar assim... 
+Speaker A: Checar. 
+Speaker B: Checar. Porque tem uma caminhão de validação de operações com a Sanopi. Então a gente tem que dizer que não roda nessa máquina. 
+Speaker A: Faz parte do processo da Sanopi. 
+Speaker B: Mas daí entra naquele processo. Como as pessoas não acreditam na Sanopi, acham que é uma perda de tempo, as pessoas não olham como deveriam. Só vai lá e valida o número. Não, tá bom esse número. Então é isso que a gente começou a mudar agora. Então como a gente começou a utilizar, a gente começou a pegar problemas. E aí a gente tá começando a corrigir, então a gente já chamou os times de processo, a gente precisa que vocês validem as máquinas, os produtos que rodam em cada máquina, vocês precisam nos dizer. Porque a gente como PCP sabe o que roda em cada máquina, mas não é a gente que tem que dizer, é operações que tem que dizer. Então a gente precisa que vocês nos digam se tá ok ou se tá coerente ou não tá coerente, fechou? 
+Speaker A: Fechou. 
+Speaker B: Aí nós, o PCP, vamos lá, a gente tem que ser só o copia e o cola, né? Eu não tenho que fazer nada diferente do que tá ali. E claro, se tiver alguma coisa diferente, a gente levantar a mão e analisar se faz sentido ou não. Então, a gente começou a mudar tudo isso agora nesse mês, porque não tava acontecendo. Então, agora que a gente tá pegando os problemas, agora que a gente tá vendo como faz tudo isso dar certo. E aí, hoje a gente teve uma reunião que a gente até falou o seguinte, que a gente começou a discutir. Então, hoje eu já tenho, não é cenopi, Eu já tenho a visibilidade dos próximos 90 dias, mesmo que eu não tenha pedido. E aí, o que o meu PCP falou? Tati, eu consigo fazer um planejamento no SAP sem ordem de venda. Eu consigo reservar a máquina. Então, qual que é a minha ideia? Agora pra julho. Ele falou que agora é maio e junho e eu já tô programando o que eu tenho carteira, porque os nossos registrais estão de 30, 60 dias. Falei que agora eu já tô programando carteira. Agora vamos pensar pra julho. Eu vou começar a fazer isso agora pra julho. Depois que a gente terminar de arrumar essa NUP desse mês, eu vou pegar a carteira, vou pegar essa NUP de julho e vou fazer reservas de máquina. Aí, qual que é a minha ideia? Minha ideia é o seguinte. O S&OP tá me falando já que daqui a 60 dias vai rodar 100 toneladas de JDI. Então eu vou reservar a máquina para 100 toneladas de JDI. O S&OP tá me falando que eu vou rodar 300 toneladas de macros. Eu vou reservar a máquina para 300 toneladas de macros. Mas, daí ele falou assim, conforme forem chegando os pedidos nas próximas semanas, eu vou encaixando nessas cezenas. E aí, o que eu consigo fazer? Ele falou, eu consigo falar o seguinte, pessoal, 15 dias, porque, digamos, quilos de time seja 45 dias. Pessoal, vocês tinham colocado no SOP 300 toneladas de maras. Até agora, eu tenho carteira para 200. É isso mesmo? A gente está vendo uma expectativa de 200 ou tem uma expectativa de aumentar? Ó, um ponto de atenção aqui. Se eu não receber pedido até tal data, eu vou perder essa concorrência que eu reservei na máquina. Está todo mundo de acordo ou não está de acordo? Então, como que a gente começa? Haja uma análise mais futura, não tão presente, porque hoje eu olho todo dia, eu bato carteira com os analistas todos os dias, que é péssimo. Então, como que a gente começa a trazer para o processo essa visão mais a médio prazo, né? Hoje a gente fica olhando só a curto prazo, que é 30, 60, porque é a carteira de agora. Como eu vou segurar 60, 90? Que eu ainda não tenho carteira, mas eu tenho planejamento. 
+Speaker A: E aí bate Você falou de processo também. Quem lidera o processo de ESOP? Quem fala o ESOP é isso. Tem que fazer isso, isso, isso. 
+Speaker B: Quem lidera o processo de ESOP é o Daniel Vila, que é o gerente. E a supervisora é a Cláudia. 
+Speaker A: Você está em contato com o Daniel? 
+Speaker B: Sim, e estou explicando para ele que a gente está fazendo isso e que a gente está mudando a forma que a gente vai trabalhar. 
+Speaker A: Ok, ok. E uma outra dúvida que eu tinha também é, vamos supor que começam a utilizar o SNOPP, tipo, o processo e a gente confia, porque é um change cultural também, né? 
+Speaker B: Cultural. 
+Speaker A: Uma mudança cultural. 
+Speaker B: Total. 
+Speaker A: Faz parte. 
+Speaker B: Faz parte, né? 
+Speaker A: É, são tipo ciclos, sabe? As pessoas. Agora, o meu ponto é, vai ter Um outro problema que é a data que você pega dos sistemas. Porque se você tem sujeira, ou tem códigos que não utiliza, ou códigos que estão ativados e não utiliza. 
+Speaker B: Não, o problema hoje, acho que tem isso que você está falando. 
+Speaker A: Ou, desculpa, ou as velocidades dessas linhas. 
+Speaker B: Isso sim. 
+Speaker A: Entendeu? Porque aí é... 
+Speaker B: Isso sim. Aí hoje a gente fez uma reunião com o Daniel Vila, ele estava participando do período, tudo o que a gente estava fazendo. Aí ele falou, não, então eu vou acionar processos e solicitar uma correção do sistema. Para que ele me mande, né, porque ele também recebe pelo MasterData, ele recebe pelo SNOPI MasterData. Para que ele me mande e eu possa fazer todas as correções. Então hoje eu já expliquei para o Dani que a gente estava pegando esses problemas e ele falou, não, eu já vou acionar processos. Então a gente também vai fazer essa correção. 
+Speaker A: A sanitação, a sanitação... 
+Speaker B: A limpeza. 
+Speaker A: Eu queria afirmar mais fácil, mas é a limpeza. Sanitizar. Isso, da data. Só que o meu ponto é, vamos supor que a gente sanitizou a data. Como que a gente segura que a data não vai se sujar de novo? 
+Speaker B: Por isso que eu te falei que eu acho que a gente tem que definir um processo. a cada seis meses nós vamos atualizar, por exemplo. Ah, então a cada seis meses. Além disso, quando for validar o SMLP, o pessoal de processo tem que conseguir dizer o que teve na máquina. Olha pessoal, eu fiz uma melhoria na máquina, essa máquina melhorou a velocidade X. Ou eu tô com problema na máquina, que eu tô com uma coluna a menos. Então você tem que considerar moer tanto. Então, na minha opinião, mudanças pequenas, vamos dizer assim, tem que ser falado no ciclo dessa NOP, quando estiver revisando essa NOP. Porque ali vocês... a operação sabe o que está acontecendo nas máquinas, ela consegue dizer. 
+Speaker A: Eu sei. Meu ponto é quem tem o governo da máscara dada. Porque quem para em algum momento e diz, esse pedido que está me fazendo não faz sentido. Eu já tenho um código, ou o cliente, vamos supor que o cliente tem o código 001 e por algum motivo mudou para a versão 001.v1 Você tem que desativar esse aqui e ativar esse aqui. 
+Speaker B: Não, mas isso hoje é feito e hoje a gente não tem problema, tá? 
+Speaker A: Não tem problema? 
+Speaker B: Não, disso não, de mudança de inversão. 
+Speaker A: Já viu os dados? Não tem códigos que estão há seis meses no sistema, sem ter faturação? 
+Speaker B: Hoje o Master Data faz um trabalho muito forte disso, de sanitizar os dados. Então eu acho que hoje isso está funcionando. Pode ser que mais da frente vire um problema, mas hoje tem tantos outros que ele não é um problema pra gente. Mas eu acho que... Acho que vale a gente colocar isso no fluxo também. Que é como a gente tá requisitando. 
+Speaker A: Porque não é só limpar. É como manter. 
+Speaker B: Não, com certeza. 
+Speaker A: Esse é o meu ponto. Você talvez tenha alguém de Mastradata que nem sabe o que tá fazendo. Só faz. Seculta. E o cara que mandou pra secultar também não sabe o que tá mandando. Então, você vai limpar? Você vai ter que limpar tudo de novo. 
+Speaker B: Eu posso perguntar pro Dani, que eu não sei como tá isso. 
+Speaker A: Não, eu vou falar com o Dani também. Você vai estar aqui amanhã? Vou. Amanhã tenho uma tirada e... Ah, tá. Dias todos e reuniões. 
+Speaker B: Tá. 
+Speaker A: É... Ok. 
+Speaker B: Mas, acho que o ponto que eu falo é assim. A gente tá num processo... Começou um processo de mudança... Em Londrina, tá? Porque a gente começou com Londrina. 
+Speaker A: Ah, Londrina. 
+Speaker B: A gente começou com Londrina porque é onde a gente tá com o maior problema. Então a gente começou com Londrina. Então... desde segunda-feira. Com base em tudo isso que a gente falou agora, e a expectativa é que a gente... só que a gente não consegue ver isso a curto prazo, né? A expectativa é que mês que vem a gente já consiga ver uma melhora, e em julho já consiga ver uma melhora ainda melhor, vamos chamar assim. E aí a ideia é que a gente terminou Londres e a gente já vai começar retritando para as outras semanas. É que hoje o maior problema está em Londres. As outras semanas estão bem controladas. 
+Speaker A: Me falaram também de você. 
+Speaker B: Que bom. 
+Speaker A: Várias pessoas. 
+Speaker B: Que bom. 
+Speaker A: Acabei de confirmar. Bom, eu gosto muito de você. 
+Speaker B: Obrigada. 
+Speaker A: Gostei. Mais de operações também, eu gosto dessa cabeça. Mas... E eu não tô aqui também pra te pedir nada. Ao contrário, eu realmente tô te falando de comunicidade. A pergunta é como posso te ajudar, né? Desde meu lugar talvez. É isso que eu quero entender, porque não vai a pena morrer, sabe? Não entendo. 
+Speaker B: Não, eu te agradeço. Até é difícil, né? Eu vejo o Dardo, vejo o Luiz Filipes, vejo a Guilhermina. Quando eles eram, eu nem sabia dizer o que eu precisava de ajuda, né? Porque como é tudo muito novo pra 
+Speaker A: mim... E vai que você pode me ser pó. Ainda não sei. 
+Speaker B: Era muito novo. Então, como eu falei, três meses e meio, vai fazer quatro daqui umas semanas. Eu tava tentando entender, porque é muito fácil eu chegar de operações com uma visão de operações. Só que eu sei que dentro do supply é outra visão. Então, eu tava tentando até agora entender, e aí agora que a gente começou a ver, eu falei, não, então se a gente já viu, a gente vai começar agora a fazer diferente. Então, eu queria entender o processo, queria entender as pessoas, queria entender como que a gente podia fazer acontecer, aonde estavam os vários problemas. Então, a gente começou a fazer isso, como eu te falei, nas situações aqui no Brasil ainda. 
+Speaker A: Não, precisa sair quinta-noite. 
+Speaker B: Porque sexta-feira a gente marcou um workshop lá em Mauá, com o Daniel Vila, com o Nakamura, o gerente de materiais, e com o meu time. Com o meu time de PCP, CS, o dele de materiais, SNUI e materiais. E o objetivo é, a gente escolheu quatro problemas que a gente tem na área, e aí a gente vai definir esses processos, esses fluxos, todas as plantas vão participar, pra gente implementar pra todos. Então, o primeiro problema que a gente colocou, pedidos acima da Forkest, porque hoje cada um faz de um jeito, uma análise, outra análise, que é isso que a gente começou a fazer pra Londrina. O segundo problema é como que a gente analisa recursos, que hoje eu tenho muito problema. Eu aceito um pedido, eu olho a matéria-prima que tem no estoque, eu não olho a matéria-prima da cadeia, que já tá reservada para os outros materiais, eu não olho o cilindro, não olho o ARDS, olho, mas deixa a desejar. Então, como que a gente analisa os recursos? Então, esse é o segundo problema que a gente tem. O terceiro problema que a gente colocou, que a gente quer analisar, é como que a gente melhora a comunicação entre as áreas de PCP, CS, Sanopi e Materiais, porque hoje ninguém consegue, né? Está tudo truncado. 
+Speaker A: Tudo reativo. 
+Speaker B: Tudo reativo, exato. Como que a gente consegue criar alguns indicadores básicos, quem é responsável por cada indicador, vai ter uma planilha única que todo mundo vai preencher, que todo mundo vai ver. Então, também colocamos isso. Então, a gente listou quatro problemas e a ideia é que a gente vai dividir um grupo, vai ter 25 pessoas, a gente vai dividir em grupos e cada grupo vai ser responsável por um problema e a gente vai ter que sair dali com um fluxo, com um mapeamento desenhado para que a gente comece semana que vem diferente com esses problemas teoricamente sanados. Então, agora que eu realmente tô mais na jogada, a minha ideia realmente é conseguir começar a melhorar, né? E o que eu tentava falar muito pros meus gestores é exatamente isso. Falei, vocês me chamam o tempo todo e vocês estão o tempo todo resolvendo problemas. Só que a gente tem que ser, além de resolver dois problemas, claro que a gente tem que resolver dois problemas, só que a gente tem que estar aqui pra dar soluções. O que a gente vai fazer pra que isso não volte a acontecer? A gente tá tão imerso no problema que a gente não para pra pensar. Então, comecei a chamar eles, marcar reunião com eles e falar, nós vamos falar do que? Nós vamos fazer diferente da Sonopi, que nós vamos fazer diferente da programação, que nós vamos fazer diferente disso. E aí a gente começou a fazer isso. Só que, realmente, a demanda hoje tá muito alta, porque a gente tá com muitos problemas, os clientes. Acabou que alguns clientes que eu fui me apresentando, né, Royal Canama, Sunilever, eles agora estão pedindo que eu participe de todas as reuniões. Então, eles me querem, mas eu estou me demandando um pouco mais. Então, se eu não entro nessa semana na reunião da Márcia, a gente falou, cadê a Patrícia aqui, por favor? Não, vamos começar só no entrado. Daí eu vou entrar, ou Neila Bertoni, cadê a Patrícia? Não, vamos começar só no entrado. Então, acaba que eu estou com uma demanda grande, mas eu acho que é normal do começo, realmente, para eu ter o entendimento, para eu conseguir fazer com que o time entenda que tem que ser diferente, essa mudança de cultura. Então, eu acho que é um pouco disso, né? O que eu acho que eu preciso de ajuda, do que eu já vi, é como que, se a gente já tem fluxos definidos em outros lugares, se a gente já tiver, como que a gente olha pra gente ver se a gente só adapta pra cá, se dá pra fazer igual, pra não começar do zero. Se a gente já tem indicadores, se a gente já tem controles em outros lugares, será que eu já não posso implementar e colocar aqui, depois a gente vê como dá pra gente ganhar tempo, Então, o que eu tô sentindo neste momento agora, eu acho que é isso, como que a gente faz benchmarking com as outras plantas, vocês que estão nas outras plantas, o Dado até falou pra eu ir pra Argentina, o Lalo falou que é pra eu me organizar pra aí, porque eu acho que isso talvez vai acelerar esses problemas que a gente tá enxergando, porque eu, de novo, não sou da área, tô pegando o que eu tenho de conhecimento do que eu acho que é certo e errado, mas não o conhecimento da área disso, pai, o conhecimento do que eu estou enxergando o que deveria ser. Então eu acho que talvez o que eu preciso da ajuda de vocês é nesse sentido, se vocês, agora que realmente eu comecei a entender os problemas, porque antes vocês podiam até me falar e eu não conseguia entender como aquilo se encaixava, mas agora, não que eu saiba tudo, mas já comecei a entender um pouco mais, eu acho que talvez ter essa visão da gente conseguir ter mais trocas ou replicaram coisas que já tem pra gente começar a fazer aqui também. 
+Speaker A: É, então... Eu vou te falar de três coisas. A primeira é... Começando pelo workshop. Nem tem que inventar a roda de novo. Porque provavelmente tem coisas que já estão funcionando bem. Sobretudo na Argentina. Os caras estão... Eu sei que outra... dimensão de operações, mas pra mim vale a pena entender o que eles têm. E aí eu até posso te conectar com quem você quiser. 
+Speaker B: Eu chamei o Dardo, ele vai participar com a gente. 
+Speaker A: O Dardo é bom. 
+Speaker B: É, ele vai participar. 
+Speaker A: Então, isso é o número um. Número dois. O contexto, o que está acontecendo fora do Brasil, que acho que deveria ter em conta. Também para tomar alguma decisão ou revisar um projeto. É isso aí. Bom, na Rodrina tem o Inventory Value. Já tem aí alguns indicadores que eles já estão começando a medir. Atlas. Você sabe de Atlas? 
+Speaker B: Que é de matéria-prima. 
+Speaker A: Isso. Atlas tem de Supply e de Demand. O Dardo, ele está para os dois, eu acho. 
+Speaker B: A gente não usa o Atlas. 
+Speaker A: Não. Então aí, antes de desenhar algo novo, entenda o que tem a gente. Porque, posso te falar, vai mudar o jeito de trabalhar. Porque além disso, quando você tiver implementado o Atlas, ele tem, depois do fundacional, tem ferramentas de inteligência artificial. 
+Speaker B: Eu vou dar um exemplo, eu estava falando hoje com o meu time, foi ter uma reunião super produtiva lá de Londrina, e aí eu comecei a falar disso, como a gente consegue colocar mais inteligência, que eu acho que entrou um pouco no que você falou. Então, vou dar um exemplo, a gente começou a analisar as ordens da Mars, a Mars tem 21 SKUs de Mars Wedge, por exemplo, e todo mês eles pedem 19 a 20 SKUs, mas é um puto transtorno fazer 21 SKUs, 20 SKUs de março. Ele tem 20. Eu não preciso rodar todos esses 20. Aí ele fez uma análise de frequência, quantas vezes rodou cada item por mês. A gente fez uma análise. Todos os itens rodaram mais de 90%. Então quer dizer que eles programam todos os itens todos os meses. a quantidade que eles pedem de volume, então, itens que rodam 8, 9, 10 toneladas todo mês, ok? Mas tem itens que rodam 1 tonelada todo mês. E aí a gente fez uma reunião com a Maris hoje, inclusive, pra propor pra eles o seguinte, vamos fazer o seguinte, os itens menores que 4 toneladas por mês, vamos rodar cada 3 meses? Os itens entre 4 e 6, vamos rodar cada 2 meses? 
+Speaker A: Às vezes, tipo uma segmentação. 
+Speaker B: Aí você falou, talvez se eu tivesse um sistema que me ajudasse a fazer essas análises, porque eu falei para o meu time, como eu faço essa análise para outros clientes? 
+Speaker A: Peraí só um minutinho, vou te interromper. Quando a gente tem uma dor, uma dor que é tipo um síndrome, um dolor, uma dor que foi identificada, me avisa. E a gente de algum jeito traz alguma tecnologia. 
+Speaker B: Entendeu? 
+Speaker A: O que eu não quero é traçar tecnologia pra ver depois aonde a gente consegue colocar. Não. Se a gente tem um value added em algum lugar, pode dar. 
+Speaker B: Esse é um exemplo. Claro. Quando eu tenho que programar quatro mil ordens em Londrina, é um absurdo. Então, como que eu faço essas análises de cliente, de repetibilidade, de volume? de variação, e eu consigo chegar para os clientes e propor uma coisa diferente. O que eu propus hoje para a Marques foi o seguinte, esses itens aqui, ela pode hoje ficar com 60 dias de estoque. Esses itens que eu rodo para três meses, eu vou deixar 90 dias no seu estoque, eu mudo a SLA com você. Mas os itens que você roda todo mês, vai ficar 45. 
+Speaker A: Exato. 
+Speaker B: Só que eles não gostaram, ficaram putos. Mas assim, para a gente vai ser muito melhor operacionalmente de controle de produção, de processos em si, de fósforos pra entender a data certa, de recursos, de cilindros, artes. Então, eu não sei se você conseguiria me ajudar nisso. Vamos pegar os últimos seis meses, vamos pegar esse último ano e vamos analisar tudo o que eu produzi em Londrina. Eu não sei se a Desmaiar consegue fazer isso rápido. 
+Speaker A: Se você me passa os dados, a gente... 
+Speaker B: É que eu ainda não sei trabalhar no SAP, porque eu nunca trabalhei no SAP. Então, eu não sei nada. Eu não sei, eu nem tenho dados. 
+Speaker A: Enquanto você cresce na carreira, não precisa saber. Só precisa saber quem sabe. É isso, porque vai chegar um burnout e não adianta. Então, pede pra alguém o que você precisa. Quando eu tiver essa data, me manda e eu posso te ajudar. recursos locais. Eu já estou trabalhando com a Sabrina Maia, ela estava perdendo duas horas por dia só para calcular o adherence, o default da produção. Duas horas por dia. E não era só ela, eram três pessoas. 
+Speaker B: Cada uma era num processo. 
+Speaker A: E adivinha o quê? Eu pesquisei no resto da região, na Argentina acontecia a mesma coisa. Colômbia acontecia a mesma coisa. A gente tem 95% de arrumar uma automação que só vai ter que fazer isso. Que tal o número? Tá bom. 
+Speaker B: Legal. Entendeu? 
+Speaker A: E coisas simples. Simples. Uma parte, um dos meus pilares, que se chama de Bus Productivity, é tentar arrumar uma solução em semanas, não em meses. 
+Speaker B: Então, eu acho que isso ia ajudar muito, porque a gente conseguiria mudar de patamar também e começar a entender que eu não preciso produzir 4 mil ordens, porque 4 mil ordens traz toda essa complexidade. Eu posso produzir 2 mil por mês. 
+Speaker A: sabe definir o problema, a solução é o mais simples. É o mais simples. Então, se tiver a data e o problema, me chama. Enquanto eu entendi o que você quer, eu já sei pra quem pedir. Porque já tenho recurso que eu tô pagando pra eles fazerem negócio pra mim. Entendeu? Então, isso é a primeira coisa, uma das coisas que eu queria te falar. Você não precisa saber tudo. Simplesmente me diz o que precisa. A outra é, em termos de contexto, o Atlas, quando estiver no workshop, entende que, regionalmente, Atlas, BTS, está bem forte. Então, tem que considerar isso na variável. A gente vai ter que ter users que vão ter que começar a trabalhar com esse negócio. E a última é Master Data Patch. O Master Data, eu tô com uma estratégia mais regional, mas... Cara, se a Master Data tá errada... 
+Speaker B: É agora, né? Não é depois. É. 
+Speaker A: É agora. Tipo, é no meio da tormenta. Você tem que ir no programa. 
+Speaker B: Não, não tenho que ir no programa. Agora eu só vou falar contigo. 
+Speaker A: Tá. 
+Speaker B: O que já fica... Fica com você? 
+Speaker A: É... 
+Speaker B: Enviar os dados. 
+Speaker A: Não só enviar, simplesmente conseguir os dados e marcar uma reunião comigo e com a Gui pra gente entender o que você precisa. Quando eu entender realmente o que você precisa, deixa comigo. E se não acredita, pergunta pra Sabrina. 
+Speaker B: Não, não acredito. Já falou, já falou. 
+Speaker A: Tinha uma outra menina que tava perdendo não sei quanto tempo em ingressar. Ela tinha que ter a traçabilidade de sete cargas em balde. Então, ingressava no site, procurava uma ordem, só pra pegar o ETA, o tempo de arrego. Partia como uma, duas horas por dia. E, além disso, o cara da B.U. tava brigando pra ela, perguntando, tipo, cara, o que aconteceu com o meu embarque? A gente automatizou tudo. 
+Speaker B: Tudo. 
+Speaker A: E a única coisa que tem que fazer é colocar as ordens que você quer trackear. E aí a gente tem um robô que entra em todos os sites. A menina tem que procurar outra coisa. Eu falei para a chefe. Procura alguma outra coisa para ela fazer porque isso já não vai... Essas são coisas que não são tipo o Atlas que precisa de um humano, o APS que... Pessoas simples que vão melhorar a vida das pessoas. 
+Speaker B: Então, agora você falando, eu não sei se a gente consegue isso também pelo SAP. Eu não sei se no APS eu vou conseguir enxergar isso rápido. Não sei se a gente consegue pegar os dados, quais são todos os dados que a gente consegue pegar no sistema. Que eu conseguisse enxergar também, num sistema rápido. Que eu pegasse o seguinte. Quando eu pegava todos os pedidos de um determinado cliente, eu peguei em marcas, então, data colocada, quantidade colocada, data solicitada. E aí, então, isso a gente tem porque é a P.O. que o cliente colocou. Como que eu pego esses dados e pego o que a gente planejou no sistema? Então, eu planejei impressão para Natal, laminação para Natal, código para Natal, porque eu já planejei. 
+Speaker A: Quando eu cruzo essas informações. 
+Speaker B: Mas hoje eu não consigo, hoje eu faço tudo do céu. 
+Speaker A: Minha proposta é, senta com o teu time, entende que coisas você faz repetidamente, todos os dias, que são, tipo, enxergar o destaco. Essas iniciativas, prioriza. E me fala, o Damião, essas três eu preciso resolver ontem. Tá bom? Porque estou perdendo 1, 2, 3 horas semanais. O povo até faz erros por causa de que é manual. Se você me falar isso, cara, eu resolvo em semanas, não em meses. Não estou te vendendo nada. Simplesmente o que está doendo, eu te ajudo. Não é o contrário, não é que eu vou te falar, ó, a gente tem uma gente aqui, ó, uma AI aqui, ó, e um... Não. Você me fala aqui preciso, onde tá doendo, e eu tenho que te ajudar. 
+Speaker B: Tá. 
+Speaker A: Eu não vou te trazer ferramenta. 
+Speaker B: Tá. Não, acho que esses dois pontos que eu te falei, acho que vai ajudar muito já, eu entendi por último, como que a gente pega dados... 
+Speaker A: É, formaliza... Até se você quiser, eu tenho um template de demanda, pra você... Mas se não quiser, simplesmente me fala. Arruma três, quatro iniciativas e me conta, ó, isso e isso, isso e isso, qual pode fazer. E eu faço. Mas eu preciso que você toque a porta. Entendeu? Porque tu falando só com as pessoas que eu sei que tão vendo, sabe, não a árvore, mas o bosque. Entendeu? Fica com você. Isso fica com você. Se você faz isso, o resto fica comigo. 
+Speaker B: Não, tá bom. Esses dois foram o que eu pensei agora. 
+Speaker A: Pensa no mínimo. A coisa que já consegue deixar de fazer. Isso já vai te ajudar. 
+Speaker B: Com certeza. Hoje, por exemplo, vou te dar outro exemplo que a gente tem lá de Londrina. A gente começou faz dois meses. A gente tem um problema muito grande de material segregado. Então, assim ó, hoje o Brito, que é o meu esposo do PCP, ele manda um relatório de água, faz dois meses, falando o seguinte, ontem estava planejado produzir 20 toneladas, e ele coloca item por item, cliente por cliente, e aqui tá a quantidade que eu segreguei por ordem. Ele faz isso todos os dias. Aí ele só faz a impressão, porque ele não consegue dar uma liminação. 
+Speaker A: Quanto tempo demora pra fazer isso? 
+Speaker B: 40 minutos. 
+Speaker A: Todos os dias? 
+Speaker B: Todos os dias. E ele estava fazendo de um processo, porque ele não consegue fazer dos outros processos. 
+Speaker A: Anota isso ali e me chama também. 
+Speaker B: E aí, ele olha lá, eu comecei até a criar um... Falei, não, a gente precisa pegar esse relatório. Esse aqui. Esse aqui de ontem. Mas a gente começou já desde março. Todos os dias ele coloca o que ele programou para produzir, quantidade de quilos e quanto bloqueou. E aqui ele coloca o quanto bloqueou. E aqui ele está no cliente, tudo certinho. Aí agora, o que a gente começou a sentir necessidade? Que a gente precisava de uma coluna de prazo, quantidade liberada e status. O que quer dizer isso? O PCB tem que me dizer qual é o prazo que ele tem para revisar, porque vai entrar na próxima fase. Então, depois que eu imprimir, Daqui dois, três dias vai entrar na laminação, por exemplo. Então ele tem três dias pra revisar. Se ele não revisar em três dias, eu perco a campanha daquele produto. Só que é muito mal, porque ele entra item por item no SAP pra colocar os dados... 
+Speaker A: Isso dá pra fazer automático. E a pergunta que tem que te fazer também é... A gente tá fazendo esse negócio só porque ainda não tem o DTS? Ou mesmo tendo DTS, a gente vai ter que fazer isso? 
+Speaker B: Eu não sei se vai ter isso na PS. 
+Speaker A: Pergunta isso. Tipo, são priorizações. Se realmente vai ter que seguir, pô meu, vamos falhar. Não adianta o seu time ter que estar fazendo esse negócio. Não adianta, Pathy. 
+Speaker B: Tá, vai ter. Eu ainda não entrei nisso na pese, porque eu fui apresentada a ele logo que eu cheguei. Mas como eu falei, eu não conhecia muito, então não entrei muito. Mas ele foi entrar pra conseguir. 
+Speaker A: Então, esse é o meu ponto. Eu sei que você tá no meio da babunça agora. Mas para um minuto pra pensar o que tá vindo e que coisas tem que deixar, tipo, esperar resolver esse negócio. Mas me chama, tipo, vamos falar. 
+Speaker B: Não, tá, mas esses três, por exemplo, já são coisas que a gente já utiliza as informações todos os dias e são super manuais. Então, o que a gente já... Se 
+Speaker A: resolve, tipo, a gente resolve na semana. 
+Speaker B: Tá. Não, tá bom. Então eu vou ter uma reunião com o meu time, vou falar com eles outras coisas que eles acham. 
+Speaker A: Enquanto melhor, definindo o problema que você tenha, melhor. Mais fácil pra mim. Porque o que eu faço? Eu falo pro cara que faz a solução, E eles já sabem o que tem que fazer. Se tem que ir por esse lugar ou por esse outro lugar. Então, isso é melhor. Tá bom? 
+Speaker B: Não, tá bom. Não, cara, eu só agradeço. 
+Speaker A: Imagina. 
+Speaker B: Diga a vontade. De novo, eu vim ter que explicar um pouco, mas você também pode me ligar. Eu sou meio ruim de falar. 
+Speaker A: Não, não, tranquilo, tranquilo. E se cuida. Se cuida, porque... Tá bom, agradeço. Tem muita coisa e às vezes, sabe, tem que parar, porque no final do dia somos pessoas. 
+Speaker B: Mas é uma fase, vai passar. 
+Speaker A: Eu sei, eu sei. Pode passar. 
+Speaker B: Mas é só o começo daqui a pouco. 
+Speaker A: E conta comigo pro que você precisar. Tipo, é só ligar ou mandar uma mensagem. 
+Speaker B: Combinado. 
+Speaker A: E aí a gente dá um jeito algum. E fala com o time. 
+Speaker B: Não vou falar. Não, mas eu vou te passar. Leandro tá vazio. 
+Speaker A: Tá bom? 
+Speaker B: Entra, a gente marca. 
+Speaker A: Obrigado, Will. 
+Speaker B: Obrigada, você. 
+Speaker A: Bom, vou saindo. 
+Speaker B: Você já vai agora, né? Tchau. 
+Speaker A: Tchau, Will. 
+Speaker B: Tchau, Will. Tchau, Will. 
+Speaker A: Tchau, Will. Tchau, Will. 
+Speaker B: Tchau, Tchau, Will. Tchau, Will. Tchau, Will. Tchau, Tchau, Will. Tchau, Tchau, Will. Tchau, Will. T 
