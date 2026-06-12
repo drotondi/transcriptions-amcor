@@ -1,73 +1,572 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Command Center</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Command Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+:root{
+  --bg:#FAFAF7; --bg-2:#F2F1EC;
+  --ink:#1A1A1A; --ink-2:#3A3A38; --muted:#8A8A82;
+  --line:#E6E4DC; --line-2:#D9D6CC;
+  --accent:#6B7F6B; --accent-2:#C9A87A;
+  --danger:#B5524A; --warn:#C9A052; --ok:#6B7F6B;
+  --radius:14px; --radius-sm:10px;
+  --shadow:0 1px 0 rgba(0,0,0,.02);
+  --serif:"Instrument Serif", ui-serif, Georgia, serif;
+  --sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer;font-size:14px}
+input,select,textarea{font-family:inherit;font-size:14px;color:inherit}
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+.sidebar{border-right:1px solid var(--line);padding:28px 18px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:20px;background:var(--bg)}
+.brand{display:flex;align-items:center;gap:10px;padding:0 6px}
+.brand-mark{font-size:20px;color:var(--accent)}
+.brand-name{font-family:var(--serif);font-size:22px;line-height:1;letter-spacing:.3px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--radius-sm);color:var(--ink-2);transition:background .15s,color .15s;cursor:pointer}
+.nav a .dot{width:5px;height:5px;border-radius:50%;background:var(--line-2)}
+.nav a:hover{background:var(--bg-2);color:var(--ink)}
+.nav a.active{background:var(--bg-2);color:var(--ink)}
+.nav a.active .dot{background:var(--accent)}
+.sidebar-foot{margin-top:auto;display:flex;flex-direction:column;gap:6px;padding:0 6px}
+.ghost{padding:8px 10px;border:1px solid var(--line);border-radius:var(--radius-sm);color:var(--ink-2);text-align:left;display:flex;align-items:center;gap:8px}
+.ghost:hover{border-color:var(--line-2);background:var(--bg-2)}
+.ghost small{color:var(--muted);font-size:11px}
+.main{display:flex;flex-direction:column;min-width:0}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 36px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+.crumbs{font-family:var(--serif);font-size:18px;color:var(--ink-2);letter-spacing:.3px}
+.topbar-right{display:flex;align-items:center;gap:14px}
+.kbd-trigger{display:flex;align-items:center;gap:8px;border:1px solid var(--line);padding:6px 10px;border-radius:8px;color:var(--ink-2)}
+.kbd-trigger:hover{border-color:var(--line-2)}
+.kbd-trigger span:first-child{font-size:11px;color:var(--muted);border:1px solid var(--line);padding:1px 6px;border-radius:5px;background:var(--bg-2)}
+.muted{color:var(--muted)}
+.date{color:var(--muted);font-variant-numeric:tabular-nums}
+.view{padding:36px 36px 80px;max-width:1100px;width:100%}
+.hero{margin-bottom:28px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:44px;line-height:1.05;margin:0 0 4px}
+.hero p{color:var(--muted);margin:0}
+.row{display:grid;gap:18px}
+.row-2{grid-template-columns:1fr 1fr}
+.row-3{grid-template-columns:repeat(3,1fr)}
+.card{border:1px solid var(--line);border-radius:var(--radius);padding:20px;background:var(--bg);box-shadow:var(--shadow)}
+.card h3{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;letter-spacing:.2px;color:var(--ink-2)}
+.card .kpi{font-family:var(--serif);font-size:42px;line-height:1}
+.card .kpi-sub{color:var(--muted);margin-top:6px}
+.bar{height:6px;background:var(--bg-2);border-radius:99px;overflow:hidden;margin-top:10px}
+.bar > i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .4s}
+.bar.warm > i{background:var(--accent-2)}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin:36px 0 14px}
+.section-head h2{font-family:var(--serif);font-weight:400;font-size:22px;margin:0;letter-spacing:.2px}
+.section-head a{color:var(--muted);cursor:pointer}
+.section-head a:hover{color:var(--ink-2)}
+.list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.list .item{display:flex;align-items:center;gap:14px;padding:14px 4px;border-bottom:1px solid var(--line)}
+.list .item .title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.list .item .meta{color:var(--muted);font-size:13px}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);padding:3px 8px;border:1px solid var(--line);border-radius:99px;white-space:nowrap}
+.status .pip{width:6px;height:6px;border-radius:50%;background:var(--muted)}
+.status.ok .pip{background:var(--ok)}
+.status.risk .pip{background:var(--warn)}
+.status.blocked .pip{background:var(--danger)}
+.status.done .pip{background:var(--ink-2)}
+.check{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:1px solid var(--line-2);border-radius:5px;cursor:pointer;flex-shrink:0;background:var(--bg)}
+.check.on{background:var(--accent);border-color:var(--accent)}
+.check.on::after{content:"";width:9px;height:5px;border-left:1.5px solid var(--bg);border-bottom:1.5px solid var(--bg);transform:rotate(-45deg) translate(1px,-1px)}
+.task-title.on{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
+.tabs{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:99px;background:var(--bg)}
+.tabs button{padding:6px 14px;border-radius:99px;color:var(--muted);font-size:13px}
+.tabs button.active{background:var(--bg-2);color:var(--ink)}
+.tab-meta{color:var(--muted);margin-left:10px;font-size:13px}
+.tag{display:inline-block;padding:2px 8px;border:1px solid var(--line);border-radius:99px;font-size:11px;color:var(--muted);letter-spacing:.3px;text-transform:lowercase;white-space:nowrap}
+.person{border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:var(--bg);display:flex;flex-direction:column;gap:6px;min-height:120px}
+.person .name{font-family:var(--serif);font-size:20px}
+.person .role{color:var(--muted);font-size:13px}
+.person .next{margin-top:auto;color:var(--ink-2);font-size:13px}
+.recog{border-left:1px solid var(--line);padding-left:18px;margin-left:6px}
+.recog .item{padding:12px 0;border-bottom:1px dashed var(--line)}
+.recog .item:last-child{border-bottom:0}
+.recog .quote{font-family:var(--serif);font-size:18px;line-height:1.3;font-style:italic;color:var(--ink-2)}
+.recog .meta{margin-top:6px;color:var(--muted);font-size:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.vision{font-family:var(--serif);font-size:32px;line-height:1.2;font-style:italic;color:var(--ink-2);max-width:760px;margin:0 0 8px}
+.pillar{border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.pillar h4{margin:0 0 6px;font-family:var(--serif);font-weight:400;font-size:18px}
+.pillar p{margin:0;color:var(--muted)}
+.okr{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.okr:last-child{border-bottom:0}
+.modal{position:fixed;inset:0;background:rgba(26,26,26,.25);display:flex;align-items:flex-start;justify-content:center;padding-top:18vh;z-index:50;backdrop-filter:blur(6px)}
+.modal[hidden]{display:none}
+.modal-card{width:min(560px,92vw);background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 30px 60px rgba(0,0,0,.08)}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.modal-head .x{font-size:22px;color:var(--muted)}
+.modal-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:99px;padding:3px;width:fit-content}
+.seg button{padding:5px 12px;border-radius:99px;color:var(--muted);font-size:13px}
+.seg button.active{background:var(--bg-2);color:var(--ink)}
+#captureInput{width:100%;padding:12px 0;border:0;border-bottom:1px solid var(--line);background:transparent;font-family:var(--serif);font-size:22px;outline:none}
+#captureInput::placeholder{color:var(--muted);font-style:italic}
+.capture-meta select{padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink-2)}
+.modal-foot{font-size:12px;text-align:right;color:var(--muted)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;font-size:13px;z-index:100;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
+.flex{display:flex}.between{justify-content:space-between}.center{align-items:center}.mb-3{margin-bottom:12px}
+@media (max-width: 900px){
+  .app{grid-template-columns:1fr}
+  .sidebar{position:relative;height:auto;flex-direction:column;align-items:stretch;padding:14px 18px}
+  .nav{flex-direction:row;flex-wrap:wrap}
+  .row-2,.row-3{grid-template-columns:1fr}
+  .view{padding:24px 18px 60px}
+  .topbar{padding:14px 18px}
+}
+</style>
 </head>
 <body>
-  <div class="app">
-    <aside class="sidebar">
-      <div class="brand">
-        <span class="brand-mark">◆</span>
-        <span class="brand-name">command<br/>center</span>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">◆</span><span class="brand-name">command<br/>center</span></div>
+    <nav class="nav" id="nav">
+      <a data-route="home"><span class="dot"></span>Home</a>
+      <a data-route="strategy"><span class="dot"></span>Strategy &amp; Vision</a>
+      <a data-route="initiatives"><span class="dot"></span>Initiatives</a>
+      <a data-route="tasks"><span class="dot"></span>Tasks</a>
+      <a data-route="recognitions"><span class="dot"></span>Recognitions</a>
+      <a data-route="team"><span class="dot"></span>Team</a>
+    </nav>
+    <div class="sidebar-foot">
+      <button class="ghost" id="exportXlsx">⬇ Export to Excel<small>· .xlsx</small></button>
+      <button class="ghost" id="importXlsxBtn">⬆ Import from Excel<small>· .xlsx</small></button>
+      <input type="file" id="importXlsx" accept=".xlsx,.xls" style="display:none" />
+      <button class="ghost" id="resetBtn" title="Reset to seed data"><small>reset data</small></button>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div class="crumbs" id="crumbs">Home</div>
+      <div class="topbar-right">
+        <button class="kbd-trigger" id="kTrigger" title="Quick capture (Ctrl/Cmd+K)">
+          <span>⌘K</span><span class="muted">quick capture</span>
+        </button>
+        <span class="date" id="today"></span>
       </div>
-      <nav class="nav" id="nav">
-        <a href="#/home" data-route="home"><span class="dot"></span>Home</a>
-        <a href="#/strategy" data-route="strategy"><span class="dot"></span>Strategy &amp; Vision</a>
-        <a href="#/initiatives" data-route="initiatives"><span class="dot"></span>Initiatives</a>
-        <a href="#/tasks" data-route="tasks"><span class="dot"></span>Tasks</a>
-        <a href="#/recognitions" data-route="recognitions"><span class="dot"></span>Recognitions</a>
-        <a href="#/team" data-route="team"><span class="dot"></span>Team</a>
-      </nav>
-      <div class="sidebar-foot">
-        <button class="ghost" id="exportBtn" title="Download updated data as JSON">export data</button>
-      </div>
-    </aside>
+    </header>
+    <section class="view" id="view"></section>
+  </main>
+</div>
 
-    <main class="main">
-      <header class="topbar">
-        <div class="crumbs" id="crumbs">Home</div>
-        <div class="topbar-right">
-          <button class="kbd-trigger" id="kTrigger" title="Quick capture (⌘K)">
-            <span>⌘K</span><span class="muted">quick capture</span>
-          </button>
-          <span class="date" id="today"></span>
-        </div>
-      </header>
-      <section class="view" id="view"></section>
-    </main>
-  </div>
-
-  <div class="modal" id="modal" hidden>
-    <div class="modal-card">
-      <div class="modal-head">
-        <span class="muted">quick capture</span>
-        <button class="x" id="modalClose">×</button>
+<div class="modal" id="modal" hidden>
+  <div class="modal-card">
+    <div class="modal-head"><span class="muted">quick capture</span><button class="x" id="modalClose">×</button></div>
+    <div class="modal-body">
+      <div class="seg" id="captureType">
+        <button data-type="task" class="active">task</button>
+        <button data-type="recognition">recognition</button>
+        <button data-type="request">request</button>
       </div>
-      <div class="modal-body">
-        <div class="seg" id="captureType">
-          <button data-type="task" class="active">task</button>
-          <button data-type="recognition">recognition</button>
-          <button data-type="request">request</button>
-        </div>
-        <input id="captureInput" placeholder="type something and press enter…" autocomplete="off" />
-        <div class="capture-meta" id="captureMeta">
-          <select id="captureHorizon">
-            <option value="weekly">weekly</option>
-            <option value="monthly">monthly</option>
-            <option value="quarterly">quarterly</option>
-          </select>
-        </div>
-        <div class="modal-foot muted">enter to save · esc to close</div>
+      <input id="captureInput" placeholder="type something and press enter…" autocomplete="off" />
+      <div class="capture-meta" id="captureMeta">
+        <select id="captureHorizon">
+          <option value="weekly">weekly</option>
+          <option value="monthly">monthly</option>
+          <option value="quarterly">quarterly</option>
+        </select>
       </div>
+      <div class="modal-foot">enter to save · esc to close</div>
     </div>
   </div>
+</div>
 
-  <script type="module" src="assets/app.js"></script>
+<div class="toast" id="toast"></div>
+
+<script>
+// ---------- seed data ----------
+const SEED = {
+  strategy: {
+    vision: "Build a data-driven, people-first supply chain operation across LATAM — fewer fires, more foresight.",
+    horizon: "FY26",
+    pillars: [
+      { id:"p1", name:"Data Foundations",     summary:"Trustworthy master data and clean domains as the bedrock for every decision.", color:"#6B7F6B" },
+      { id:"p2", name:"Operational Excellence", summary:"Standard S&OP rhythm, MRO discipline and end-to-end visibility across plants.", color:"#C9A87A" },
+      { id:"p3", name:"Team & Culture",       summary:"Develop leaders, recognize impact, and create the conditions for ownership.",     color:"#8A8A82" }
+    ],
+    okrs: [
+      { id:"o1", pillar:"p1", objective:"Centralize MDM across LATAM",  kr:"100% of plants onboarded by Q3", progress:0.62 },
+      { id:"o2", pillar:"p2", objective:"Reduce MRO leakage",            kr:"-15% spend vs FY25 baseline",    progress:0.34 },
+      { id:"o3", pillar:"p2", objective:"S&OP maturity level 3",         kr:"All countries scoring ≥3 by Q4", progress:0.45 },
+      { id:"o4", pillar:"p3", objective:"Grow next-layer leaders",       kr:"3 internal promotions in FY26",  progress:0.66 }
+    ]
+  },
+  initiatives: [
+    { id:"i1", title:"MDM Centralization",    pillar:"p1", owner:"Magaly",      status:"on-track", due:"2026-09-30", progress:0.72, summary:"Single source of truth for materials, vendors and customers across LATAM plants." },
+    { id:"i2", title:"MRO Domain Clean",      pillar:"p1", owner:"Pedro",       status:"at-risk",  due:"2026-08-15", progress:0.34, summary:"Cleanse and reclassify MRO catalog; deduplicate vendors and harmonize UoMs." },
+    { id:"i3", title:"Southern Cone Rollout", pillar:"p2", owner:"Carlos",      status:"on-track", due:"2026-12-01", progress:0.55, summary:"Roll out new S&OP cadence and tooling across Argentina, Chile and Uruguay." },
+    { id:"i4", title:"Brazil S&OP Maturity",  pillar:"p2", owner:"Guillermina", status:"on-track", due:"2026-11-15", progress:0.48, summary:"Drive Brazil from level 2 to level 3 maturity." },
+    { id:"i5", title:"Mexico Pipeline Reset", pillar:"p2", owner:"Damian",      status:"blocked",  due:"2026-07-30", progress:0.18, summary:"Reset demand pipeline assumptions and re-baseline forecast accuracy." },
+    { id:"i6", title:"Leadership Development",pillar:"p3", owner:"Damian",      status:"on-track", due:"2026-12-31", progress:0.50, summary:"1:1 cadence, growth plans and stretch assignments for direct reports." }
+  ],
+  tasks: [
+    { id:"t1",  title:"Send budget draft to finance",      horizon:"weekly",    initiative:"i1", due:"2026-06-15", done:true  },
+    { id:"t2",  title:"1:1 with Guillermina",              horizon:"weekly",    initiative:"i6", due:"2026-06-16", done:true  },
+    { id:"t3",  title:"Review Mexico pipeline assumptions",horizon:"weekly",    initiative:"i5", due:"2026-06-17", done:false },
+    { id:"t4",  title:"Prep board deck — S&OP update",     horizon:"weekly",    initiative:"i3", due:"2026-06-19", done:false },
+    { id:"t5",  title:"Sign-off MRO domain rules",         horizon:"weekly",    initiative:"i2", due:"2026-06-18", done:false },
+    { id:"t6",  title:"Onboard Peru plant into MDM",       horizon:"monthly",   initiative:"i1", due:"2026-06-30", done:true  },
+    { id:"t7",  title:"MRO vendor dedup wave 2",           horizon:"monthly",   initiative:"i2", due:"2026-06-30", done:false },
+    { id:"t8",  title:"Quarterly business review prep",    horizon:"monthly",   initiative:"i3", due:"2026-06-27", done:false },
+    { id:"t9",  title:"Skill matrix refresh — team",       horizon:"monthly",   initiative:"i6", due:"2026-06-28", done:false },
+    { id:"t10", title:"Recognize Q2 standouts",            horizon:"monthly",   initiative:"i6", due:"2026-06-30", done:true  },
+    { id:"t11", title:"All LATAM plants onboarded to MDM", horizon:"quarterly", initiative:"i1", due:"2026-09-30", done:false },
+    { id:"t12", title:"MRO leakage down 8% vs Q2",         horizon:"quarterly", initiative:"i2", due:"2026-09-30", done:false },
+    { id:"t13", title:"Southern Cone S&OP cadence live",   horizon:"quarterly", initiative:"i3", due:"2026-09-30", done:true  },
+    { id:"t14", title:"Brazil maturity audit — level 3",   horizon:"quarterly", initiative:"i4", due:"2026-09-30", done:false }
+  ],
+  recognitions: [
+    { id:"r1", date:"2026-06-09", person:"Magaly",      type:"impact", note:"Nailed the MDM kickoff with Peru — clear comms, owned every blocker." },
+    { id:"r2", date:"2026-06-05", person:"Pedro",       type:"effort", note:"Pulled two weekends to unblock MRO domain rules. Quiet excellence." },
+    { id:"r3", date:"2026-05-28", person:"Guillermina", type:"values", note:"Pushed back when the Brazil director's ask put the team at risk. Right call." },
+    { id:"r4", date:"2026-05-20", person:"Carlos",      type:"impact", note:"Southern Cone S&OP cadence is live three weeks ahead of plan." },
+    { id:"r5", date:"2026-05-12", person:"Whole team",  type:"values", note:"Best QBR prep I've seen — everyone showed up, nobody hid." }
+  ],
+  team: [
+    { id:"m1", name:"Magaly",      role:"MDM Lead",          next1on1:"2026-06-18", ooo:[],                                                            requests:[{id:"q1",title:"Laptop upgrade",status:"pending"}] },
+    { id:"m2", name:"Pedro",       role:"MRO Lead",          next1on1:"2026-06-24", ooo:[{from:"2026-06-15",to:"2026-06-22",type:"vacation"}],         requests:[{id:"q2",title:"Training budget — APICS",status:"pending"}] },
+    { id:"m3", name:"Carlos",      role:"Region — Southern", next1on1:"2026-06-20", ooo:[], requests:[] },
+    { id:"m4", name:"Guillermina", role:"Brazil — Planning", next1on1:"2026-06-17", ooo:[], requests:[{id:"q3",title:"Hire mid-level planner",status:"approved"}] },
+    { id:"m5", name:"Carolina",    role:"S&OP — LATAM",      next1on1:"2026-06-25", ooo:[{from:"2026-07-01",to:"2026-07-10",type:"vacation"}], requests:[] },
+    { id:"m6", name:"Rafael",      role:"Mexico — Demand",   next1on1:"2026-06-19", ooo:[], requests:[] }
+  ]
+};
+
+// ---------- state + persistence ----------
+const STORE_KEY = "command-center-v1";
+let state = load();
+
+function load(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if (raw) return JSON.parse(raw);
+  }catch(e){}
+  return JSON.parse(JSON.stringify(SEED));
+}
+function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){} }
+
+// ---------- helpers ----------
+const $ = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+const escapeHTML = s => String(s ?? "").replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmtDate = iso => { if(!iso) return ""; const d=new Date(iso+"T00:00:00"); return isNaN(d)?iso:d.toLocaleDateString("en-US",{month:"short",day:"numeric"}); };
+const fmtFull = d => d.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
+const greeting = () => { const h=new Date().getHours(); if(h<5)return"Late night"; if(h<12)return"Good morning"; if(h<18)return"Good afternoon"; return"Good evening"; };
+const statusMap = { "on-track":{label:"on track",cls:"ok"}, "at-risk":{label:"at risk",cls:"risk"}, "blocked":{label:"blocked",cls:"blocked"}, "done":{label:"done",cls:"done"} };
+const initiativeById = id => state.initiatives.find(i=>i.id===id);
+const pillarById = id => (state.strategy?.pillars||[]).find(p=>p.id===id);
+function progressFor(h){ const l=state.tasks.filter(t=>t.horizon===h); if(!l.length)return{pct:0,done:0,total:0}; const d=l.filter(t=>t.done).length; return{pct:d/l.length,done:d,total:l.length}; }
+function overallProgress(){ if(!state.tasks.length)return 0; return state.tasks.filter(t=>t.done).length/state.tasks.length; }
+function bar(pct,warm){ const w=Math.round((pct||0)*100); return `<div class="bar ${warm?'warm':''}"><i style="width:${w}%"></i></div>`; }
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"),1800); }
+
+// ---------- views ----------
+function viewHome(){
+  const today = new Date();
+  const inWeek = state.tasks.filter(t => { const d=new Date(t.due+"T00:00:00"); const diff=(d-today)/86400000; return diff>=-1 && diff<=7; });
+  const dueSoon = inWeek.filter(t=>!t.done).length;
+  const oooNow = state.team.filter(m => (m.ooo||[]).some(o=>new Date(o.from)<=today && today<=new Date(o.to))).length;
+  const pending = state.team.reduce((n,m)=>n+(m.requests||[]).filter(r=>r.status==="pending").length,0);
+  const lastRecog = [...state.recognitions].sort((a,b)=>b.date.localeCompare(a.date))[0];
+  const active = state.initiatives.filter(i=>i.status!=="done").slice(0,4);
+  const upcoming = [...state.tasks].filter(t=>!t.done).sort((a,b)=>a.due.localeCompare(b.due)).slice(0,4);
+  const overall = overallProgress();
+  return `
+  <div class="hero">
+    <h1>${greeting()}, Damian.</h1>
+    <p>${fmtFull(today)} · ${state.initiatives.length} initiatives, ${state.tasks.length} tasks tracked.</p>
+  </div>
+  <div class="row row-3">
+    <div class="card"><h3>overall progress</h3><div class="kpi">${Math.round(overall*100)}%</div>${bar(overall)}<div class="kpi-sub">${state.tasks.filter(t=>t.done).length} of ${state.tasks.length} done</div></div>
+    <div class="card"><h3>this week</h3><div class="kpi">${inWeek.length}</div><div class="kpi-sub">${dueSoon} still open</div></div>
+    <div class="card"><h3>team</h3><div class="kpi">${oooNow}<span style="font-size:18px;color:var(--muted)"> ooo</span></div><div class="kpi-sub">${pending} pending requests</div></div>
+  </div>
+  <div class="section-head"><h2>active initiatives</h2><a data-go="initiatives">see all →</a></div>
+  <div class="list">
+    ${active.map(i=>`
+      <div class="item">
+        <span class="status ${statusMap[i.status].cls}"><span class="pip"></span>${statusMap[i.status].label}</span>
+        <div class="title">${escapeHTML(i.title)}</div>
+        <div class="meta" style="min-width:60px;text-align:right">${Math.round(i.progress*100)}%</div>
+        <div style="width:140px">${bar(i.progress)}</div>
+      </div>`).join("")}
+  </div>
+  <div class="row row-2" style="margin-top:36px">
+    <div>
+      <div class="section-head"><h2>upcoming</h2><a data-go="tasks">tasks →</a></div>
+      <div class="list">
+        ${upcoming.map(t=>`
+          <div class="item">
+            <span class="check ${t.done?'on':''}" data-task="${t.id}"></span>
+            <div class="title">${escapeHTML(t.title)}</div>
+            <span class="tag">${escapeHTML(t.horizon)}</span>
+            <div class="meta">${fmtDate(t.due)}</div>
+          </div>`).join("")}
+      </div>
+    </div>
+    <div>
+      <div class="section-head"><h2>recent recognition</h2><a data-go="recognitions">all →</a></div>
+      <div class="recog">
+        ${lastRecog?`
+          <div class="item">
+            <div class="quote">"${escapeHTML(lastRecog.note)}"</div>
+            <div class="meta"><span>${escapeHTML(lastRecog.person)}</span><span>·</span><span>${escapeHTML(lastRecog.type)}</span><span>·</span><span>${fmtDate(lastRecog.date)}</span></div>
+          </div>`:`<div class="muted">No recognitions yet.</div>`}
+      </div>
+    </div>
+  </div>`;
+}
+
+function viewStrategy(){
+  const s = state.strategy || {};
+  return `
+  <div class="hero"><h1>Strategy &amp; Vision</h1><p>${escapeHTML(s.horizon||"")} · the north star</p></div>
+  <p class="vision">"${escapeHTML(s.vision||"")}"</p>
+  <div class="section-head"><h2>pillars</h2></div>
+  <div class="row row-3">
+    ${(s.pillars||[]).map(p=>`<div class="pillar"><h4 style="color:${p.color||'var(--ink)'}">${escapeHTML(p.name)}</h4><p>${escapeHTML(p.summary)}</p></div>`).join("")}
+  </div>
+  <div class="section-head"><h2>okrs</h2></div>
+  <div class="card">
+    ${(s.okrs||[]).map(o=>{ const p=pillarById(o.pillar); return `
+      <div class="okr">
+        <div style="min-width:0;flex:1">
+          <div style="font-family:var(--serif);font-size:18px">${escapeHTML(o.objective)}</div>
+          <div class="muted" style="font-size:13px">${escapeHTML(o.kr)} ${p?`· <span class="tag">${escapeHTML(p.name)}</span>`:''}</div>
+        </div>
+        <div style="width:200px;display:flex;align-items:center;gap:10px">
+          <div style="flex:1">${bar(o.progress,true)}</div>
+          <div class="muted" style="font-variant-numeric:tabular-nums">${Math.round(o.progress*100)}%</div>
+        </div>
+      </div>`;}).join("")}
+  </div>`;
+}
+
+function viewInitiatives(){
+  return `
+  <div class="hero"><h1>Initiatives</h1><p>What we're moving this fiscal year.</p></div>
+  <div class="list">
+    ${state.initiatives.map(i=>{ const p=pillarById(i.pillar); return `
+      <div class="item" style="padding:18px 4px;align-items:flex-start;flex-wrap:wrap">
+        <span class="status ${statusMap[i.status].cls}"><span class="pip"></span>${statusMap[i.status].label}</span>
+        <div class="title" style="white-space:normal">
+          <div style="font-family:var(--serif);font-size:20px">${escapeHTML(i.title)}</div>
+          <div class="muted" style="font-size:13px;margin-top:2px">${escapeHTML(i.summary||"")}</div>
+        </div>
+        <div class="meta" style="min-width:120px;text-align:right">
+          <div>${escapeHTML(i.owner||"")}</div>
+          <div style="font-size:12px">${fmtDate(i.due)}</div>
+        </div>
+        <div style="width:200px">
+          ${bar(i.progress)}
+          <div class="muted" style="font-size:12px;margin-top:6px;display:flex;justify-content:space-between">
+            <span>${p?escapeHTML(p.name):''}</span><span>${Math.round((i.progress||0)*100)}%</span>
+          </div>
+        </div>
+      </div>`;}).join("")}
+  </div>`;
+}
+
+let currentHorizon = "weekly";
+function viewTasks(){
+  const horizons=["weekly","monthly","quarterly"];
+  const tabs = horizons.map(h=>{ const p=progressFor(h); return `<button data-h="${h}" class="${h===currentHorizon?'active':''}">${h} ${Math.round(p.pct*100)}%</button>`; }).join("");
+  const list = state.tasks.filter(t=>t.horizon===currentHorizon);
+  const p = progressFor(currentHorizon);
+  return `
+  <div class="hero"><h1>Tasks</h1><p>Weekly, monthly, quarterly — what's actually getting done.</p></div>
+  <div class="flex center between mb-3"><div class="tabs" id="hTabs">${tabs}</div><div class="tab-meta">${p.done}/${p.total} done</div></div>
+  <div style="margin-bottom:18px">${bar(p.pct)}</div>
+  <div class="list">
+    ${list.length?list.map(t=>{ const i=initiativeById(t.initiative); return `
+      <div class="item">
+        <span class="check ${t.done?'on':''}" data-task="${t.id}"></span>
+        <div class="title task-title ${t.done?'on':''}">${escapeHTML(t.title)}</div>
+        ${i?`<span class="tag">${escapeHTML(i.title)}</span>`:''}
+        <div class="meta">${fmtDate(t.due)}</div>
+      </div>`;}).join(""):`<div class="muted" style="padding:24px 0">No tasks in this horizon yet. Try ⌘K.</div>`}
+  </div>`;
+}
+
+function viewRecognitions(){
+  const sorted = [...state.recognitions].sort((a,b)=>b.date.localeCompare(a.date));
+  const byMonth = {};
+  sorted.forEach(r=>{ const k=r.date.slice(0,7); (byMonth[k]=byMonth[k]||[]).push(r); });
+  const months = Object.keys(byMonth).sort().reverse();
+  return `
+  <div class="hero"><h1>Recognitions</h1><p>A log of what the team did well — so we don't forget at review time.</p></div>
+  ${months.map(m=>{ const d=new Date(m+"-01T00:00:00"); const label=d.toLocaleDateString("en-US",{month:"long",year:"numeric"}); return `
+    <div class="section-head"><h2>${label}</h2><span class="muted">${byMonth[m].length}</span></div>
+    <div class="recog">
+      ${byMonth[m].map(r=>`
+        <div class="item">
+          <div class="quote">"${escapeHTML(r.note)}"</div>
+          <div class="meta"><span>${escapeHTML(r.person)}</span><span>·</span><span class="tag">${escapeHTML(r.type)}</span><span>·</span><span>${fmtDate(r.date)}</span></div>
+        </div>`).join("")}
+    </div>`;}).join("")}`;
+}
+
+function viewTeam(){
+  const today=new Date();
+  const allOOO = state.team.flatMap(m=>(m.ooo||[]).map(o=>({name:m.name,...o}))).sort((a,b)=>a.from.localeCompare(b.from));
+  const requests = state.team.flatMap(m=>(m.requests||[]).map(r=>({name:m.name,...r})));
+  const pending = requests.filter(r=>r.status==="pending");
+  return `
+  <div class="hero"><h1>Team</h1><p>${state.team.length} people · ${pending.length} pending requests</p></div>
+  <div class="row row-3">
+    ${state.team.map(m=>{ const ooo=(m.ooo||[]).find(o=>new Date(o.from)<=today && today<=new Date(o.to)); return `
+      <div class="person">
+        <div class="name">${escapeHTML(m.name)}</div>
+        <div class="role">${escapeHTML(m.role)}</div>
+        <div class="next">${ooo?`<span class="tag" style="color:var(--danger);border-color:var(--danger)">ooo · until ${fmtDate(ooo.to)}</span>`:`next 1:1 · ${fmtDate(m.next1on1)}`}</div>
+      </div>`;}).join("")}
+  </div>
+  <div class="row row-2" style="margin-top:36px">
+    <div>
+      <div class="section-head"><h2>vacations &amp; ooo</h2></div>
+      <div class="list">
+        ${allOOO.length?allOOO.map(o=>`
+          <div class="item">
+            <div class="title">${escapeHTML(o.name)}</div>
+            <span class="tag">${escapeHTML(o.type||"")}</span>
+            <div class="meta">${fmtDate(o.from)} – ${fmtDate(o.to)}</div>
+          </div>`).join(""):`<div class="muted" style="padding:14px 0">No OOO scheduled.</div>`}
+      </div>
+    </div>
+    <div>
+      <div class="section-head"><h2>pending requests</h2></div>
+      <div class="list">
+        ${requests.length?requests.map(r=>`
+          <div class="item">
+            <div class="title">${escapeHTML(r.title)}</div>
+            <span class="tag">${escapeHTML(r.name)}</span>
+            <span class="status ${r.status==='approved'?'ok':r.status==='blocked'?'blocked':''}"><span class="pip"></span>${escapeHTML(r.status)}</span>
+          </div>`).join(""):`<div class="muted" style="padding:14px 0">Nothing pending.</div>`}
+      </div>
+    </div>
+  </div>`;
+}
+
+// ---------- router ----------
+const routes = { home:{label:"Home",render:viewHome}, strategy:{label:"Strategy & Vision",render:viewStrategy}, initiatives:{label:"Initiatives",render:viewInitiatives}, tasks:{label:"Tasks",render:viewTasks}, recognitions:{label:"Recognitions",render:viewRecognitions}, team:{label:"Team",render:viewTeam} };
+let route = "home";
+function go(r){ if(!routes[r])return; route=r; render(); }
+function render(){
+  $("#view").innerHTML = routes[route].render();
+  $("#crumbs").textContent = routes[route].label;
+  $$("#nav a").forEach(a=>a.classList.toggle("active",a.dataset.route===route));
+  $$("[data-go]").forEach(a=>a.addEventListener("click",()=>go(a.dataset.go)));
+  $$(".check[data-task]").forEach(el=>el.addEventListener("click",()=>{
+    const t=state.tasks.find(x=>x.id===el.dataset.task);
+    if(t){ t.done=!t.done; save(); render(); }
+  }));
+  $$("#hTabs button").forEach(b=>b.addEventListener("click",()=>{ currentHorizon=b.dataset.h; render(); }));
+}
+
+// ---------- quick capture ----------
+let captureType="task";
+function openModal(){ $("#modal").hidden=false; setTimeout(()=>$("#captureInput").focus(),30); }
+function closeModal(){ $("#modal").hidden=true; $("#captureInput").value=""; }
+function commitCapture(){
+  const text=$("#captureInput").value.trim(); if(!text)return;
+  const today=new Date().toISOString().slice(0,10);
+  if(captureType==="task"){
+    state.tasks.unshift({ id:"t"+Date.now(), title:text, horizon:$("#captureHorizon").value, initiative:null, due:today, done:false });
+  } else if(captureType==="recognition"){
+    state.recognitions.unshift({ id:"r"+Date.now(), date:today, person:"—", type:"impact", note:text });
+  } else if(captureType==="request"){
+    const me=state.team[0]; if(me){ me.requests=me.requests||[]; me.requests.push({ id:"q"+Date.now(), title:text, status:"pending" }); }
+  }
+  save(); closeModal(); render(); toast("Saved");
+}
+
+// ---------- Excel export ----------
+function exportXlsx(){
+  const wb = XLSX.utils.book_new();
+  const meta = [{ key:"vision", value:state.strategy.vision }, { key:"horizon", value:state.strategy.horizon }];
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(meta), "Strategy");
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(state.strategy.pillars||[]), "Pillars");
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(state.strategy.okrs||[]), "OKRs");
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(state.initiatives), "Initiatives");
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(state.tasks.map(t=>({...t,done:t.done?"yes":"no"}))), "Tasks");
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(state.recognitions), "Recognitions");
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(state.team.map(m=>({id:m.id,name:m.name,role:m.role,next1on1:m.next1on1}))), "Team");
+  const ooo = state.team.flatMap(m=>(m.ooo||[]).map(o=>({memberId:m.id,name:m.name,from:o.from,to:o.to,type:o.type})));
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(ooo), "OOO");
+  const reqs = state.team.flatMap(m=>(m.requests||[]).map(r=>({memberId:m.id,name:m.name,id:r.id,title:r.title,status:r.status})));
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(reqs), "Requests");
+  const stamp = new Date().toISOString().slice(0,10);
+  XLSX.writeFile(wb, `command-center-${stamp}.xlsx`);
+  toast("Excel downloaded");
+}
+
+// ---------- Excel import ----------
+function readSheet(wb, name){
+  const ws = wb.Sheets[name]; if(!ws) return [];
+  return XLSX.utils.sheet_to_json(ws, { defval:"" });
+}
+function importXlsx(file){
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try{
+      const wb = XLSX.read(e.target.result, { type:"array" });
+      const strategyRows = readSheet(wb,"Strategy");
+      const vision = strategyRows.find(r=>r.key==="vision")?.value || state.strategy.vision;
+      const horizon = strategyRows.find(r=>r.key==="horizon")?.value || state.strategy.horizon;
+      const pillars = readSheet(wb,"Pillars");
+      const okrs = readSheet(wb,"OKRs").map(o=>({...o, progress: typeof o.progress==="number"?o.progress:parseFloat(o.progress)||0 }));
+      const initiatives = readSheet(wb,"Initiatives").map(i=>({...i, progress: typeof i.progress==="number"?i.progress:parseFloat(i.progress)||0, due:String(i.due||"") }));
+      const tasks = readSheet(wb,"Tasks").map(t=>({ id:t.id, title:t.title, horizon:t.horizon, initiative:t.initiative||null, due:String(t.due||""), done: t.done===true || /^(yes|true|1|x)$/i.test(String(t.done||"")) }));
+      const recognitions = readSheet(wb,"Recognitions").map(r=>({...r, date:String(r.date||"")}));
+      const teamRows = readSheet(wb,"Team");
+      const oooRows = readSheet(wb,"OOO");
+      const reqRows = readSheet(wb,"Requests");
+      const team = teamRows.map(m=>({
+        id:m.id, name:m.name, role:m.role, next1on1:String(m.next1on1||""),
+        ooo: oooRows.filter(o=>o.memberId===m.id).map(o=>({from:String(o.from||""),to:String(o.to||""),type:o.type||"vacation"})),
+        requests: reqRows.filter(r=>r.memberId===m.id).map(r=>({id:r.id,title:r.title,status:r.status||"pending"}))
+      }));
+      state = {
+        strategy:{ vision, horizon, pillars, okrs },
+        initiatives, tasks, recognitions, team
+      };
+      save(); render(); toast("Imported from Excel");
+    } catch(err){
+      alert("Could not import: " + err.message);
+    }
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+// ---------- boot ----------
+$("#today").textContent = new Date().toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
+$$("#nav a").forEach(a=>a.addEventListener("click",()=>go(a.dataset.route)));
+$("#kTrigger").addEventListener("click",openModal);
+$("#modalClose").addEventListener("click",closeModal);
+$("#modal").addEventListener("click",e=>{ if(e.target.id==="modal") closeModal(); });
+$$("#captureType button").forEach(b=>b.addEventListener("click",()=>{
+  captureType=b.dataset.type;
+  $$("#captureType button").forEach(x=>x.classList.toggle("active",x===b));
+  $("#captureMeta").style.display = captureType==="task" ? "" : "none";
+}));
+$("#captureInput").addEventListener("keydown",e=>{ if(e.key==="Enter") commitCapture(); if(e.key==="Escape") closeModal(); });
+document.addEventListener("keydown",e=>{ if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){ e.preventDefault(); openModal(); } });
+$("#exportXlsx").addEventListener("click",exportXlsx);
+$("#importXlsxBtn").addEventListener("click",()=>$("#importXlsx").click());
+$("#importXlsx").addEventListener("change",e=>{ const f=e.target.files[0]; if(f) importXlsx(f); e.target.value=""; });
+$("#resetBtn").addEventListener("click",()=>{ if(confirm("Reset all data to seed?")){ state=JSON.parse(JSON.stringify(SEED)); save(); render(); toast("Reset"); } });
+render();
+</script>
 </body>
 </html>
