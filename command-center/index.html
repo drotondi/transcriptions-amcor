@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">◆</span>
+        <span class="brand-name">command<br/>center</span>
+      </div>
+      <nav class="nav" id="nav">
+        <a href="#/home" data-route="home"><span class="dot"></span>Home</a>
+        <a href="#/strategy" data-route="strategy"><span class="dot"></span>Strategy &amp; Vision</a>
+        <a href="#/initiatives" data-route="initiatives"><span class="dot"></span>Initiatives</a>
+        <a href="#/tasks" data-route="tasks"><span class="dot"></span>Tasks</a>
+        <a href="#/recognitions" data-route="recognitions"><span class="dot"></span>Recognitions</a>
+        <a href="#/team" data-route="team"><span class="dot"></span>Team</a>
+      </nav>
+      <div class="sidebar-foot">
+        <button class="ghost" id="exportBtn" title="Download updated data as JSON">export data</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="crumbs" id="crumbs">Home</div>
+        <div class="topbar-right">
+          <button class="kbd-trigger" id="kTrigger" title="Quick capture (⌘K)">
+            <span>⌘K</span><span class="muted">quick capture</span>
+          </button>
+          <span class="date" id="today"></span>
+        </div>
+      </header>
+      <section class="view" id="view"></section>
+    </main>
+  </div>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-card">
+      <div class="modal-head">
+        <span class="muted">quick capture</span>
+        <button class="x" id="modalClose">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="seg" id="captureType">
+          <button data-type="task" class="active">task</button>
+          <button data-type="recognition">recognition</button>
+          <button data-type="request">request</button>
+        </div>
+        <input id="captureInput" placeholder="type something and press enter…" autocomplete="off" />
+        <div class="capture-meta" id="captureMeta">
+          <select id="captureHorizon">
+            <option value="weekly">weekly</option>
+            <option value="monthly">monthly</option>
+            <option value="quarterly">quarterly</option>
+          </select>
+        </div>
+        <div class="modal-foot muted">enter to save · esc to close</div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+[
+  { "id": "m1", "name": "Magaly",       "role": "MDM Lead",            "next1on1": "2026-06-18", "ooo": [],                                                            "requests": [{ "id":"q1", "title":"Laptop upgrade", "status":"pending" }] },
+  { "id": "m2", "name": "Pedro",        "role": "MRO Lead",            "next1on1": "2026-06-24", "ooo": [{ "from": "2026-06-15", "to": "2026-06-22", "type": "vacation" }], "requests": [{ "id":"q2", "title":"Training budget — APICS", "status":"pending" }] },
+  { "id": "m3", "name": "Carlos",       "role": "Region — Southern",   "next1on1": "2026-06-20", "ooo": [],                                                            "requests": [] },
+  { "id": "m4", "name": "Guillermina",  "role": "Brazil — Planning",   "next1on1": "2026-06-17", "ooo": [],                                                            "requests": [{ "id":"q3", "title":"Hire mid-level planner", "status":"approved" }] },
+  { "id": "m5", "name": "Carolina",     "role": "S&OP — LATAM",        "next1on1": "2026-06-25", "ooo": [{ "from": "2026-07-01", "to": "2026-07-10", "type": "vacation" }], "requests": [] },
+  { "id": "m6", "name": "Rafael",       "role": "Mexico — Demand",     "next1on1": "2026-06-19", "ooo": [],                                                            "requests": [] }
+]

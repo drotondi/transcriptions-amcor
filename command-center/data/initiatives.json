@@ -1,0 +1,8 @@
+[
+  { "id": "i1", "title": "MDM Centralization",      "pillar": "p1", "owner": "Magaly",       "status": "on-track", "due": "2026-09-30", "progress": 0.72, "summary": "Single source of truth for materials, vendors and customers across LATAM plants." },
+  { "id": "i2", "title": "MRO Domain Clean",        "pillar": "p1", "owner": "Pedro",        "status": "at-risk",  "due": "2026-08-15", "progress": 0.34, "summary": "Cleanse and reclassify MRO catalog; deduplicate vendors and harmonize UoMs." },
+  { "id": "i3", "title": "Southern Cone Rollout",   "pillar": "p2", "owner": "Carlos",       "status": "on-track", "due": "2026-12-01", "progress": 0.55, "summary": "Roll out new S&OP cadence and tooling across Argentina, Chile and Uruguay." },
+  { "id": "i4", "title": "Brazil S&OP Maturity",    "pillar": "p2", "owner": "Guillermina",  "status": "on-track", "due": "2026-11-15", "progress": 0.48, "summary": "Drive Brazil from level 2 to level 3 maturity. Director, planning and S&OP alignment." },
+  { "id": "i5", "title": "Mexico Pipeline Reset",   "pillar": "p2", "owner": "Damian",       "status": "blocked",  "due": "2026-07-30", "progress": 0.18, "summary": "Reset demand pipeline assumptions and re-baseline forecast accuracy." },
+  { "id": "i6", "title": "Leadership Development",  "pillar": "p3", "owner": "Damian",       "status": "on-track", "due": "2026-12-31", "progress": 0.50, "summary": "1:1 cadence, growth plans and stretch assignments for direct reports." }
+]
