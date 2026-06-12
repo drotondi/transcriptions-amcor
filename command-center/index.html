@@ -6,163 +6,261 @@
 <title>Command Center</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <style>
 :root{
-  --bg:#FAFAF7; --bg-2:#F2F1EC;
-  --ink:#1A1A1A; --ink-2:#3A3A38; --muted:#8A8A82;
-  --line:#E6E4DC; --line-2:#D9D6CC;
-  --accent:#6B7F6B; --accent-2:#C9A87A;
-  --danger:#B5524A; --warn:#C9A052; --ok:#6B7F6B;
-  --radius:14px; --radius-sm:10px;
-  --shadow:0 1px 0 rgba(0,0,0,.02);
+  --bg:#FBFAF3;
+  --bg-2:#F4F2E9;
+  --card:#FFFFFE;
+  --card-2:#F4F2E9;
+  --ink:#0F0F0E;
+  --ink-2:#3A3A38;
+  --muted:#8C8B82;
+  --line:#E8E5D6;
+  --line-2:#D9D6C6;
+  --accent:#C7E14B;
+  --accent-deep:#A8C634;
+  --label:#6B5BD3;
+  --danger:#B5524A;
+  --warn:#D4A93A;
+  --ok:#7BAE3A;
   --serif:"Instrument Serif", ui-serif, Georgia, serif;
   --sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer;font-size:14px}
-input,select,textarea{font-family:inherit;font-size:14px;color:inherit}
-.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
-.sidebar{border-right:1px solid var(--line);padding:28px 18px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:20px;background:var(--bg)}
-.brand{display:flex;align-items:center;gap:10px;padding:0 6px}
-.brand-mark{font-size:20px;color:var(--accent)}
-.brand-name{font-family:var(--serif);font-size:22px;line-height:1;letter-spacing:.3px}
-.nav{display:flex;flex-direction:column;gap:2px}
-.nav a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--radius-sm);color:var(--ink-2);transition:background .15s,color .15s;cursor:pointer}
-.nav a .dot{width:5px;height:5px;border-radius:50%;background:var(--line-2)}
-.nav a:hover{background:var(--bg-2);color:var(--ink)}
-.nav a.active{background:var(--bg-2);color:var(--ink)}
-.nav a.active .dot{background:var(--accent)}
-.sidebar-foot{margin-top:auto;display:flex;flex-direction:column;gap:6px;padding:0 6px}
-.ghost{padding:8px 10px;border:1px solid var(--line);border-radius:var(--radius-sm);color:var(--ink-2);text-align:left;display:flex;align-items:center;gap:8px}
-.ghost:hover{border-color:var(--line-2);background:var(--bg-2)}
-.ghost small{color:var(--muted);font-size:11px}
-.main{display:flex;flex-direction:column;min-width:0}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 36px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
-.crumbs{font-family:var(--serif);font-size:18px;color:var(--ink-2);letter-spacing:.3px}
+input,select,textarea{font-family:inherit;font-size:14px;color:inherit;outline:none}
+[contenteditable]{outline:none;cursor:text}
+[contenteditable]:focus{background:#FFF9D6;border-radius:4px;box-shadow:0 0 0 4px #FFF9D6}
+[contenteditable]:hover:not(:focus){background:rgba(0,0,0,.02);border-radius:4px}
+
+/* shell */
+.shell{display:flex;flex-direction:column;min-height:100vh}
+.topbar{padding:18px 32px;border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:10}
+.topbar-row{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:600}
+.brand-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(199,225,75,.25)}
 .topbar-right{display:flex;align-items:center;gap:14px}
-.kbd-trigger{display:flex;align-items:center;gap:8px;border:1px solid var(--line);padding:6px 10px;border-radius:8px;color:var(--ink-2)}
+.kbd-trigger{display:flex;align-items:center;gap:8px;border:1px solid var(--line);padding:6px 10px;border-radius:8px;color:var(--ink-2);background:var(--card)}
 .kbd-trigger:hover{border-color:var(--line-2)}
-.kbd-trigger span:first-child{font-size:11px;color:var(--muted);border:1px solid var(--line);padding:1px 6px;border-radius:5px;background:var(--bg-2)}
+.kbd-trigger .k{font-size:11px;color:var(--muted);border:1px solid var(--line);padding:1px 6px;border-radius:5px;background:var(--bg-2)}
+.date{color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px}
+.tabs-top{display:flex;align-items:flex-end;gap:0;margin-top:14px;overflow-x:auto;scrollbar-width:none}
+.tabs-top::-webkit-scrollbar{display:none}
+.tabs-top a{padding:10px 18px;color:var(--muted);font-weight:500;font-size:14px;white-space:nowrap;border-bottom:2px solid transparent;cursor:pointer;transition:color .15s,border-color .15s}
+.tabs-top a:hover{color:var(--ink-2)}
+.tabs-top a.active{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
 .muted{color:var(--muted)}
-.date{color:var(--muted);font-variant-numeric:tabular-nums}
-.view{padding:36px 36px 80px;max-width:1100px;width:100%}
-.hero{margin-bottom:28px}
-.hero h1{font-family:var(--serif);font-weight:400;font-size:44px;line-height:1.05;margin:0 0 4px}
-.hero p{color:var(--muted);margin:0}
-.row{display:grid;gap:18px}
-.row-2{grid-template-columns:1fr 1fr}
-.row-3{grid-template-columns:repeat(3,1fr)}
-.card{border:1px solid var(--line);border-radius:var(--radius);padding:20px;background:var(--bg);box-shadow:var(--shadow)}
-.card h3{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;letter-spacing:.2px;color:var(--ink-2)}
-.card .kpi{font-family:var(--serif);font-size:42px;line-height:1}
-.card .kpi-sub{color:var(--muted);margin-top:6px}
-.bar{height:6px;background:var(--bg-2);border-radius:99px;overflow:hidden;margin-top:10px}
-.bar > i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .4s}
-.bar.warm > i{background:var(--accent-2)}
-.section-head{display:flex;align-items:baseline;justify-content:space-between;margin:36px 0 14px}
-.section-head h2{font-family:var(--serif);font-weight:400;font-size:22px;margin:0;letter-spacing:.2px}
-.section-head a{color:var(--muted);cursor:pointer}
-.section-head a:hover{color:var(--ink-2)}
-.list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
-.list .item{display:flex;align-items:center;gap:14px;padding:14px 4px;border-bottom:1px solid var(--line)}
-.list .item .title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.list .item .meta{color:var(--muted);font-size:13px}
-.status{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);padding:3px 8px;border:1px solid var(--line);border-radius:99px;white-space:nowrap}
+
+.view{padding:36px 32px 100px;max-width:1240px;width:100%;margin:0 auto}
+
+/* hero */
+.eyebrow{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--label);font-weight:600;margin-bottom:8px}
+.h1{font-size:56px;line-height:1;font-weight:800;letter-spacing:-1.5px;margin:0 0 8px}
+.h1.med{font-size:44px}
+.lede{color:var(--muted);margin:0 0 28px;font-size:15px}
+
+/* section labels */
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:36px 0 14px;gap:12px}
+.section-head h2{font-size:22px;font-weight:700;margin:0;letter-spacing:-.3px}
+.section-label{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--label);font-weight:600}
+.add-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--line);border-radius:99px;color:var(--ink-2);background:var(--card);font-size:13px;font-weight:500}
+.add-btn:hover{border-color:var(--ink-2);background:var(--card-2)}
+.add-btn .plus{font-weight:600;color:var(--accent-deep)}
+
+/* priorities row */
+.priorities{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;margin-bottom:24px;scrollbar-width:none}
+.priorities::-webkit-scrollbar{display:none}
+.priority{flex:0 0 220px;background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;position:relative}
+.priority .num{font-size:28px;font-weight:800;line-height:1;color:var(--ink)}
+.priority .label{color:var(--ink-2);font-size:13px;font-weight:500}
+.priority .x{position:absolute;top:8px;right:10px;color:var(--muted);opacity:0;font-size:14px;cursor:pointer}
+.priority:hover .x{opacity:1}
+.priority.add{align-items:center;justify-content:center;color:var(--muted);border-style:dashed;cursor:pointer;min-height:96px}
+.priority.add:hover{color:var(--ink-2);border-color:var(--ink-2)}
+
+/* period tabs */
+.period-tabs{display:inline-flex;gap:4px;background:var(--card-2);border-radius:99px;padding:4px;border:1px solid var(--line)}
+.period-tabs button{padding:7px 18px;border-radius:99px;color:var(--ink-2);font-size:13px;font-weight:500}
+.period-tabs button.active{background:var(--ink);color:#fff}
+
+/* grid */
+.grid{display:grid;gap:18px}
+.grid-2{grid-template-columns:1fr 1fr}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-auto{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+
+/* card */
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:18px;
+  padding:0;overflow:hidden;display:flex;flex-direction:column;
+}
+.card .top-bar{height:6px;background:var(--bg-2);position:relative}
+.card .top-bar > i{display:block;height:100%;background:var(--accent);transition:width .35s}
+.card .body{padding:20px 22px 22px}
+.card h3{margin:0;font-size:18px;font-weight:700;letter-spacing:-.2px}
+.card .sub{color:var(--muted);font-size:13px;margin-top:2px}
+.card .pct{color:var(--muted);font-size:13px;margin:10px 0 14px}
+.card .pct b{color:var(--ink);font-weight:600}
+
+/* checklist */
+.checklist{display:flex;flex-direction:column;gap:2px}
+.task{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);position:relative}
+.task:last-child{border-bottom:0}
+.task .check{flex-shrink:0;width:18px;height:18px;border:1.5px solid var(--line-2);border-radius:5px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;background:var(--card)}
+.task .check.on{background:var(--ink);border-color:var(--ink)}
+.task .check.on::after{content:"";width:9px;height:5px;border-left:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);transform:rotate(-45deg) translate(1px,-1px)}
+.task .txt{flex:1;min-width:0;color:var(--ink);font-size:14px}
+.task.done .txt{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
+.date-pill{padding:3px 10px;background:var(--bg-2);border-radius:99px;font-size:11px;color:var(--muted);font-weight:500;white-space:nowrap}
+.task .menu{opacity:0;color:var(--muted);font-size:18px;line-height:1;padding:0 4px;cursor:pointer}
+.task:hover .menu{opacity:1}
+
+/* avatar + person */
+.person-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.person-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.avatar{width:42px;height:42px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:14px;letter-spacing:.3px;flex-shrink:0}
+.person-info{flex:1;min-width:0}
+.person-info .name{font-size:18px;font-weight:700;letter-spacing:-.2px}
+.person-info .role{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:2px}
+.donut{position:relative;width:54px;height:54px;flex-shrink:0}
+.donut svg{transform:rotate(-90deg);width:54px;height:54px}
+.donut .pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+
+/* status pill */
+.status{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-2);padding:4px 10px;border:1px solid var(--line);border-radius:99px;background:var(--card);white-space:nowrap;cursor:pointer;text-transform:lowercase;font-weight:500;letter-spacing:.2px}
 .status .pip{width:6px;height:6px;border-radius:50%;background:var(--muted)}
 .status.ok .pip{background:var(--ok)}
 .status.risk .pip{background:var(--warn)}
 .status.blocked .pip{background:var(--danger)}
-.status.done .pip{background:var(--ink-2)}
-.check{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:1px solid var(--line-2);border-radius:5px;cursor:pointer;flex-shrink:0;background:var(--bg)}
-.check.on{background:var(--accent);border-color:var(--accent)}
-.check.on::after{content:"";width:9px;height:5px;border-left:1.5px solid var(--bg);border-bottom:1.5px solid var(--bg);transform:rotate(-45deg) translate(1px,-1px)}
-.task-title.on{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
-.tabs{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:99px;background:var(--bg)}
-.tabs button{padding:6px 14px;border-radius:99px;color:var(--muted);font-size:13px}
-.tabs button.active{background:var(--bg-2);color:var(--ink)}
-.tab-meta{color:var(--muted);margin-left:10px;font-size:13px}
-.tag{display:inline-block;padding:2px 8px;border:1px solid var(--line);border-radius:99px;font-size:11px;color:var(--muted);letter-spacing:.3px;text-transform:lowercase;white-space:nowrap}
-.person{border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:var(--bg);display:flex;flex-direction:column;gap:6px;min-height:120px}
-.person .name{font-family:var(--serif);font-size:20px}
-.person .role{color:var(--muted);font-size:13px}
-.person .next{margin-top:auto;color:var(--ink-2);font-size:13px}
-.recog{border-left:1px solid var(--line);padding-left:18px;margin-left:6px}
-.recog .item{padding:12px 0;border-bottom:1px dashed var(--line)}
-.recog .item:last-child{border-bottom:0}
-.recog .quote{font-family:var(--serif);font-size:18px;line-height:1.3;font-style:italic;color:var(--ink-2)}
-.recog .meta{margin-top:6px;color:var(--muted);font-size:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.vision{font-family:var(--serif);font-size:32px;line-height:1.2;font-style:italic;color:var(--ink-2);max-width:760px;margin:0 0 8px}
-.pillar{border:1px solid var(--line);border-radius:var(--radius);padding:18px}
-.pillar h4{margin:0 0 6px;font-family:var(--serif);font-weight:400;font-size:18px}
+.status.done .pip{background:var(--ink)}
+
+.tag{display:inline-block;padding:2px 9px;border:1px solid var(--line);border-radius:99px;font-size:11px;color:var(--muted);letter-spacing:.3px;text-transform:lowercase;cursor:pointer;background:var(--card)}
+.tag:hover{border-color:var(--line-2)}
+
+/* initiative list row */
+.init-row{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:18px;position:relative}
+.init-row .meta{color:var(--muted);font-size:12px;white-space:nowrap}
+.init-row .title{flex:1;min-width:0}
+.init-row .title-t{font-size:16px;font-weight:600}
+.init-row .title-s{color:var(--muted);font-size:13px;margin-top:2px}
+.init-row .progress-wrap{width:200px;display:flex;align-items:center;gap:10px}
+.init-row .bar{flex:1;height:6px;background:var(--bg-2);border-radius:99px;overflow:hidden;cursor:ew-resize}
+.init-row .bar > i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .25s}
+.init-row .menu{opacity:0;color:var(--muted);font-size:18px;cursor:pointer;padding:0 4px}
+.init-row:hover .menu{opacity:1}
+
+/* strategy */
+.vision{font-family:var(--serif);font-size:34px;line-height:1.2;font-style:italic;color:var(--ink-2);max-width:780px;margin:0 0 8px;padding:8px 4px}
+.pillar{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.pillar h4{margin:0 0 8px;font-size:18px;font-weight:700}
 .pillar p{margin:0;color:var(--muted)}
-.okr{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.okr{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
 .okr:last-child{border-bottom:0}
-.modal{position:fixed;inset:0;background:rgba(26,26,26,.25);display:flex;align-items:flex-start;justify-content:center;padding-top:18vh;z-index:50;backdrop-filter:blur(6px)}
+.okr-text .obj{font-size:16px;font-weight:600}
+.okr-text .kr{color:var(--muted);font-size:13px;margin-top:2px}
+.okr-prog{width:220px;display:flex;align-items:center;gap:10px}
+.okr-prog .bar{flex:1;height:6px;background:var(--bg-2);border-radius:99px;overflow:hidden;cursor:ew-resize}
+.okr-prog .bar > i{display:block;height:100%;background:var(--accent);border-radius:99px}
+
+/* recognitions */
+.recog-item{padding:18px 0;border-bottom:1px dashed var(--line);display:flex;gap:18px;align-items:flex-start}
+.recog-item:last-child{border-bottom:0}
+.recog-item .quote{flex:1;font-family:var(--serif);font-size:20px;line-height:1.35;font-style:italic;color:var(--ink-2)}
+.recog-item .meta{color:var(--muted);font-size:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(15,15,14,.32);display:flex;align-items:flex-start;justify-content:center;padding-top:14vh;z-index:50;backdrop-filter:blur(6px)}
 .modal[hidden]{display:none}
-.modal-card{width:min(560px,92vw);background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 30px 60px rgba(0,0,0,.08)}
-.modal-head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
-.modal-head .x{font-size:22px;color:var(--muted)}
-.modal-body{padding:18px;display:flex;flex-direction:column;gap:12px}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:99px;padding:3px;width:fit-content}
-.seg button{padding:5px 12px;border-radius:99px;color:var(--muted);font-size:13px}
-.seg button.active{background:var(--bg-2);color:var(--ink)}
-#captureInput{width:100%;padding:12px 0;border:0;border-bottom:1px solid var(--line);background:transparent;font-family:var(--serif);font-size:22px;outline:none}
-#captureInput::placeholder{color:var(--muted);font-style:italic}
-.capture-meta select{padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink-2)}
-.modal-foot{font-size:12px;text-align:right;color:var(--muted)}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;font-size:13px;z-index:100;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none}
+.modal-card{width:min(520px,92vw);background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 60px rgba(0,0,0,.10)}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
+.modal-head .title{font-weight:700;font-size:15px}
+.modal-head .x{font-size:22px;color:var(--muted);line-height:1}
+.modal-body{padding:18px 20px;display:flex;flex-direction:column;gap:14px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);font-weight:600}
+.field input,.field select,.field textarea{padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-size:14px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ink-2)}
+.field textarea{resize:vertical;min-height:80px;font-family:inherit}
+.modal-foot{padding:14px 20px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:10px}
+.btn{padding:9px 16px;border-radius:99px;font-weight:500;font-size:13px;cursor:pointer;border:1px solid var(--line);background:var(--card)}
+.btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.primary:hover{background:#000}
+.btn.ghost:hover{background:var(--card-2)}
+.btn.danger{color:var(--danger);border-color:var(--danger)}
+
+/* capture (kept) */
+#captureInput{width:100%;padding:12px 0;border:0;border-bottom:1px solid var(--line);background:transparent;font-size:22px;font-weight:600;letter-spacing:-.3px}
+#captureInput::placeholder{color:var(--muted);font-weight:400}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:99px;padding:3px;width:fit-content;background:var(--card-2)}
+.seg button{padding:5px 14px;border-radius:99px;color:var(--muted);font-size:13px}
+.seg button.active{background:var(--card);color:var(--ink);font-weight:500}
+
+/* dropdown */
+.dd{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px;box-shadow:0 12px 30px rgba(0,0,0,.10);z-index:60;min-width:160px}
+.dd button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:8px 10px;border-radius:8px;font-size:13px}
+.dd button:hover{background:var(--card-2)}
+.dd button.danger{color:var(--danger)}
+.dd .sep{height:1px;background:var(--line);margin:4px 0}
+
+/* toolbar */
+.toolbar{display:flex;align-items:center;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.icon-btn{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink-2);cursor:pointer}
+.icon-btn:hover{border-color:var(--ink-2)}
+
+/* toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;font-size:13px;z-index:100;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
-.flex{display:flex}.between{justify-content:space-between}.center{align-items:center}.mb-3{margin-bottom:12px}
+
+/* utilities */
+.row-flex{display:flex;align-items:center;gap:10px}
+.between{justify-content:space-between}
+.mt-2{margin-top:10px}.mt-3{margin-top:16px}.mt-4{margin-top:24px}.mb-3{margin-bottom:16px}
+
 @media (max-width: 900px){
-  .app{grid-template-columns:1fr}
-  .sidebar{position:relative;height:auto;flex-direction:column;align-items:stretch;padding:14px 18px}
-  .nav{flex-direction:row;flex-wrap:wrap}
-  .row-2,.row-3{grid-template-columns:1fr}
-  .view{padding:24px 18px 60px}
   .topbar{padding:14px 18px}
+  .view{padding:24px 18px 60px}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .h1{font-size:42px}
+  .init-row{flex-wrap:wrap}
+  .init-row .progress-wrap{width:100%}
 }
 </style>
 </head>
 <body>
-<div class="app">
-  <aside class="sidebar">
-    <div class="brand"><span class="brand-mark">◆</span><span class="brand-name">command<br/>center</span></div>
-    <nav class="nav" id="nav">
-      <a data-route="home"><span class="dot"></span>Home</a>
-      <a data-route="strategy"><span class="dot"></span>Strategy &amp; Vision</a>
-      <a data-route="initiatives"><span class="dot"></span>Initiatives</a>
-      <a data-route="tasks"><span class="dot"></span>Tasks</a>
-      <a data-route="recognitions"><span class="dot"></span>Recognitions</a>
-      <a data-route="team"><span class="dot"></span>Team</a>
-    </nav>
-    <div class="sidebar-foot">
-      <button class="ghost" id="exportXlsx">⬇ Export to Excel<small>· .xlsx</small></button>
-      <button class="ghost" id="importXlsxBtn">⬆ Import from Excel<small>· .xlsx</small></button>
-      <input type="file" id="importXlsx" accept=".xlsx,.xls" style="display:none" />
-      <button class="ghost" id="resetBtn" title="Reset to seed data"><small>reset data</small></button>
-    </div>
-  </aside>
-  <main class="main">
-    <header class="topbar">
-      <div class="crumbs" id="crumbs">Home</div>
+<div class="shell">
+  <header class="topbar">
+    <div class="topbar-row">
+      <div class="brand"><span class="brand-dot"></span><span data-edit="user.workspace">Command Center</span></div>
       <div class="topbar-right">
-        <button class="kbd-trigger" id="kTrigger" title="Quick capture (Ctrl/Cmd+K)">
-          <span>⌘K</span><span class="muted">quick capture</span>
-        </button>
+        <button class="kbd-trigger" id="kTrigger"><span class="k">⌘K</span><span class="muted">quick capture</span></button>
         <span class="date" id="today"></span>
+        <div class="row-flex" style="gap:6px">
+          <button class="icon-btn" id="exportXlsx" title="Export to Excel">↓</button>
+          <button class="icon-btn" id="importXlsxBtn" title="Import from Excel">↑</button>
+          <input type="file" id="importXlsx" accept=".xlsx,.xls" style="display:none" />
+        </div>
       </div>
-    </header>
-    <section class="view" id="view"></section>
-  </main>
+    </div>
+    <nav class="tabs-top" id="nav">
+      <a data-route="home">Command</a>
+      <a data-route="strategy">Strategy &amp; Vision</a>
+      <a data-route="initiatives">Initiatives</a>
+      <a data-route="tasks">Tasks</a>
+      <a data-route="recognitions">Recognitions</a>
+      <a data-route="team">Team</a>
+    </nav>
+  </header>
+  <main class="view" id="view"></main>
 </div>
 
-<div class="modal" id="modal" hidden>
+<!-- Quick capture -->
+<div class="modal" id="captureModal" hidden>
   <div class="modal-card">
-    <div class="modal-head"><span class="muted">quick capture</span><button class="x" id="modalClose">×</button></div>
+    <div class="modal-head"><span class="title">quick capture</span><button class="x" data-close="captureModal">×</button></div>
     <div class="modal-body">
       <div class="seg" id="captureType">
         <button data-type="task" class="active">task</button>
@@ -170,14 +268,27 @@ input,select,textarea{font-family:inherit;font-size:14px;color:inherit}
         <button data-type="request">request</button>
       </div>
       <input id="captureInput" placeholder="type something and press enter…" autocomplete="off" />
-      <div class="capture-meta" id="captureMeta">
+      <div class="field" id="captureMeta">
+        <label>horizon</label>
         <select id="captureHorizon">
           <option value="weekly">weekly</option>
           <option value="monthly">monthly</option>
           <option value="quarterly">quarterly</option>
         </select>
       </div>
-      <div class="modal-foot">enter to save · esc to close</div>
+      <div class="muted" style="font-size:12px;text-align:right">enter to save · esc to close</div>
+    </div>
+  </div>
+</div>
+
+<!-- Generic add/edit form modal -->
+<div class="modal" id="formModal" hidden>
+  <div class="modal-card">
+    <div class="modal-head"><span class="title" id="formTitle">New</span><button class="x" data-close="formModal">×</button></div>
+    <div class="modal-body" id="formBody"></div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="formModal">Cancel</button>
+      <button class="btn primary" id="formSave">Save</button>
     </div>
   </div>
 </div>
@@ -185,24 +296,31 @@ input,select,textarea{font-family:inherit;font-size:14px;color:inherit}
 <div class="toast" id="toast"></div>
 
 <script>
-// ---------- seed data ----------
+// ====================== SEED ======================
 const SEED = {
-  strategy: {
-    vision: "Build a data-driven, people-first supply chain operation across LATAM — fewer fires, more foresight.",
-    horizon: "FY26",
-    pillars: [
-      { id:"p1", name:"Data Foundations",     summary:"Trustworthy master data and clean domains as the bedrock for every decision.", color:"#6B7F6B" },
-      { id:"p2", name:"Operational Excellence", summary:"Standard S&OP rhythm, MRO discipline and end-to-end visibility across plants.", color:"#C9A87A" },
-      { id:"p3", name:"Team & Culture",       summary:"Develop leaders, recognize impact, and create the conditions for ownership.",     color:"#8A8A82" }
+  user:{ name:"Damian", workspace:"Command Center" },
+  priorities:[
+    { id:"pr1", label:"Centralize MDM across LATAM" },
+    { id:"pr2", label:"Lock S&OP operating rhythm" },
+    { id:"pr3", label:"Reduce MRO leakage 15%" },
+    { id:"pr4", label:"Grow next-layer leaders" }
+  ],
+  strategy:{
+    vision:"Build a data-driven, people-first supply chain operation across LATAM — fewer fires, more foresight.",
+    horizon:"FY26",
+    pillars:[
+      { id:"p1", name:"Data Foundations",       summary:"Trustworthy master data and clean domains as the bedrock for every decision.", color:"#6B5BD3" },
+      { id:"p2", name:"Operational Excellence", summary:"Standard S&OP rhythm, MRO discipline and end-to-end visibility across plants.", color:"#A8C634" },
+      { id:"p3", name:"Team & Culture",         summary:"Develop leaders, recognize impact, and create the conditions for ownership.", color:"#D4A93A" }
     ],
-    okrs: [
+    okrs:[
       { id:"o1", pillar:"p1", objective:"Centralize MDM across LATAM",  kr:"100% of plants onboarded by Q3", progress:0.62 },
       { id:"o2", pillar:"p2", objective:"Reduce MRO leakage",            kr:"-15% spend vs FY25 baseline",    progress:0.34 },
       { id:"o3", pillar:"p2", objective:"S&OP maturity level 3",         kr:"All countries scoring ≥3 by Q4", progress:0.45 },
       { id:"o4", pillar:"p3", objective:"Grow next-layer leaders",       kr:"3 internal promotions in FY26",  progress:0.66 }
     ]
   },
-  initiatives: [
+  initiatives:[
     { id:"i1", title:"MDM Centralization",    pillar:"p1", owner:"Magaly",      status:"on-track", due:"2026-09-30", progress:0.72, summary:"Single source of truth for materials, vendors and customers across LATAM plants." },
     { id:"i2", title:"MRO Domain Clean",      pillar:"p1", owner:"Pedro",       status:"at-risk",  due:"2026-08-15", progress:0.34, summary:"Cleanse and reclassify MRO catalog; deduplicate vendors and harmonize UoMs." },
     { id:"i3", title:"Southern Cone Rollout", pillar:"p2", owner:"Carlos",      status:"on-track", due:"2026-12-01", progress:0.55, summary:"Roll out new S&OP cadence and tooling across Argentina, Chile and Uruguay." },
@@ -210,32 +328,32 @@ const SEED = {
     { id:"i5", title:"Mexico Pipeline Reset", pillar:"p2", owner:"Damian",      status:"blocked",  due:"2026-07-30", progress:0.18, summary:"Reset demand pipeline assumptions and re-baseline forecast accuracy." },
     { id:"i6", title:"Leadership Development",pillar:"p3", owner:"Damian",      status:"on-track", due:"2026-12-31", progress:0.50, summary:"1:1 cadence, growth plans and stretch assignments for direct reports." }
   ],
-  tasks: [
-    { id:"t1",  title:"Send budget draft to finance",      horizon:"weekly",    initiative:"i1", due:"2026-06-15", done:true  },
-    { id:"t2",  title:"1:1 with Guillermina",              horizon:"weekly",    initiative:"i6", due:"2026-06-16", done:true  },
-    { id:"t3",  title:"Review Mexico pipeline assumptions",horizon:"weekly",    initiative:"i5", due:"2026-06-17", done:false },
-    { id:"t4",  title:"Prep board deck — S&OP update",     horizon:"weekly",    initiative:"i3", due:"2026-06-19", done:false },
-    { id:"t5",  title:"Sign-off MRO domain rules",         horizon:"weekly",    initiative:"i2", due:"2026-06-18", done:false },
-    { id:"t6",  title:"Onboard Peru plant into MDM",       horizon:"monthly",   initiative:"i1", due:"2026-06-30", done:true  },
-    { id:"t7",  title:"MRO vendor dedup wave 2",           horizon:"monthly",   initiative:"i2", due:"2026-06-30", done:false },
-    { id:"t8",  title:"Quarterly business review prep",    horizon:"monthly",   initiative:"i3", due:"2026-06-27", done:false },
-    { id:"t9",  title:"Skill matrix refresh — team",       horizon:"monthly",   initiative:"i6", due:"2026-06-28", done:false },
-    { id:"t10", title:"Recognize Q2 standouts",            horizon:"monthly",   initiative:"i6", due:"2026-06-30", done:true  },
-    { id:"t11", title:"All LATAM plants onboarded to MDM", horizon:"quarterly", initiative:"i1", due:"2026-09-30", done:false },
-    { id:"t12", title:"MRO leakage down 8% vs Q2",         horizon:"quarterly", initiative:"i2", due:"2026-09-30", done:false },
-    { id:"t13", title:"Southern Cone S&OP cadence live",   horizon:"quarterly", initiative:"i3", due:"2026-09-30", done:true  },
-    { id:"t14", title:"Brazil maturity audit — level 3",   horizon:"quarterly", initiative:"i4", due:"2026-09-30", done:false }
+  tasks:[
+    { id:"t1",  title:"Send budget draft to finance",       horizon:"weekly",    initiative:"i1", owner:"Magaly",      due:"2026-06-15", done:true  },
+    { id:"t2",  title:"1:1 with Guillermina",               horizon:"weekly",    initiative:"i6", owner:"Damian",      due:"2026-06-16", done:true  },
+    { id:"t3",  title:"Review Mexico pipeline assumptions", horizon:"weekly",    initiative:"i5", owner:"Damian",      due:"2026-06-17", done:false },
+    { id:"t4",  title:"Prep board deck — S&OP update",      horizon:"weekly",    initiative:"i3", owner:"Carlos",      due:"2026-06-19", done:false },
+    { id:"t5",  title:"Sign-off MRO domain rules",          horizon:"weekly",    initiative:"i2", owner:"Pedro",       due:"2026-06-18", done:false },
+    { id:"t6",  title:"Onboard Peru plant into MDM",        horizon:"monthly",   initiative:"i1", owner:"Magaly",      due:"2026-06-30", done:true  },
+    { id:"t7",  title:"MRO vendor dedup wave 2",            horizon:"monthly",   initiative:"i2", owner:"Pedro",       due:"2026-06-30", done:false },
+    { id:"t8",  title:"Quarterly business review prep",     horizon:"monthly",   initiative:"i3", owner:"Carlos",      due:"2026-06-27", done:false },
+    { id:"t9",  title:"Skill matrix refresh — team",        horizon:"monthly",   initiative:"i6", owner:"Damian",      due:"2026-06-28", done:false },
+    { id:"t10", title:"Recognize Q2 standouts",             horizon:"monthly",   initiative:"i6", owner:"Damian",      due:"2026-06-30", done:true  },
+    { id:"t11", title:"All LATAM plants onboarded to MDM",  horizon:"quarterly", initiative:"i1", owner:"Magaly",      due:"2026-09-30", done:false },
+    { id:"t12", title:"MRO leakage down 8% vs Q2",          horizon:"quarterly", initiative:"i2", owner:"Pedro",       due:"2026-09-30", done:false },
+    { id:"t13", title:"Southern Cone S&OP cadence live",    horizon:"quarterly", initiative:"i3", owner:"Carlos",      due:"2026-09-30", done:true  },
+    { id:"t14", title:"Brazil maturity audit — level 3",    horizon:"quarterly", initiative:"i4", owner:"Guillermina", due:"2026-09-30", done:false }
   ],
-  recognitions: [
+  recognitions:[
     { id:"r1", date:"2026-06-09", person:"Magaly",      type:"impact", note:"Nailed the MDM kickoff with Peru — clear comms, owned every blocker." },
     { id:"r2", date:"2026-06-05", person:"Pedro",       type:"effort", note:"Pulled two weekends to unblock MRO domain rules. Quiet excellence." },
     { id:"r3", date:"2026-05-28", person:"Guillermina", type:"values", note:"Pushed back when the Brazil director's ask put the team at risk. Right call." },
     { id:"r4", date:"2026-05-20", person:"Carlos",      type:"impact", note:"Southern Cone S&OP cadence is live three weeks ahead of plan." },
     { id:"r5", date:"2026-05-12", person:"Whole team",  type:"values", note:"Best QBR prep I've seen — everyone showed up, nobody hid." }
   ],
-  team: [
-    { id:"m1", name:"Magaly",      role:"MDM Lead",          next1on1:"2026-06-18", ooo:[],                                                            requests:[{id:"q1",title:"Laptop upgrade",status:"pending"}] },
-    { id:"m2", name:"Pedro",       role:"MRO Lead",          next1on1:"2026-06-24", ooo:[{from:"2026-06-15",to:"2026-06-22",type:"vacation"}],         requests:[{id:"q2",title:"Training budget — APICS",status:"pending"}] },
+  team:[
+    { id:"m1", name:"Magaly",      role:"MDM Lead",          next1on1:"2026-06-18", ooo:[], requests:[{id:"q1",title:"Laptop upgrade",status:"pending"}] },
+    { id:"m2", name:"Pedro",       role:"MRO Lead",          next1on1:"2026-06-24", ooo:[{from:"2026-06-15",to:"2026-06-22",type:"vacation"}], requests:[{id:"q2",title:"Training budget — APICS",status:"pending"}] },
     { id:"m3", name:"Carlos",      role:"Region — Southern", next1on1:"2026-06-20", ooo:[], requests:[] },
     { id:"m4", name:"Guillermina", role:"Brazil — Planning", next1on1:"2026-06-17", ooo:[], requests:[{id:"q3",title:"Hire mid-level planner",status:"approved"}] },
     { id:"m5", name:"Carolina",    role:"S&OP — LATAM",      next1on1:"2026-06-25", ooo:[{from:"2026-07-01",to:"2026-07-10",type:"vacation"}], requests:[] },
@@ -243,22 +361,41 @@ const SEED = {
   ]
 };
 
-// ---------- state + persistence ----------
-const STORE_KEY = "command-center-v1";
+// ====================== STATE ======================
+const STORE_KEY="command-center-v2";
 let state = load();
 
 function load(){
   try{
     const raw = localStorage.getItem(STORE_KEY);
-    if (raw) return JSON.parse(raw);
-  }catch(e){}
+    if (raw){ const s=JSON.parse(raw); return migrate(s); }
+    const v1 = localStorage.getItem("command-center-v1");
+    if (v1){ return migrate(JSON.parse(v1)); }
+  } catch(e){}
   return JSON.parse(JSON.stringify(SEED));
+}
+function migrate(s){
+  const base = JSON.parse(JSON.stringify(SEED));
+  s.user = s.user || base.user;
+  s.priorities = s.priorities || base.priorities;
+  s.strategy = s.strategy || base.strategy;
+  s.initiatives = s.initiatives || [];
+  s.tasks = (s.tasks||[]).map(t => ({ owner: deriveOwner(t, s), ...t }));
+  s.recognitions = s.recognitions || [];
+  s.team = s.team || [];
+  return s;
+}
+function deriveOwner(t, s){
+  if (t.owner) return t.owner;
+  const i = (s.initiatives||[]).find(x=>x.id===t.initiative);
+  return i?.owner || "";
 }
 function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){} }
 
-// ---------- helpers ----------
+// ====================== HELPERS ======================
 const $ = (s,r=document)=>r.querySelector(s);
 const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+const uid = (p)=> p + Date.now().toString(36) + Math.random().toString(36).slice(2,5);
 const escapeHTML = s => String(s ?? "").replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmtDate = iso => { if(!iso) return ""; const d=new Date(iso+"T00:00:00"); return isNaN(d)?iso:d.toLocaleDateString("en-US",{month:"short",day:"numeric"}); };
 const fmtFull = d => d.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
@@ -266,236 +403,763 @@ const greeting = () => { const h=new Date().getHours(); if(h<5)return"Late night
 const statusMap = { "on-track":{label:"on track",cls:"ok"}, "at-risk":{label:"at risk",cls:"risk"}, "blocked":{label:"blocked",cls:"blocked"}, "done":{label:"done",cls:"done"} };
 const initiativeById = id => state.initiatives.find(i=>i.id===id);
 const pillarById = id => (state.strategy?.pillars||[]).find(p=>p.id===id);
-function progressFor(h){ const l=state.tasks.filter(t=>t.horizon===h); if(!l.length)return{pct:0,done:0,total:0}; const d=l.filter(t=>t.done).length; return{pct:d/l.length,done:d,total:l.length}; }
-function overallProgress(){ if(!state.tasks.length)return 0; return state.tasks.filter(t=>t.done).length/state.tasks.length; }
-function bar(pct,warm){ const w=Math.round((pct||0)*100); return `<div class="bar ${warm?'warm':''}"><i style="width:${w}%"></i></div>`; }
-function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"),1800); }
+const memberByName = n => state.team.find(m=>m.name===n);
 
-// ---------- views ----------
+function getPath(obj, path){ return path.split(".").reduce((o,k)=>o?.[k], obj); }
+function setPath(obj, path, val){
+  const parts = path.split("."); const last = parts.pop();
+  const target = parts.reduce((o,k)=>o[k], obj);
+  target[last] = val;
+}
+
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"),1700); }
+
+function initials(name){
+  return String(name||"?").trim().split(/\s+/).slice(0,2).map(s=>s[0]||"").join("").toUpperCase();
+}
+const AVATAR_COLORS = ["#6B5BD3","#A8C634","#D4A93A","#3C7EA4","#B5524A","#7BAE3A","#5E5246","#9268C5"];
+function avatarColor(name){
+  let h=0; for(const c of String(name||"")) h=(h*31 + c.charCodeAt(0))>>>0;
+  return AVATAR_COLORS[h % AVATAR_COLORS.length];
+}
+function avatar(name, size=42){
+  const c = avatarColor(name);
+  return `<span class="avatar" style="width:${size}px;height:${size}px;background:${c};font-size:${Math.round(size*.34)}px">${escapeHTML(initials(name))}</span>`;
+}
+function donut(pct, size=54, stroke=5){
+  const r = (size - stroke) / 2;
+  const c = 2 * Math.PI * r;
+  const off = c * (1 - (pct||0));
+  return `<div class="donut" style="width:${size}px;height:${size}px">
+    <svg viewBox="0 0 ${size} ${size}">
+      <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--bg-2)" stroke-width="${stroke}"/>
+      <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--accent-deep)" stroke-width="${stroke}" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${off}"/>
+    </svg>
+    <div class="pct">${Math.round((pct||0)*100)}%</div>
+  </div>`;
+}
+
+function progressFor(horizon){
+  const list = state.tasks.filter(t=>t.horizon===horizon);
+  if (!list.length) return { pct:0, done:0, total:0 };
+  const done = list.filter(t=>t.done).length;
+  return { pct: done/list.length, done, total: list.length };
+}
+function overallProgress(){
+  if (!state.tasks.length) return 0;
+  return state.tasks.filter(t=>t.done).length / state.tasks.length;
+}
+function tasksByOwner(name, horizon){
+  return state.tasks.filter(t => (t.owner||"")===name && (!horizon || t.horizon===horizon));
+}
+function ownerProgress(name, horizon){
+  const l = tasksByOwner(name, horizon);
+  if (!l.length) return 0;
+  return l.filter(t=>t.done).length / l.length;
+}
+
+// ====================== VIEWS ======================
+let currentHorizon = "weekly";
+
 function viewHome(){
   const today = new Date();
-  const inWeek = state.tasks.filter(t => { const d=new Date(t.due+"T00:00:00"); const diff=(d-today)/86400000; return diff>=-1 && diff<=7; });
-  const dueSoon = inWeek.filter(t=>!t.done).length;
-  const oooNow = state.team.filter(m => (m.ooo||[]).some(o=>new Date(o.from)<=today && today<=new Date(o.to))).length;
-  const pending = state.team.reduce((n,m)=>n+(m.requests||[]).filter(r=>r.status==="pending").length,0);
-  const lastRecog = [...state.recognitions].sort((a,b)=>b.date.localeCompare(a.date))[0];
-  const active = state.initiatives.filter(i=>i.status!=="done").slice(0,4);
-  const upcoming = [...state.tasks].filter(t=>!t.done).sort((a,b)=>a.due.localeCompare(b.due)).slice(0,4);
-  const overall = overallProgress();
   return `
-  <div class="hero">
-    <h1>${greeting()}, Damian.</h1>
-    <p>${fmtFull(today)} · ${state.initiatives.length} initiatives, ${state.tasks.length} tasks tracked.</p>
+  <div class="eyebrow">Command Center</div>
+  <h1 class="h1" data-edit="user.workspace">Command</h1>
+  <p class="lede">${greeting()}, <span data-edit="user.name">${escapeHTML(state.user.name)}</span> · ${fmtFull(today)}</p>
+
+  <div class="section-head">
+    <div class="section-label">Company Priorities</div>
+    <button class="add-btn" data-add="priority"><span class="plus">＋</span> add</button>
   </div>
-  <div class="row row-3">
-    <div class="card"><h3>overall progress</h3><div class="kpi">${Math.round(overall*100)}%</div>${bar(overall)}<div class="kpi-sub">${state.tasks.filter(t=>t.done).length} of ${state.tasks.length} done</div></div>
-    <div class="card"><h3>this week</h3><div class="kpi">${inWeek.length}</div><div class="kpi-sub">${dueSoon} still open</div></div>
-    <div class="card"><h3>team</h3><div class="kpi">${oooNow}<span style="font-size:18px;color:var(--muted)"> ooo</span></div><div class="kpi-sub">${pending} pending requests</div></div>
-  </div>
-  <div class="section-head"><h2>active initiatives</h2><a data-go="initiatives">see all →</a></div>
-  <div class="list">
-    ${active.map(i=>`
-      <div class="item">
-        <span class="status ${statusMap[i.status].cls}"><span class="pip"></span>${statusMap[i.status].label}</span>
-        <div class="title">${escapeHTML(i.title)}</div>
-        <div class="meta" style="min-width:60px;text-align:right">${Math.round(i.progress*100)}%</div>
-        <div style="width:140px">${bar(i.progress)}</div>
+  <div class="priorities">
+    ${state.priorities.map((p,i)=>`
+      <div class="priority">
+        <div class="num">${i+1}</div>
+        <div class="label" contenteditable="plaintext-only" data-edit-list="priorities" data-id="${p.id}" data-field="label">${escapeHTML(p.label)}</div>
+        <span class="x" data-del="priorities:${p.id}" title="remove">×</span>
       </div>`).join("")}
+    <div class="priority add" data-add="priority"><span>＋ new priority</span></div>
   </div>
-  <div class="row row-2" style="margin-top:36px">
-    <div>
-      <div class="section-head"><h2>upcoming</h2><a data-go="tasks">tasks →</a></div>
-      <div class="list">
-        ${upcoming.map(t=>`
-          <div class="item">
-            <span class="check ${t.done?'on':''}" data-task="${t.id}"></span>
-            <div class="title">${escapeHTML(t.title)}</div>
-            <span class="tag">${escapeHTML(t.horizon)}</span>
-            <div class="meta">${fmtDate(t.due)}</div>
-          </div>`).join("")}
-      </div>
+
+  <div class="toolbar mt-3">
+    <div class="period-tabs" id="hTabs">
+      <button data-h="weekly"    class="${currentHorizon==='weekly'?'active':''}">This Week</button>
+      <button data-h="monthly"   class="${currentHorizon==='monthly'?'active':''}">This Month</button>
+      <button data-h="quarterly" class="${currentHorizon==='quarterly'?'active':''}">This Quarter</button>
     </div>
-    <div>
-      <div class="section-head"><h2>recent recognition</h2><a data-go="recognitions">all →</a></div>
-      <div class="recog">
-        ${lastRecog?`
-          <div class="item">
-            <div class="quote">"${escapeHTML(lastRecog.note)}"</div>
-            <div class="meta"><span>${escapeHTML(lastRecog.person)}</span><span>·</span><span>${escapeHTML(lastRecog.type)}</span><span>·</span><span>${fmtDate(lastRecog.date)}</span></div>
-          </div>`:`<div class="muted">No recognitions yet.</div>`}
-      </div>
-    </div>
-  </div>`;
+  </div>
+
+  <div class="section-head">
+    <div class="section-label">People</div>
+    <button class="add-btn" data-add="member"><span class="plus">＋</span> add member</button>
+  </div>
+  <div class="grid grid-auto">
+    ${state.team.map(m=>{
+      const tasks = tasksByOwner(m.name, currentHorizon);
+      const pct = ownerProgress(m.name, currentHorizon);
+      return `
+      <div class="person-card">
+        <div class="person-head">
+          <div class="row-flex" style="flex:1;min-width:0;gap:12px">
+            ${avatar(m.name)}
+            <div class="person-info">
+              <div class="name" contenteditable="plaintext-only" data-edit-list="team" data-id="${m.id}" data-field="name">${escapeHTML(m.name)}</div>
+              <div class="role" contenteditable="plaintext-only" data-edit-list="team" data-id="${m.id}" data-field="role">${escapeHTML(m.role)}</div>
+            </div>
+          </div>
+          ${donut(pct)}
+        </div>
+        <div class="checklist">
+          ${tasks.length ? tasks.map(t=>`
+            <div class="task ${t.done?'done':''}">
+              <span class="check ${t.done?'on':''}" data-task="${t.id}"></span>
+              <span class="txt" contenteditable="plaintext-only" data-edit-list="tasks" data-id="${t.id}" data-field="title">${escapeHTML(t.title)}</span>
+              <span class="date-pill" data-date="${t.id}">${fmtDate(t.due)||'—'}</span>
+              <span class="menu" data-menu="task:${t.id}">⋯</span>
+            </div>`).join("") : `<div class="muted" style="padding:8px 0;font-size:13px">No ${currentHorizon} tasks yet.</div>`}
+          <button class="add-btn" style="align-self:flex-start;margin-top:8px" data-add="task" data-owner="${escapeHTML(m.name)}"><span class="plus">＋</span> task</button>
+        </div>
+      </div>`;
+    }).join("")}
+  </div>
+  `;
 }
 
 function viewStrategy(){
   const s = state.strategy || {};
   return `
-  <div class="hero"><h1>Strategy &amp; Vision</h1><p>${escapeHTML(s.horizon||"")} · the north star</p></div>
-  <p class="vision">"${escapeHTML(s.vision||"")}"</p>
-  <div class="section-head"><h2>pillars</h2></div>
-  <div class="row row-3">
-    ${(s.pillars||[]).map(p=>`<div class="pillar"><h4 style="color:${p.color||'var(--ink)'}">${escapeHTML(p.name)}</h4><p>${escapeHTML(p.summary)}</p></div>`).join("")}
+  <div class="eyebrow">North Star</div>
+  <h1 class="h1">Strategy &amp; Vision</h1>
+  <p class="lede"><span data-edit="strategy.horizon">${escapeHTML(s.horizon||"")}</span> · long horizon</p>
+
+  <div class="section-head">
+    <div class="section-label">Vision</div>
   </div>
-  <div class="section-head"><h2>okrs</h2></div>
-  <div class="card">
-    ${(s.okrs||[]).map(o=>{ const p=pillarById(o.pillar); return `
+  <p class="vision" contenteditable="plaintext-only" data-edit="strategy.vision">${escapeHTML(s.vision||"")}</p>
+
+  <div class="section-head">
+    <div class="section-label">Pillars</div>
+    <button class="add-btn" data-add="pillar"><span class="plus">＋</span> add pillar</button>
+  </div>
+  <div class="grid grid-3">
+    ${(s.pillars||[]).map(p=>`
+      <div class="pillar" style="border-left:3px solid ${p.color||'var(--accent-deep)'}">
+        <h4 contenteditable="plaintext-only" data-edit-list="strategy.pillars" data-id="${p.id}" data-field="name">${escapeHTML(p.name)}</h4>
+        <p contenteditable="plaintext-only" data-edit-list="strategy.pillars" data-id="${p.id}" data-field="summary">${escapeHTML(p.summary)}</p>
+        <div class="row-flex" style="margin-top:12px;justify-content:flex-end">
+          <span class="menu" data-menu="pillar:${p.id}" style="cursor:pointer;color:var(--muted)">⋯</span>
+        </div>
+      </div>`).join("")}
+  </div>
+
+  <div class="section-head">
+    <div class="section-label">OKRs</div>
+    <button class="add-btn" data-add="okr"><span class="plus">＋</span> add okr</button>
+  </div>
+  <div class="card"><div class="body">
+    ${(s.okrs||[]).map(o=>{
+      const p = pillarById(o.pillar);
+      return `
       <div class="okr">
-        <div style="min-width:0;flex:1">
-          <div style="font-family:var(--serif);font-size:18px">${escapeHTML(o.objective)}</div>
-          <div class="muted" style="font-size:13px">${escapeHTML(o.kr)} ${p?`· <span class="tag">${escapeHTML(p.name)}</span>`:''}</div>
+        <div class="okr-text" style="flex:1;min-width:0">
+          <div class="obj" contenteditable="plaintext-only" data-edit-list="strategy.okrs" data-id="${o.id}" data-field="objective">${escapeHTML(o.objective)}</div>
+          <div class="kr"><span contenteditable="plaintext-only" data-edit-list="strategy.okrs" data-id="${o.id}" data-field="kr">${escapeHTML(o.kr)}</span> ${p?`· <span class="tag" data-pick="okr-pillar:${o.id}">${escapeHTML(p.name)}</span>`:''}</div>
         </div>
-        <div style="width:200px;display:flex;align-items:center;gap:10px">
-          <div style="flex:1">${bar(o.progress,true)}</div>
-          <div class="muted" style="font-variant-numeric:tabular-nums">${Math.round(o.progress*100)}%</div>
+        <div class="okr-prog">
+          <div class="bar" data-prog="okr:${o.id}"><i style="width:${Math.round((o.progress||0)*100)}%"></i></div>
+          <div class="muted" style="font-variant-numeric:tabular-nums;min-width:38px;text-align:right">${Math.round((o.progress||0)*100)}%</div>
+          <span class="menu" data-menu="okr:${o.id}" style="cursor:pointer">⋯</span>
         </div>
-      </div>`;}).join("")}
-  </div>`;
+      </div>`;
+    }).join("")}
+  </div></div>
+  `;
 }
 
 function viewInitiatives(){
   return `
-  <div class="hero"><h1>Initiatives</h1><p>What we're moving this fiscal year.</p></div>
-  <div class="list">
-    ${state.initiatives.map(i=>{ const p=pillarById(i.pillar); return `
-      <div class="item" style="padding:18px 4px;align-items:flex-start;flex-wrap:wrap">
-        <span class="status ${statusMap[i.status].cls}"><span class="pip"></span>${statusMap[i.status].label}</span>
-        <div class="title" style="white-space:normal">
-          <div style="font-family:var(--serif);font-size:20px">${escapeHTML(i.title)}</div>
-          <div class="muted" style="font-size:13px;margin-top:2px">${escapeHTML(i.summary||"")}</div>
+  <div class="eyebrow">Bets</div>
+  <h1 class="h1">Initiatives</h1>
+  <p class="lede">What we're moving this fiscal year.</p>
+
+  <div class="toolbar">
+    <button class="add-btn" data-add="initiative"><span class="plus">＋</span> new initiative</button>
+  </div>
+
+  <div class="grid" style="gap:12px">
+    ${state.initiatives.map(i=>{
+      const p = pillarById(i.pillar);
+      return `
+      <div class="init-row">
+        <span class="status ${statusMap[i.status]?.cls||''}" data-pick="status:${i.id}"><span class="pip"></span>${statusMap[i.status]?.label||i.status}</span>
+        <div class="title">
+          <div class="title-t" contenteditable="plaintext-only" data-edit-list="initiatives" data-id="${i.id}" data-field="title">${escapeHTML(i.title)}</div>
+          <div class="title-s" contenteditable="plaintext-only" data-edit-list="initiatives" data-id="${i.id}" data-field="summary">${escapeHTML(i.summary||"")}</div>
         </div>
-        <div class="meta" style="min-width:120px;text-align:right">
-          <div>${escapeHTML(i.owner||"")}</div>
-          <div style="font-size:12px">${fmtDate(i.due)}</div>
+        <div class="meta" style="text-align:right">
+          <div contenteditable="plaintext-only" data-edit-list="initiatives" data-id="${i.id}" data-field="owner">${escapeHTML(i.owner||"—")}</div>
+          <div class="date-pill" style="margin-top:6px" data-date-init="${i.id}">${fmtDate(i.due)||'set date'}</div>
         </div>
-        <div style="width:200px">
-          ${bar(i.progress)}
-          <div class="muted" style="font-size:12px;margin-top:6px;display:flex;justify-content:space-between">
-            <span>${p?escapeHTML(p.name):''}</span><span>${Math.round((i.progress||0)*100)}%</span>
-          </div>
+        ${p?`<span class="tag" data-pick="pillar:${i.id}">${escapeHTML(p.name)}</span>`:`<span class="tag" data-pick="pillar:${i.id}">no pillar</span>`}
+        <div class="progress-wrap">
+          <div class="bar" data-prog="initiative:${i.id}"><i style="width:${Math.round((i.progress||0)*100)}%"></i></div>
+          <div class="muted" style="font-variant-numeric:tabular-nums;min-width:38px;text-align:right;font-size:12px">${Math.round((i.progress||0)*100)}%</div>
         </div>
-      </div>`;}).join("")}
-  </div>`;
+        <span class="menu" data-menu="initiative:${i.id}">⋯</span>
+      </div>`;
+    }).join("")}
+  </div>
+  `;
 }
 
-let currentHorizon = "weekly";
 function viewTasks(){
   const horizons=["weekly","monthly","quarterly"];
-  const tabs = horizons.map(h=>{ const p=progressFor(h); return `<button data-h="${h}" class="${h===currentHorizon?'active':''}">${h} ${Math.round(p.pct*100)}%</button>`; }).join("");
   const list = state.tasks.filter(t=>t.horizon===currentHorizon);
   const p = progressFor(currentHorizon);
   return `
-  <div class="hero"><h1>Tasks</h1><p>Weekly, monthly, quarterly — what's actually getting done.</p></div>
-  <div class="flex center between mb-3"><div class="tabs" id="hTabs">${tabs}</div><div class="tab-meta">${p.done}/${p.total} done</div></div>
-  <div style="margin-bottom:18px">${bar(p.pct)}</div>
-  <div class="list">
-    ${list.length?list.map(t=>{ const i=initiativeById(t.initiative); return `
-      <div class="item">
-        <span class="check ${t.done?'on':''}" data-task="${t.id}"></span>
-        <div class="title task-title ${t.done?'on':''}">${escapeHTML(t.title)}</div>
-        ${i?`<span class="tag">${escapeHTML(i.title)}</span>`:''}
-        <div class="meta">${fmtDate(t.due)}</div>
-      </div>`;}).join(""):`<div class="muted" style="padding:24px 0">No tasks in this horizon yet. Try ⌘K.</div>`}
-  </div>`;
+  <div class="eyebrow">Execution</div>
+  <h1 class="h1">Tasks</h1>
+  <p class="lede">Weekly, monthly, quarterly — what's actually getting done.</p>
+
+  <div class="toolbar">
+    <div class="period-tabs" id="hTabs">
+      ${horizons.map(h=>{ const pp=progressFor(h); return `<button data-h="${h}" class="${h===currentHorizon?'active':''}">${({weekly:'This Week',monthly:'This Month',quarterly:'This Quarter'})[h]} · ${Math.round(pp.pct*100)}%</button>`; }).join("")}
+    </div>
+    <button class="add-btn" data-add="task"><span class="plus">＋</span> new task</button>
+    <span class="muted" style="margin-left:auto;font-size:13px">${p.done}/${p.total} done</span>
+  </div>
+
+  <div class="card"><div class="top-bar"><i style="width:${Math.round(p.pct*100)}%"></i></div>
+    <div class="body">
+      <div class="checklist">
+        ${list.length ? list.map(t=>{
+          const i = initiativeById(t.initiative);
+          return `
+          <div class="task ${t.done?'done':''}">
+            <span class="check ${t.done?'on':''}" data-task="${t.id}"></span>
+            <span class="txt" contenteditable="plaintext-only" data-edit-list="tasks" data-id="${t.id}" data-field="title">${escapeHTML(t.title)}</span>
+            ${i?`<span class="tag" data-pick="task-init:${t.id}">${escapeHTML(i.title)}</span>`:`<span class="tag" data-pick="task-init:${t.id}">no initiative</span>`}
+            <span class="tag" data-pick="task-owner:${t.id}">${escapeHTML(t.owner||'unassigned')}</span>
+            <span class="date-pill" data-date="${t.id}">${fmtDate(t.due)||'set date'}</span>
+            <span class="menu" data-menu="task:${t.id}">⋯</span>
+          </div>`;
+        }).join("") : `<div class="muted" style="padding:20px 0">No tasks in this horizon yet.</div>`}
+      </div>
+    </div>
+  </div>
+  `;
 }
 
 function viewRecognitions(){
   const sorted = [...state.recognitions].sort((a,b)=>b.date.localeCompare(a.date));
   const byMonth = {};
-  sorted.forEach(r=>{ const k=r.date.slice(0,7); (byMonth[k]=byMonth[k]||[]).push(r); });
+  sorted.forEach(r=>{ const k=(r.date||"").slice(0,7); (byMonth[k]=byMonth[k]||[]).push(r); });
   const months = Object.keys(byMonth).sort().reverse();
   return `
-  <div class="hero"><h1>Recognitions</h1><p>A log of what the team did well — so we don't forget at review time.</p></div>
-  ${months.map(m=>{ const d=new Date(m+"-01T00:00:00"); const label=d.toLocaleDateString("en-US",{month:"long",year:"numeric"}); return `
-    <div class="section-head"><h2>${label}</h2><span class="muted">${byMonth[m].length}</span></div>
-    <div class="recog">
+  <div class="eyebrow">Reinforce what works</div>
+  <h1 class="h1">Recognitions</h1>
+  <p class="lede">A log of what the team did well.</p>
+
+  <div class="toolbar">
+    <button class="add-btn" data-add="recognition"><span class="plus">＋</span> new recognition</button>
+  </div>
+
+  ${months.length ? months.map(m=>{
+    const d=new Date(m+"-01T00:00:00");
+    const label=isNaN(d)?m:d.toLocaleDateString("en-US",{month:"long",year:"numeric"});
+    return `
+    <div class="section-head"><div class="section-label">${label}</div><span class="muted">${byMonth[m].length}</span></div>
+    <div class="card"><div class="body">
       ${byMonth[m].map(r=>`
-        <div class="item">
-          <div class="quote">"${escapeHTML(r.note)}"</div>
-          <div class="meta"><span>${escapeHTML(r.person)}</span><span>·</span><span class="tag">${escapeHTML(r.type)}</span><span>·</span><span>${fmtDate(r.date)}</span></div>
+        <div class="recog-item">
+          ${avatar(r.person, 36)}
+          <div style="flex:1;min-width:0">
+            <div class="quote" contenteditable="plaintext-only" data-edit-list="recognitions" data-id="${r.id}" data-field="note">"${escapeHTML(r.note)}"</div>
+            <div class="meta">
+              <span contenteditable="plaintext-only" data-edit-list="recognitions" data-id="${r.id}" data-field="person">${escapeHTML(r.person)}</span>
+              <span>·</span>
+              <span class="tag" data-pick="recog-type:${r.id}">${escapeHTML(r.type)}</span>
+              <span>·</span>
+              <span class="date-pill" data-date-recog="${r.id}">${fmtDate(r.date)}</span>
+              <span class="menu" data-menu="recognition:${r.id}" style="margin-left:auto;cursor:pointer">⋯</span>
+            </div>
+          </div>
         </div>`).join("")}
-    </div>`;}).join("")}`;
+    </div></div>`;
+  }).join("") : `<div class="muted">No recognitions yet.</div>`}
+  `;
 }
 
 function viewTeam(){
   const today=new Date();
-  const allOOO = state.team.flatMap(m=>(m.ooo||[]).map(o=>({name:m.name,...o}))).sort((a,b)=>a.from.localeCompare(b.from));
-  const requests = state.team.flatMap(m=>(m.requests||[]).map(r=>({name:m.name,...r})));
+  const allOOO = state.team.flatMap(m=>(m.ooo||[]).map((o,idx)=>({memberId:m.id,name:m.name,idx,...o}))).sort((a,b)=>(a.from||"").localeCompare(b.from||""));
+  const requests = state.team.flatMap(m=>(m.requests||[]).map(r=>({memberId:m.id,name:m.name,...r})));
   const pending = requests.filter(r=>r.status==="pending");
   return `
-  <div class="hero"><h1>Team</h1><p>${state.team.length} people · ${pending.length} pending requests</p></div>
-  <div class="row row-3">
-    ${state.team.map(m=>{ const ooo=(m.ooo||[]).find(o=>new Date(o.from)<=today && today<=new Date(o.to)); return `
-      <div class="person">
-        <div class="name">${escapeHTML(m.name)}</div>
-        <div class="role">${escapeHTML(m.role)}</div>
-        <div class="next">${ooo?`<span class="tag" style="color:var(--danger);border-color:var(--danger)">ooo · until ${fmtDate(ooo.to)}</span>`:`next 1:1 · ${fmtDate(m.next1on1)}`}</div>
-      </div>`;}).join("")}
+  <div class="eyebrow">People</div>
+  <h1 class="h1">Team</h1>
+  <p class="lede">${state.team.length} people · ${pending.length} pending requests</p>
+
+  <div class="toolbar">
+    <button class="add-btn" data-add="member"><span class="plus">＋</span> add member</button>
   </div>
-  <div class="row row-2" style="margin-top:36px">
+
+  <div class="grid grid-3">
+    ${state.team.map(m=>{
+      const ooo=(m.ooo||[]).find(o=>new Date(o.from)<=today && today<=new Date(o.to));
+      const pct = ownerProgress(m.name);
+      return `
+      <div class="person-card">
+        <div class="person-head">
+          <div class="row-flex" style="flex:1;min-width:0;gap:12px">
+            ${avatar(m.name)}
+            <div class="person-info">
+              <div class="name" contenteditable="plaintext-only" data-edit-list="team" data-id="${m.id}" data-field="name">${escapeHTML(m.name)}</div>
+              <div class="role" contenteditable="plaintext-only" data-edit-list="team" data-id="${m.id}" data-field="role">${escapeHTML(m.role)}</div>
+            </div>
+          </div>
+          ${donut(pct)}
+        </div>
+        <div style="font-size:13px;color:var(--ink-2)">
+          ${ooo?`<span class="tag" style="color:var(--danger);border-color:var(--danger)">ooo · until ${fmtDate(ooo.to)}</span>`:`next 1:1 · <span class="date-pill" data-date-member="${m.id}">${fmtDate(m.next1on1)||'set'}</span>`}
+        </div>
+        <div class="row-flex" style="gap:6px;flex-wrap:wrap">
+          <button class="add-btn" data-add="ooo" data-member="${m.id}"><span class="plus">＋</span> ooo</button>
+          <button class="add-btn" data-add="request" data-member="${m.id}"><span class="plus">＋</span> request</button>
+          <span class="menu" data-menu="member:${m.id}" style="margin-left:auto;cursor:pointer">⋯</span>
+        </div>
+      </div>`;
+    }).join("")}
+  </div>
+
+  <div class="grid grid-2 mt-4">
     <div>
-      <div class="section-head"><h2>vacations &amp; ooo</h2></div>
-      <div class="list">
-        ${allOOO.length?allOOO.map(o=>`
-          <div class="item">
-            <div class="title">${escapeHTML(o.name)}</div>
+      <div class="section-head"><div class="section-label">Vacations &amp; OOO</div></div>
+      <div class="card"><div class="body">
+        ${allOOO.length ? allOOO.map(o=>`
+          <div class="task">
+            <div class="txt"><b>${escapeHTML(o.name)}</b></div>
             <span class="tag">${escapeHTML(o.type||"")}</span>
-            <div class="meta">${fmtDate(o.from)} – ${fmtDate(o.to)}</div>
-          </div>`).join(""):`<div class="muted" style="padding:14px 0">No OOO scheduled.</div>`}
-      </div>
+            <span class="date-pill">${fmtDate(o.from)} – ${fmtDate(o.to)}</span>
+            <span class="menu" data-menu="ooo:${o.memberId}:${o.idx}">⋯</span>
+          </div>`).join("") : `<div class="muted" style="padding:12px 0">No OOO scheduled.</div>`}
+      </div></div>
     </div>
     <div>
-      <div class="section-head"><h2>pending requests</h2></div>
-      <div class="list">
-        ${requests.length?requests.map(r=>`
-          <div class="item">
-            <div class="title">${escapeHTML(r.title)}</div>
+      <div class="section-head"><div class="section-label">Pending requests</div></div>
+      <div class="card"><div class="body">
+        ${requests.length ? requests.map(r=>`
+          <div class="task">
+            <div class="txt"><b>${escapeHTML(r.title)}</b></div>
             <span class="tag">${escapeHTML(r.name)}</span>
-            <span class="status ${r.status==='approved'?'ok':r.status==='blocked'?'blocked':''}"><span class="pip"></span>${escapeHTML(r.status)}</span>
-          </div>`).join(""):`<div class="muted" style="padding:14px 0">Nothing pending.</div>`}
-      </div>
+            <span class="status ${r.status==='approved'?'ok':r.status==='blocked'?'blocked':''}" data-pick="req-status:${r.memberId}:${r.id}"><span class="pip"></span>${escapeHTML(r.status)}</span>
+            <span class="menu" data-menu="request:${r.memberId}:${r.id}">⋯</span>
+          </div>`).join("") : `<div class="muted" style="padding:12px 0">Nothing pending.</div>`}
+      </div></div>
     </div>
-  </div>`;
+  </div>
+  `;
 }
 
-// ---------- router ----------
-const routes = { home:{label:"Home",render:viewHome}, strategy:{label:"Strategy & Vision",render:viewStrategy}, initiatives:{label:"Initiatives",render:viewInitiatives}, tasks:{label:"Tasks",render:viewTasks}, recognitions:{label:"Recognitions",render:viewRecognitions}, team:{label:"Team",render:viewTeam} };
+// ====================== ROUTER ======================
+const routes = { home:viewHome, strategy:viewStrategy, initiatives:viewInitiatives, tasks:viewTasks, recognitions:viewRecognitions, team:viewTeam };
 let route = "home";
 function go(r){ if(!routes[r])return; route=r; render(); }
+
 function render(){
-  $("#view").innerHTML = routes[route].render();
-  $("#crumbs").textContent = routes[route].label;
+  $("#view").innerHTML = routes[route]();
   $$("#nav a").forEach(a=>a.classList.toggle("active",a.dataset.route===route));
-  $$("[data-go]").forEach(a=>a.addEventListener("click",()=>go(a.dataset.go)));
-  $$(".check[data-task]").forEach(el=>el.addEventListener("click",()=>{
-    const t=state.tasks.find(x=>x.id===el.dataset.task);
-    if(t){ t.done=!t.done; save(); render(); }
-  }));
-  $$("#hTabs button").forEach(b=>b.addEventListener("click",()=>{ currentHorizon=b.dataset.h; render(); }));
+  bindHandlers();
 }
 
-// ---------- quick capture ----------
+// ====================== HANDLERS ======================
+function findItemById(listPath, id){
+  const list = getPath(state, listPath);
+  if (!Array.isArray(list)) return null;
+  return list.find(x=>x.id===id);
+}
+
+function bindHandlers(){
+  // nav
+  $$("#nav a").forEach(a=>a.onclick=()=>go(a.dataset.route));
+
+  // period tabs
+  $$("#hTabs button").forEach(b=>b.onclick=()=>{ currentHorizon=b.dataset.h; render(); });
+
+  // inline edit (single object path)
+  $$("[data-edit]").forEach(el=>{
+    if (el.getAttribute("contenteditable") == null) el.setAttribute("contenteditable","plaintext-only");
+    el.onblur = () => {
+      const path = el.dataset.edit;
+      const newVal = el.textContent.trim();
+      if (getPath(state, path) === newVal) return;
+      setPath(state, path, newVal);
+      save();
+      if (path.startsWith("user.workspace") || path.startsWith("user.name")) {/* re-render not needed */}
+    };
+    el.onkeydown = e => { if(e.key==="Enter"){ e.preventDefault(); el.blur(); } };
+  });
+
+  // inline edit (list item)
+  $$("[data-edit-list]").forEach(el=>{
+    if (el.getAttribute("contenteditable") == null) el.setAttribute("contenteditable","plaintext-only");
+    el.onblur = () => {
+      const item = findItemById(el.dataset.editList, el.dataset.id);
+      if (!item) return;
+      const field = el.dataset.field;
+      const newVal = el.textContent.trim();
+      if (item[field] === newVal) return;
+      item[field] = newVal;
+      save();
+    };
+    el.onkeydown = e => { if(e.key==="Enter"){ e.preventDefault(); el.blur(); } };
+  });
+
+  // checkboxes
+  $$(".check[data-task]").forEach(el=>el.onclick=()=>{
+    const t = state.tasks.find(x=>x.id===el.dataset.task);
+    if(t){ t.done=!t.done; save(); render(); }
+  });
+
+  // progress bars (drag)
+  $$("[data-prog]").forEach(bar=>{
+    const setFromEvent = (e) => {
+      const r = bar.getBoundingClientRect();
+      const x = (e.touches?e.touches[0].clientX:e.clientX) - r.left;
+      const pct = Math.max(0, Math.min(1, x / r.width));
+      const [kind, id] = bar.dataset.prog.split(":");
+      if (kind === "initiative"){ const it = initiativeById(id); if(it) it.progress = pct; }
+      if (kind === "okr"){ const o = state.strategy.okrs.find(x=>x.id===id); if(o) o.progress = pct; }
+      bar.querySelector("i").style.width = (pct*100)+"%";
+    };
+    let dragging = false;
+    bar.onmousedown = e=>{ dragging=true; setFromEvent(e); };
+    bar.ontouchstart = e=>{ dragging=true; setFromEvent(e); };
+    document.addEventListener("mousemove", e=>{ if(dragging) setFromEvent(e); });
+    document.addEventListener("touchmove", e=>{ if(dragging) setFromEvent(e); });
+    document.addEventListener("mouseup", ()=>{ if(dragging){ dragging=false; save(); render(); } });
+    document.addEventListener("touchend", ()=>{ if(dragging){ dragging=false; save(); render(); } });
+  });
+
+  // pickers (status, pillar, type…)
+  $$("[data-pick]").forEach(el=>el.onclick=e=>{
+    e.stopPropagation();
+    const [kind, ...rest] = el.dataset.pick.split(":");
+    openPicker(el, kind, rest);
+  });
+
+  // date pills
+  $$("[data-date]").forEach(el=>el.onclick=()=>openDate(el, "task", el.dataset.date));
+  $$("[data-date-init]").forEach(el=>el.onclick=()=>openDate(el, "initiative", el.dataset.dateInit));
+  $$("[data-date-recog]").forEach(el=>el.onclick=()=>openDate(el, "recognition", el.dataset.dateRecog));
+  $$("[data-date-member]").forEach(el=>el.onclick=()=>openDate(el, "member", el.dataset.dateMember));
+
+  // hover menus
+  $$("[data-menu]").forEach(el=>el.onclick=e=>{
+    e.stopPropagation();
+    openItemMenu(el, el.dataset.menu);
+  });
+
+  // add buttons
+  $$("[data-add]").forEach(el=>el.onclick=e=>{
+    e.stopPropagation();
+    openAddModal(el.dataset.add, el.dataset);
+  });
+
+  // delete inline
+  $$("[data-del]").forEach(el=>el.onclick=e=>{
+    e.stopPropagation();
+    const [kind,id] = el.dataset.del.split(":");
+    deleteItem(kind, id);
+  });
+}
+
+// ====================== PICKERS / DROPDOWNS ======================
+let openDD = null;
+function closeDD(){ if(openDD){ openDD.remove(); openDD=null; } }
+document.addEventListener("click", closeDD);
+
+function showDD(anchor, items){
+  closeDD();
+  const dd = document.createElement("div");
+  dd.className = "dd";
+  items.forEach(it=>{
+    if (it.sep){ const s=document.createElement("div"); s.className="sep"; dd.appendChild(s); return; }
+    const b = document.createElement("button");
+    if (it.danger) b.className = "danger";
+    b.textContent = it.label;
+    b.onclick = (e)=>{ e.stopPropagation(); it.action(); closeDD(); };
+    dd.appendChild(b);
+  });
+  document.body.appendChild(dd);
+  const r = anchor.getBoundingClientRect();
+  dd.style.top = (window.scrollY + r.bottom + 6) + "px";
+  dd.style.left = (window.scrollX + r.left) + "px";
+  openDD = dd;
+}
+
+function openPicker(anchor, kind, rest){
+  if (kind === "status"){
+    const id = rest[0]; const it = initiativeById(id);
+    const opts = ["on-track","at-risk","blocked","done"];
+    showDD(anchor, opts.map(o=>({label:statusMap[o].label, action:()=>{ it.status=o; save(); render(); }})));
+  }
+  else if (kind === "pillar"){
+    const id = rest[0]; const it = initiativeById(id);
+    const opts = state.strategy.pillars.map(p=>({label:p.name, action:()=>{ it.pillar=p.id; save(); render(); }}));
+    opts.push({sep:true});
+    opts.push({label:"(none)", action:()=>{ it.pillar=null; save(); render(); }});
+    showDD(anchor, opts);
+  }
+  else if (kind === "okr-pillar"){
+    const id = rest[0]; const o = state.strategy.okrs.find(x=>x.id===id);
+    showDD(anchor, state.strategy.pillars.map(p=>({label:p.name, action:()=>{ o.pillar=p.id; save(); render(); }})));
+  }
+  else if (kind === "task-init"){
+    const id = rest[0]; const t = state.tasks.find(x=>x.id===id);
+    const items = state.initiatives.map(i=>({label:i.title, action:()=>{ t.initiative=i.id; save(); render(); }}));
+    items.push({sep:true});
+    items.push({label:"(none)", action:()=>{ t.initiative=null; save(); render(); }});
+    showDD(anchor, items);
+  }
+  else if (kind === "task-owner"){
+    const id = rest[0]; const t = state.tasks.find(x=>x.id===id);
+    const items = state.team.map(m=>({label:m.name, action:()=>{ t.owner=m.name; save(); render(); }}));
+    items.push({sep:true});
+    items.push({label:"unassigned", action:()=>{ t.owner=""; save(); render(); }});
+    showDD(anchor, items);
+  }
+  else if (kind === "recog-type"){
+    const id = rest[0]; const r = state.recognitions.find(x=>x.id===id);
+    ["impact","effort","values","growth"].forEach(()=>{});
+    showDD(anchor, ["impact","effort","values","growth"].map(o=>({label:o, action:()=>{ r.type=o; save(); render(); }})));
+  }
+  else if (kind === "req-status"){
+    const [mid, rid] = rest;
+    const m = state.team.find(x=>x.id===mid); const req = m?.requests?.find(x=>x.id===rid);
+    showDD(anchor, ["pending","approved","blocked","done"].map(o=>({label:o, action:()=>{ req.status=o; save(); render(); }})));
+  }
+}
+
+function openDate(anchor, kind, id){
+  closeDD();
+  const inp = document.createElement("input");
+  inp.type = "date";
+  let current = "";
+  if (kind==="task"){ current = state.tasks.find(x=>x.id===id)?.due || ""; }
+  if (kind==="initiative"){ current = initiativeById(id)?.due || ""; }
+  if (kind==="recognition"){ current = state.recognitions.find(x=>x.id===id)?.date || ""; }
+  if (kind==="member"){ current = state.team.find(x=>x.id===id)?.next1on1 || ""; }
+  inp.value = current;
+  const dd = document.createElement("div");
+  dd.className = "dd";
+  dd.appendChild(inp);
+  document.body.appendChild(dd);
+  const r = anchor.getBoundingClientRect();
+  dd.style.top = (window.scrollY + r.bottom + 6) + "px";
+  dd.style.left = (window.scrollX + r.left) + "px";
+  openDD = dd;
+  setTimeout(()=>inp.focus(),10);
+  inp.onchange = () => {
+    const v = inp.value;
+    if (kind==="task"){ const t = state.tasks.find(x=>x.id===id); if(t) t.due=v; }
+    if (kind==="initiative"){ const it = initiativeById(id); if(it) it.due=v; }
+    if (kind==="recognition"){ const rec = state.recognitions.find(x=>x.id===id); if(rec) rec.date=v; }
+    if (kind==="member"){ const m = state.team.find(x=>x.id===id); if(m) m.next1on1=v; }
+    save(); closeDD(); render();
+  };
+}
+
+function openItemMenu(anchor, spec){
+  const [kind, ...rest] = spec.split(":");
+  const items = [{label:"Delete", danger:true, action:()=>deleteItem(kind, ...rest)}];
+  showDD(anchor, items);
+}
+
+function deleteItem(kind, ...ids){
+  if (kind==="task"){ state.tasks = state.tasks.filter(t=>t.id!==ids[0]); }
+  else if (kind==="initiative"){ state.initiatives = state.initiatives.filter(i=>i.id!==ids[0]); }
+  else if (kind==="recognition"){ state.recognitions = state.recognitions.filter(r=>r.id!==ids[0]); }
+  else if (kind==="pillar"){ state.strategy.pillars = state.strategy.pillars.filter(p=>p.id!==ids[0]); }
+  else if (kind==="okr"){ state.strategy.okrs = state.strategy.okrs.filter(o=>o.id!==ids[0]); }
+  else if (kind==="member"){ state.team = state.team.filter(m=>m.id!==ids[0]); }
+  else if (kind==="priorities"){ state.priorities = state.priorities.filter(p=>p.id!==ids[0]); }
+  else if (kind==="ooo"){ const m=state.team.find(x=>x.id===ids[0]); if(m){ (m.ooo||[]).splice(parseInt(ids[1],10),1); } }
+  else if (kind==="request"){ const m=state.team.find(x=>x.id===ids[0]); if(m){ m.requests = (m.requests||[]).filter(r=>r.id!==ids[1]); } }
+  save(); render(); toast("Deleted");
+}
+
+// ====================== ADD MODAL ======================
+const FORMS = {
+  priority: {
+    title:"New priority",
+    fields:[{ name:"label", label:"Label", required:true }],
+    save: (v)=>{ state.priorities.push({ id:uid("pr"), label:v.label }); }
+  },
+  initiative: {
+    title:"New initiative",
+    fields:[
+      { name:"title", label:"Title", required:true },
+      { name:"summary", label:"Summary", type:"textarea" },
+      { name:"owner", label:"Owner", type:"select-team" },
+      { name:"pillar", label:"Pillar", type:"select-pillar" },
+      { name:"status", label:"Status", type:"select", options:[["on-track","on track"],["at-risk","at risk"],["blocked","blocked"],["done","done"]] },
+      { name:"due", label:"Due", type:"date" }
+    ],
+    save: (v)=>{ state.initiatives.push({ id:uid("i"), title:v.title, summary:v.summary, owner:v.owner, pillar:v.pillar||null, status:v.status||"on-track", due:v.due||"", progress:0 }); }
+  },
+  task: {
+    title:"New task",
+    fields:[
+      { name:"title", label:"Title", required:true },
+      { name:"horizon", label:"Horizon", type:"select", options:[["weekly","weekly"],["monthly","monthly"],["quarterly","quarterly"]], default:"weekly" },
+      { name:"initiative", label:"Initiative", type:"select-init" },
+      { name:"owner", label:"Owner", type:"select-team" },
+      { name:"due", label:"Due", type:"date" }
+    ],
+    save: (v, extras)=>{ state.tasks.unshift({ id:uid("t"), title:v.title, horizon:v.horizon||"weekly", initiative:v.initiative||null, owner:v.owner||extras?.owner||"", due:v.due||"", done:false }); }
+  },
+  recognition: {
+    title:"New recognition",
+    fields:[
+      { name:"person", label:"Person", required:true },
+      { name:"note", label:"Note", type:"textarea", required:true },
+      { name:"type", label:"Type", type:"select", options:[["impact","impact"],["effort","effort"],["values","values"],["growth","growth"]], default:"impact" },
+      { name:"date", label:"Date", type:"date", default: new Date().toISOString().slice(0,10) }
+    ],
+    save: (v)=>{ state.recognitions.unshift({ id:uid("r"), date:v.date||new Date().toISOString().slice(0,10), person:v.person, type:v.type||"impact", note:v.note }); }
+  },
+  pillar: {
+    title:"New pillar",
+    fields:[
+      { name:"name", label:"Name", required:true },
+      { name:"summary", label:"Summary", type:"textarea" }
+    ],
+    save: (v)=>{ state.strategy.pillars.push({ id:uid("p"), name:v.name, summary:v.summary||"", color:"#6B5BD3" }); }
+  },
+  okr: {
+    title:"New OKR",
+    fields:[
+      { name:"objective", label:"Objective", required:true },
+      { name:"kr", label:"Key Result" },
+      { name:"pillar", label:"Pillar", type:"select-pillar" }
+    ],
+    save: (v)=>{ state.strategy.okrs.push({ id:uid("o"), objective:v.objective, kr:v.kr||"", pillar:v.pillar||null, progress:0 }); }
+  },
+  member: {
+    title:"Add member",
+    fields:[
+      { name:"name", label:"Name", required:true },
+      { name:"role", label:"Role" },
+      { name:"next1on1", label:"Next 1:1", type:"date" }
+    ],
+    save: (v)=>{ state.team.push({ id:uid("m"), name:v.name, role:v.role||"", next1on1:v.next1on1||"", ooo:[], requests:[] }); }
+  },
+  ooo: {
+    title:"Add OOO",
+    fields:[
+      { name:"from", label:"From", type:"date", required:true },
+      { name:"to",   label:"To",   type:"date", required:true },
+      { name:"type", label:"Type", type:"select", options:[["vacation","vacation"],["sick","sick"],["personal","personal"],["holiday","holiday"]], default:"vacation" }
+    ],
+    save: (v, extras)=>{ const m=state.team.find(x=>x.id===extras.member); if(m){ m.ooo=m.ooo||[]; m.ooo.push({from:v.from,to:v.to,type:v.type||"vacation"}); } }
+  },
+  request: {
+    title:"Add request",
+    fields:[
+      { name:"title", label:"Title", required:true },
+      { name:"status", label:"Status", type:"select", options:[["pending","pending"],["approved","approved"],["blocked","blocked"],["done","done"]], default:"pending" }
+    ],
+    save: (v, extras)=>{ const m=state.team.find(x=>x.id===extras.member); if(m){ m.requests=m.requests||[]; m.requests.push({id:uid("q"),title:v.title,status:v.status||"pending"}); } }
+  }
+};
+
+function openAddModal(kind, extras){
+  const def = FORMS[kind]; if(!def) return;
+  $("#formTitle").textContent = def.title;
+  const body = $("#formBody");
+  body.innerHTML = "";
+  def.fields.forEach(f=>{
+    const wrap = document.createElement("div");
+    wrap.className = "field";
+    const id = "f_"+f.name;
+    let input;
+    if (f.type === "textarea"){ input = document.createElement("textarea"); }
+    else if (f.type === "select"){
+      input = document.createElement("select");
+      f.options.forEach(([val,lab])=>{ const o=document.createElement("option"); o.value=val; o.textContent=lab; input.appendChild(o); });
+    }
+    else if (f.type === "select-pillar"){
+      input = document.createElement("select");
+      const blank = document.createElement("option"); blank.value=""; blank.textContent="(none)"; input.appendChild(blank);
+      state.strategy.pillars.forEach(p=>{ const o=document.createElement("option"); o.value=p.id; o.textContent=p.name; input.appendChild(o); });
+    }
+    else if (f.type === "select-init"){
+      input = document.createElement("select");
+      const blank = document.createElement("option"); blank.value=""; blank.textContent="(none)"; input.appendChild(blank);
+      state.initiatives.forEach(i=>{ const o=document.createElement("option"); o.value=i.id; o.textContent=i.title; input.appendChild(o); });
+    }
+    else if (f.type === "select-team"){
+      input = document.createElement("select");
+      const blank = document.createElement("option"); blank.value=""; blank.textContent="(unassigned)"; input.appendChild(blank);
+      state.team.forEach(m=>{ const o=document.createElement("option"); o.value=m.name; o.textContent=m.name; input.appendChild(o); });
+      if (extras?.owner) input.value = extras.owner;
+    }
+    else { input = document.createElement("input"); input.type = f.type === "date" ? "date" : "text"; }
+    input.id = id; input.name = f.name;
+    if (f.default && !input.value) input.value = f.default;
+    if (f.required) input.required = true;
+    const lbl = document.createElement("label"); lbl.textContent = f.label; lbl.htmlFor = id;
+    wrap.appendChild(lbl); wrap.appendChild(input);
+    body.appendChild(wrap);
+  });
+  $("#formModal").hidden = false;
+  setTimeout(()=>{ const first = body.querySelector("input,textarea,select"); first && first.focus(); }, 30);
+  $("#formSave").onclick = () => {
+    const v = {};
+    let missing = false;
+    def.fields.forEach(f=>{
+      const el = body.querySelector("[name='"+f.name+"']");
+      v[f.name] = el?.value?.trim?.() ?? el?.value ?? "";
+      if (f.required && !v[f.name]) missing = true;
+    });
+    if (missing){ toast("Fill required fields"); return; }
+    def.save(v, extras||{});
+    save();
+    $("#formModal").hidden = true;
+    render();
+    toast("Added");
+  };
+}
+
+// ====================== QUICK CAPTURE ======================
 let captureType="task";
-function openModal(){ $("#modal").hidden=false; setTimeout(()=>$("#captureInput").focus(),30); }
-function closeModal(){ $("#modal").hidden=true; $("#captureInput").value=""; }
+function openCapture(){ $("#captureModal").hidden=false; setTimeout(()=>$("#captureInput").focus(),30); }
+function closeCapture(){ $("#captureModal").hidden=true; $("#captureInput").value=""; }
 function commitCapture(){
   const text=$("#captureInput").value.trim(); if(!text)return;
   const today=new Date().toISOString().slice(0,10);
   if(captureType==="task"){
-    state.tasks.unshift({ id:"t"+Date.now(), title:text, horizon:$("#captureHorizon").value, initiative:null, due:today, done:false });
+    state.tasks.unshift({ id:uid("t"), title:text, horizon:$("#captureHorizon").value, initiative:null, owner:"", due:today, done:false });
   } else if(captureType==="recognition"){
-    state.recognitions.unshift({ id:"r"+Date.now(), date:today, person:"—", type:"impact", note:text });
+    state.recognitions.unshift({ id:uid("r"), date:today, person:"—", type:"impact", note:text });
   } else if(captureType==="request"){
-    const me=state.team[0]; if(me){ me.requests=me.requests||[]; me.requests.push({ id:"q"+Date.now(), title:text, status:"pending" }); }
+    const me=state.team[0]; if(me){ me.requests=me.requests||[]; me.requests.push({ id:uid("q"), title:text, status:"pending" }); }
   }
-  save(); closeModal(); render(); toast("Saved");
+  save(); closeCapture(); render(); toast("Saved");
 }
 
-// ---------- Excel export ----------
+// ====================== EXCEL ======================
 function exportXlsx(){
   const wb = XLSX.utils.book_new();
-  const meta = [{ key:"vision", value:state.strategy.vision }, { key:"horizon", value:state.strategy.horizon }];
-  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(meta), "Strategy");
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet([
+    { key:"vision", value:state.strategy.vision },
+    { key:"horizon", value:state.strategy.horizon },
+    { key:"user.name", value:state.user.name },
+    { key:"user.workspace", value:state.user.workspace }
+  ]), "Strategy");
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(state.priorities), "Priorities");
   XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(state.strategy.pillars||[]), "Pillars");
   XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(state.strategy.okrs||[]), "OKRs");
   XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(state.initiatives), "Initiatives");
@@ -510,34 +1174,35 @@ function exportXlsx(){
   XLSX.writeFile(wb, `command-center-${stamp}.xlsx`);
   toast("Excel downloaded");
 }
-
-// ---------- Excel import ----------
-function readSheet(wb, name){
-  const ws = wb.Sheets[name]; if(!ws) return [];
-  return XLSX.utils.sheet_to_json(ws, { defval:"" });
-}
+function readSheet(wb, name){ const ws=wb.Sheets[name]; if(!ws) return []; return XLSX.utils.sheet_to_json(ws,{defval:""}); }
 function importXlsx(file){
   const reader = new FileReader();
   reader.onload = (e) => {
     try{
       const wb = XLSX.read(e.target.result, { type:"array" });
       const strategyRows = readSheet(wb,"Strategy");
-      const vision = strategyRows.find(r=>r.key==="vision")?.value || state.strategy.vision;
-      const horizon = strategyRows.find(r=>r.key==="horizon")?.value || state.strategy.horizon;
+      const get = k => strategyRows.find(r=>r.key===k)?.value;
+      const vision = get("vision") || state.strategy.vision;
+      const horizon = get("horizon") || state.strategy.horizon;
+      const userName = get("user.name") || state.user.name;
+      const userWs = get("user.workspace") || state.user.workspace;
       const pillars = readSheet(wb,"Pillars");
-      const okrs = readSheet(wb,"OKRs").map(o=>({...o, progress: typeof o.progress==="number"?o.progress:parseFloat(o.progress)||0 }));
-      const initiatives = readSheet(wb,"Initiatives").map(i=>({...i, progress: typeof i.progress==="number"?i.progress:parseFloat(i.progress)||0, due:String(i.due||"") }));
-      const tasks = readSheet(wb,"Tasks").map(t=>({ id:t.id, title:t.title, horizon:t.horizon, initiative:t.initiative||null, due:String(t.due||""), done: t.done===true || /^(yes|true|1|x)$/i.test(String(t.done||"")) }));
+      const okrs = readSheet(wb,"OKRs").map(o=>({...o, progress: parseFloat(o.progress)||0 }));
+      const priorities = readSheet(wb,"Priorities");
+      const initiatives = readSheet(wb,"Initiatives").map(i=>({...i, progress: parseFloat(i.progress)||0, due:String(i.due||"") }));
+      const tasks = readSheet(wb,"Tasks").map(t=>({ id:t.id||uid("t"), title:t.title, horizon:t.horizon, initiative:t.initiative||null, owner:t.owner||"", due:String(t.due||""), done: t.done===true || /^(yes|true|1|x)$/i.test(String(t.done||"")) }));
       const recognitions = readSheet(wb,"Recognitions").map(r=>({...r, date:String(r.date||"")}));
       const teamRows = readSheet(wb,"Team");
       const oooRows = readSheet(wb,"OOO");
       const reqRows = readSheet(wb,"Requests");
       const team = teamRows.map(m=>({
-        id:m.id, name:m.name, role:m.role, next1on1:String(m.next1on1||""),
+        id:m.id||uid("m"), name:m.name, role:m.role, next1on1:String(m.next1on1||""),
         ooo: oooRows.filter(o=>o.memberId===m.id).map(o=>({from:String(o.from||""),to:String(o.to||""),type:o.type||"vacation"})),
-        requests: reqRows.filter(r=>r.memberId===m.id).map(r=>({id:r.id,title:r.title,status:r.status||"pending"}))
+        requests: reqRows.filter(r=>r.memberId===m.id).map(r=>({id:r.id||uid("q"),title:r.title,status:r.status||"pending"}))
       }));
       state = {
+        user:{ name:userName, workspace:userWs },
+        priorities,
         strategy:{ vision, horizon, pillars, okrs },
         initiatives, tasks, recognitions, team
       };
@@ -549,23 +1214,24 @@ function importXlsx(file){
   reader.readAsArrayBuffer(file);
 }
 
-// ---------- boot ----------
+// ====================== BOOT ======================
 $("#today").textContent = new Date().toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
-$$("#nav a").forEach(a=>a.addEventListener("click",()=>go(a.dataset.route)));
-$("#kTrigger").addEventListener("click",openModal);
-$("#modalClose").addEventListener("click",closeModal);
-$("#modal").addEventListener("click",e=>{ if(e.target.id==="modal") closeModal(); });
-$$("#captureType button").forEach(b=>b.addEventListener("click",()=>{
+$("#kTrigger").onclick = openCapture;
+$$("[data-close]").forEach(b=>b.onclick=()=>{ $("#"+b.dataset.close).hidden=true; });
+$$("#captureType button").forEach(b=>b.onclick=()=>{
   captureType=b.dataset.type;
   $$("#captureType button").forEach(x=>x.classList.toggle("active",x===b));
   $("#captureMeta").style.display = captureType==="task" ? "" : "none";
-}));
-$("#captureInput").addEventListener("keydown",e=>{ if(e.key==="Enter") commitCapture(); if(e.key==="Escape") closeModal(); });
-document.addEventListener("keydown",e=>{ if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){ e.preventDefault(); openModal(); } });
-$("#exportXlsx").addEventListener("click",exportXlsx);
-$("#importXlsxBtn").addEventListener("click",()=>$("#importXlsx").click());
-$("#importXlsx").addEventListener("change",e=>{ const f=e.target.files[0]; if(f) importXlsx(f); e.target.value=""; });
-$("#resetBtn").addEventListener("click",()=>{ if(confirm("Reset all data to seed?")){ state=JSON.parse(JSON.stringify(SEED)); save(); render(); toast("Reset"); } });
+});
+$("#captureInput").addEventListener("keydown",e=>{ if(e.key==="Enter") commitCapture(); if(e.key==="Escape") closeCapture(); });
+document.addEventListener("keydown",e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){ e.preventDefault(); openCapture(); }
+  if(e.key==="Escape"){ $("#captureModal").hidden=true; $("#formModal").hidden=true; closeDD(); }
+});
+$("#exportXlsx").onclick = exportXlsx;
+$("#importXlsxBtn").onclick = ()=>$("#importXlsx").click();
+$("#importXlsx").onchange = e=>{ const f=e.target.files[0]; if(f) importXlsx(f); e.target.value=""; };
+
 render();
 </script>
 </body>
