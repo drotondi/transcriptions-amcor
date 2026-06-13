@@ -916,10 +916,10 @@ function bindHandlers(){
   });
 
   // date pills
-  $$("[data-date]").forEach(el=>el.onclick=()=>openDate(el, "task", el.dataset.date));
-  $$("[data-date-init]").forEach(el=>el.onclick=()=>openDate(el, "initiative", el.dataset.dateInit));
-  $$("[data-date-recog]").forEach(el=>el.onclick=()=>openDate(el, "recognition", el.dataset.dateRecog));
-  $$("[data-date-member]").forEach(el=>el.onclick=()=>openDate(el, "member", el.dataset.dateMember));
+  $$("[data-date]").forEach(el=>el.onclick=e=>{ e.stopPropagation(); openDate(el, "task", el.dataset.date); });
+  $$("[data-date-init]").forEach(el=>el.onclick=e=>{ e.stopPropagation(); openDate(el, "initiative", el.dataset.dateInit); });
+  $$("[data-date-recog]").forEach(el=>el.onclick=e=>{ e.stopPropagation(); openDate(el, "recognition", el.dataset.dateRecog); });
+  $$("[data-date-member]").forEach(el=>el.onclick=e=>{ e.stopPropagation(); openDate(el, "member", el.dataset.dateMember); });
 
   // hover menus
   $$("[data-menu]").forEach(el=>el.onclick=e=>{
@@ -1021,12 +1021,13 @@ function openDate(anchor, kind, id){
   const dd = document.createElement("div");
   dd.className = "dd";
   dd.appendChild(inp);
+  dd.addEventListener("click", e => e.stopPropagation());
   document.body.appendChild(dd);
   const r = anchor.getBoundingClientRect();
   dd.style.top = (window.scrollY + r.bottom + 6) + "px";
   dd.style.left = (window.scrollX + r.left) + "px";
   openDD = dd;
-  setTimeout(()=>inp.focus(),10);
+  setTimeout(()=>{ inp.focus(); if (inp.showPicker) try{ inp.showPicker(); }catch(e){} },10);
   inp.onchange = () => {
     const v = inp.value;
     if (kind==="task"){ const t = state.tasks.find(x=>x.id===id); if(t) t.due=v; }
