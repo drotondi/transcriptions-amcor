@@ -486,17 +486,18 @@ function bucketOf(t){
   return "quarterly";
 }
 function progressFor(horizon){
-  const list = state.tasks.filter(t=>bucketOf(t)===horizon);
+  const list = state.tasks.filter(t=>!isArchived(t) && bucketOf(t)===horizon);
   if (!list.length) return { pct:0, done:0, total:0 };
   const done = list.filter(t=>t.done).length;
   return { pct: done/list.length, done, total: list.length };
 }
 function overallProgress(){
-  if (!state.tasks.length) return 0;
-  return state.tasks.filter(t=>t.done).length / state.tasks.length;
+  const active = state.tasks.filter(t=>!isArchived(t));
+  if (!active.length) return 0;
+  return active.filter(t=>t.done).length / active.length;
 }
 function tasksByOwner(name, horizon){
-  return state.tasks.filter(t => (t.owner||"")===name && (!horizon || bucketOf(t)===horizon));
+  return state.tasks.filter(t => !isArchived(t) && (t.owner||"")===name && (!horizon || bucketOf(t)===horizon));
 }
 function ownerProgress(name, horizon){
   const l = tasksByOwner(name, horizon);
@@ -505,6 +506,12 @@ function ownerProgress(name, horizon){
 }
 
 function startOfToday(){ const d=new Date(); d.setHours(0,0,0,0); return d; }
+function isArchived(t){
+  if (!t.done || !t.completedAt) return false;
+  const c = new Date(t.completedAt+"T00:00:00");
+  if (isNaN(c)) return false;
+  return (startOfToday() - c) / 86400000 > 7;
+}
 function isOverdue(t){ if (t.done || !t.due) return false; const d=new Date(t.due+"T00:00:00"); return d < startOfToday(); }
 function dueClass(t){ if (t.done) return ""; if (isOverdue(t)) return "overdue"; const d=new Date(t.due+"T00:00:00"); const diff=(d-startOfToday())/86400000; return (diff>=0 && diff<=2) ? "soon" : ""; }
 function overdueCount(){ return state.tasks.filter(isOverdue).length; }
