@@ -115,7 +115,9 @@ input,select,textarea{font-family:inherit;font-size:14px;color:inherit;outline:n
 .task .check.on::after{content:"";width:9px;height:5px;border-left:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);transform:rotate(-45deg) translate(1px,-1px)}
 .task .txt{flex:1;min-width:0;color:var(--ink);font-size:14px}
 .task.done .txt{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
-.date-pill{padding:3px 10px;background:var(--bg-2);border-radius:99px;font-size:11px;color:var(--muted);font-weight:500;white-space:nowrap}
+.date-pill{padding:3px 10px;background:var(--bg-2);border-radius:99px;font-size:11px;color:var(--muted);font-weight:500;white-space:nowrap;cursor:pointer}
+.date-pill.overdue{background:#FBE3E0;color:var(--danger);font-weight:600}
+.date-pill.soon{color:var(--ink-2)}
 .task .menu{opacity:0;color:var(--muted);font-size:18px;line-height:1;padding:0 4px;cursor:pointer}
 .task:hover .menu{opacity:1}
 
@@ -206,6 +208,35 @@ input,select,textarea{font-family:inherit;font-size:14px;color:inherit;outline:n
 .dd button.danger{color:var(--danger)}
 .dd .sep{height:1px;background:var(--line);margin:4px 0}
 
+/* mode toggle */
+.mode-toggle{display:inline-flex;align-items:center;gap:4px;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);padding:3px 8px;border:1px solid var(--line);border-radius:99px;background:var(--card);cursor:pointer;font-weight:600}
+.mode-toggle.auto{color:var(--accent-deep);border-color:var(--accent-deep)}
+.mode-toggle:hover{border-color:var(--ink-2)}
+
+/* next step pill */
+.next-step{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:#FFF7D6;border:1px solid #F3E29F;border-radius:99px;font-size:12px;color:var(--ink-2);max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.next-step .label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#8B7A2C;font-weight:600}
+.next-step .empty{color:var(--muted);font-style:italic}
+
+/* search palette */
+.search-results{max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:2px;margin-top:4px}
+.search-result{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;border:1px solid transparent}
+.search-result:hover, .search-result.sel{background:var(--card-2);border-color:var(--line)}
+.search-result .kind{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--label);font-weight:700;min-width:90px}
+.search-result .what{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.search-result .meta{color:var(--muted);font-size:11px}
+
+/* review modal — wider */
+.modal-card.wide{width:min(720px,94vw)}
+.review-section{margin-bottom:20px}
+.review-section .head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.review-section .head .label{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--label);font-weight:600}
+.review-section .head .count{font-size:20px;font-weight:700}
+.review-section ul{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.review-section li{padding:8px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;font-size:13px}
+.review-section li .name{font-weight:600}
+.review-section li .muted{color:var(--muted)}
+
 /* toolbar */
 .toolbar{display:flex;align-items:center;gap:10px;margin-bottom:24px;flex-wrap:wrap}
 .icon-btn{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink-2);cursor:pointer}
@@ -236,7 +267,8 @@ input,select,textarea{font-family:inherit;font-size:14px;color:inherit;outline:n
     <div class="topbar-row">
       <div class="brand"><span class="brand-dot"></span><span data-edit="user.workspace">Command Center</span></div>
       <div class="topbar-right">
-        <button class="kbd-trigger" id="kTrigger"><span class="k">⌘K</span><span class="muted">quick capture</span></button>
+        <button class="kbd-trigger" id="kTrigger"><span class="k">⌘K</span><span class="muted">search · create</span></button>
+        <button class="kbd-trigger" id="reviewBtn" title="Weekly Review"><span class="k">R</span><span class="muted">review</span></button>
         <span class="date" id="today"></span>
         <div class="row-flex" style="gap:6px">
           <button class="icon-btn" id="exportXlsx" title="Export to Excel">↓</button>
@@ -257,26 +289,40 @@ input,select,textarea{font-family:inherit;font-size:14px;color:inherit;outline:n
   <main class="view" id="view"></main>
 </div>
 
-<!-- Quick capture -->
+<!-- Command palette (search + capture) -->
 <div class="modal" id="captureModal" hidden>
   <div class="modal-card">
-    <div class="modal-head"><span class="title">quick capture</span><button class="x" data-close="captureModal">×</button></div>
+    <div class="modal-head"><span class="title">search · create</span><button class="x" data-close="captureModal">×</button></div>
     <div class="modal-body">
-      <div class="seg" id="captureType">
-        <button data-type="task" class="active">task</button>
-        <button data-type="recognition">recognition</button>
-        <button data-type="request">request</button>
+      <input id="captureInput" placeholder="type to search initiatives, tasks, people… or create" autocomplete="off" />
+      <div id="searchResults" class="search-results"></div>
+      <div id="captureControls">
+        <div class="seg" id="captureType">
+          <button data-type="task" class="active">create task</button>
+          <button data-type="recognition">recognition</button>
+          <button data-type="request">request</button>
+        </div>
+        <div class="field" id="captureMeta" style="margin-top:10px">
+          <label>horizon</label>
+          <select id="captureHorizon">
+            <option value="weekly">weekly</option>
+            <option value="monthly">monthly</option>
+            <option value="quarterly">quarterly</option>
+          </select>
+        </div>
       </div>
-      <input id="captureInput" placeholder="type something and press enter…" autocomplete="off" />
-      <div class="field" id="captureMeta">
-        <label>horizon</label>
-        <select id="captureHorizon">
-          <option value="weekly">weekly</option>
-          <option value="monthly">monthly</option>
-          <option value="quarterly">quarterly</option>
-        </select>
-      </div>
-      <div class="muted" style="font-size:12px;text-align:right">enter to save · esc to close</div>
+      <div class="muted" style="font-size:12px;text-align:right">↑↓ navigate · enter to open/create · esc to close</div>
+    </div>
+  </div>
+</div>
+
+<!-- Weekly review -->
+<div class="modal" id="reviewModal" hidden>
+  <div class="modal-card wide">
+    <div class="modal-head"><span class="title" id="reviewTitle">Weekly Review</span><button class="x" data-close="reviewModal">×</button></div>
+    <div class="modal-body" id="reviewBody"></div>
+    <div class="modal-foot">
+      <button class="btn ghost" data-close="reviewModal">Close</button>
     </div>
   </div>
 </div>
@@ -298,7 +344,7 @@ input,select,textarea{font-family:inherit;font-size:14px;color:inherit;outline:n
 <script>
 // ====================== SEED ======================
 const SEED = {
-  user:{ name:"Damian", workspace:"Command Center" },
+  user:{ name:"Damian", role:"Director — LATAM", workspace:"Command Center" },
   priorities:[
     { id:"pr1", label:"Centralize MDM across LATAM" },
     { id:"pr2", label:"Lock S&OP operating rhythm" },
@@ -321,12 +367,12 @@ const SEED = {
     ]
   },
   initiatives:[
-    { id:"i1", title:"MDM Centralization",    pillar:"p1", owner:"Magaly",      status:"on-track", due:"2026-09-30", progress:0.72, summary:"Single source of truth for materials, vendors and customers across LATAM plants." },
-    { id:"i2", title:"MRO Domain Clean",      pillar:"p1", owner:"Pedro",       status:"at-risk",  due:"2026-08-15", progress:0.34, summary:"Cleanse and reclassify MRO catalog; deduplicate vendors and harmonize UoMs." },
-    { id:"i3", title:"Southern Cone Rollout", pillar:"p2", owner:"Carlos",      status:"on-track", due:"2026-12-01", progress:0.55, summary:"Roll out new S&OP cadence and tooling across Argentina, Chile and Uruguay." },
-    { id:"i4", title:"Brazil S&OP Maturity",  pillar:"p2", owner:"Guillermina", status:"on-track", due:"2026-11-15", progress:0.48, summary:"Drive Brazil from level 2 to level 3 maturity." },
-    { id:"i5", title:"Mexico Pipeline Reset", pillar:"p2", owner:"Damian",      status:"blocked",  due:"2026-07-30", progress:0.18, summary:"Reset demand pipeline assumptions and re-baseline forecast accuracy." },
-    { id:"i6", title:"Leadership Development",pillar:"p3", owner:"Damian",      status:"on-track", due:"2026-12-31", progress:0.50, summary:"1:1 cadence, growth plans and stretch assignments for direct reports." }
+    { id:"i1", title:"MDM Centralization",    pillar:"p1", owner:"Magaly",      status:"on-track", due:"2026-09-30", progress:0.72, progressMode:"auto",   nextStep:"Sign-off domain rules with Peru", summary:"Single source of truth for materials, vendors and customers across LATAM plants." },
+    { id:"i2", title:"MRO Domain Clean",      pillar:"p1", owner:"Pedro",       status:"at-risk",  due:"2026-08-15", progress:0.34, progressMode:"auto",   nextStep:"Decide on vendor dedup criteria",  summary:"Cleanse and reclassify MRO catalog; deduplicate vendors and harmonize UoMs." },
+    { id:"i3", title:"Southern Cone Rollout", pillar:"p2", owner:"Carlos",      status:"on-track", due:"2026-12-01", progress:0.55, progressMode:"auto",   nextStep:"Lock cadence with Chile team",     summary:"Roll out new S&OP cadence and tooling across Argentina, Chile and Uruguay." },
+    { id:"i4", title:"Brazil S&OP Maturity",  pillar:"p2", owner:"Guillermina", status:"on-track", due:"2026-11-15", progress:0.48, progressMode:"auto",   nextStep:"",                                  summary:"Drive Brazil from level 2 to level 3 maturity." },
+    { id:"i5", title:"Mexico Pipeline Reset", pillar:"p2", owner:"Damian",      status:"blocked",  due:"2026-07-30", progress:0.18, progressMode:"manual", nextStep:"Unblock with Rafael",               summary:"Reset demand pipeline assumptions and re-baseline forecast accuracy." },
+    { id:"i6", title:"Leadership Development",pillar:"p3", owner:"Damian",      status:"on-track", due:"2026-12-31", progress:0.50, progressMode:"manual", nextStep:"",                                  summary:"1:1 cadence, growth plans and stretch assignments for direct reports." }
   ],
   tasks:[
     { id:"t1",  title:"Send budget draft to finance",       horizon:"weekly",    initiative:"i1", owner:"Magaly",      due:"2026-06-15", done:true  },
@@ -376,11 +422,11 @@ function load(){
 }
 function migrate(s){
   const base = JSON.parse(JSON.stringify(SEED));
-  s.user = s.user || base.user;
+  s.user = Object.assign({}, base.user, s.user||{});
   s.priorities = s.priorities || base.priorities;
   s.strategy = s.strategy || base.strategy;
-  s.initiatives = s.initiatives || [];
-  s.tasks = (s.tasks||[]).map(t => ({ owner: deriveOwner(t, s), ...t }));
+  s.initiatives = (s.initiatives || []).map(i => ({ progressMode: "auto", nextStep: "", ...i }));
+  s.tasks = (s.tasks||[]).map(t => ({ owner: deriveOwner(t, s), completedAt: t.done ? (t.completedAt || t.due || "") : "", ...t }));
   s.recognitions = s.recognitions || [];
   s.team = s.team || [];
   return s;
@@ -458,11 +504,43 @@ function ownerProgress(name, horizon){
   return l.filter(t=>t.done).length / l.length;
 }
 
+function startOfToday(){ const d=new Date(); d.setHours(0,0,0,0); return d; }
+function isOverdue(t){ if (t.done || !t.due) return false; const d=new Date(t.due+"T00:00:00"); return d < startOfToday(); }
+function dueClass(t){ if (t.done) return ""; if (isOverdue(t)) return "overdue"; const d=new Date(t.due+"T00:00:00"); const diff=(d-startOfToday())/86400000; return (diff>=0 && diff<=2) ? "soon" : ""; }
+function overdueCount(){ return state.tasks.filter(isOverdue).length; }
+
+function tasksForInitiative(id){ return state.tasks.filter(t=>t.initiative===id); }
+function initiativeProgress(i){
+  if (i.progressMode === "manual") return i.progress || 0;
+  const list = tasksForInitiative(i.id);
+  if (!list.length) return i.progress || 0;
+  return list.filter(t=>t.done).length / list.length;
+}
+
+function startOfWeek(d=new Date()){ const dt=new Date(d); dt.setHours(0,0,0,0); const day=(dt.getDay()+6)%7; dt.setDate(dt.getDate()-day); return dt; }
+function endOfWeek(d=new Date()){ const s=startOfWeek(d); const e=new Date(s); e.setDate(s.getDate()+6); e.setHours(23,59,59,999); return e; }
+function inWeek(iso){ if(!iso) return false; const d=new Date(iso+"T00:00:00"); return d>=startOfWeek() && d<=endOfWeek(); }
+function fmtRange(a,b){ const o={month:"short",day:"numeric"}; return `${a.toLocaleDateString("en-US",o)} – ${b.toLocaleDateString("en-US",o)}`; }
+
+const ALL_OWNERS = () => Array.from(new Set([state.user.name, ...state.team.map(m=>m.name)]));
+function ownersForFilter(filter){
+  if (filter === "mine") return [state.user.name];
+  if (filter === "team") return state.team.map(m=>m.name).filter(n=>n!==state.user.name);
+  return ALL_OWNERS();
+}
+function personForOwner(name){
+  if (name === state.user.name) return { id:"__me", name:state.user.name, role:state.user.role, isMe:true };
+  return state.team.find(m=>m.name===name);
+}
+
 // ====================== VIEWS ======================
 let currentHorizon = "weekly";
+let currentScope = "team";
 
 function viewHome(){
   const today = new Date();
+  const overdue = overdueCount();
+  const owners = ownersForFilter(currentScope);
   return `
   <div class="eyebrow">Command Center</div>
   <h1 class="h1" data-edit="user.workspace">Command</h1>
@@ -488,24 +566,35 @@ function viewHome(){
       <button data-h="monthly"   class="${currentHorizon==='monthly'?'active':''}">This Month</button>
       <button data-h="quarterly" class="${currentHorizon==='quarterly'?'active':''}">This Quarter</button>
     </div>
+    <div class="period-tabs" id="sTabs">
+      <button data-s="mine"     class="${currentScope==='mine'?'active':''}">Mine</button>
+      <button data-s="team"     class="${currentScope==='team'?'active':''}">My team</button>
+      <button data-s="everyone" class="${currentScope==='everyone'?'active':''}">Everyone</button>
+    </div>
+    ${overdue ? `<span class="status blocked" style="cursor:pointer" data-go="tasks"><span class="pip"></span>${overdue} overdue</span>` : ''}
   </div>
 
   <div class="section-head">
-    <div class="section-label">People</div>
+    <div class="section-label">People · ${currentScope==='mine'?'me':currentScope==='team'?'my team':'everyone'}</div>
     <button class="add-btn" data-add="member"><span class="plus">＋</span> add member</button>
   </div>
   <div class="grid grid-3" style="gap:14px">
-    ${state.team.map(m=>{
+    ${owners.map(name=>{
+      const m = personForOwner(name);
+      if (!m) return "";
       const tasks = tasksByOwner(m.name, currentHorizon);
       const pct = ownerProgress(m.name, currentHorizon);
+      const editAttrs = m.isMe
+        ? (field)=>`data-edit="user.${field}"`
+        : (field)=>`data-edit-list="team" data-id="${m.id}" data-field="${field}"`;
       return `
       <div class="person-card">
         <div class="person-head">
           <div class="row-flex" style="flex:1;min-width:0;gap:12px">
             ${avatar(m.name)}
             <div class="person-info">
-              <div class="name" contenteditable="plaintext-only" data-edit-list="team" data-id="${m.id}" data-field="name">${escapeHTML(m.name)}</div>
-              <div class="role" contenteditable="plaintext-only" data-edit-list="team" data-id="${m.id}" data-field="role">${escapeHTML(m.role)}</div>
+              <div class="name" contenteditable="plaintext-only" ${editAttrs("name")}>${escapeHTML(m.name)}</div>
+              <div class="role" contenteditable="plaintext-only" ${editAttrs("role")}>${escapeHTML(m.role)}</div>
             </div>
           </div>
           ${donut(pct)}
@@ -515,7 +604,7 @@ function viewHome(){
             <div class="task ${t.done?'done':''}">
               <span class="check ${t.done?'on':''}" data-task="${t.id}"></span>
               <span class="txt" contenteditable="plaintext-only" data-edit-list="tasks" data-id="${t.id}" data-field="title">${escapeHTML(t.title)}</span>
-              <span class="date-pill" data-date="${t.id}">${fmtDate(t.due)||'—'}</span>
+              <span class="date-pill ${dueClass(t)}" data-date="${t.id}">${fmtDate(t.due)||'—'}</span>
               <span class="menu" data-menu="task:${t.id}">⋯</span>
             </div>`).join("") : `<div class="muted" style="padding:8px 0;font-size:13px">No ${currentHorizon} tasks yet.</div>`}
           <button class="add-btn" style="align-self:flex-start;margin-top:8px" data-add="task" data-owner="${escapeHTML(m.name)}"><span class="plus">＋</span> task</button>
@@ -590,21 +679,32 @@ function viewInitiatives(){
   <div class="grid" style="gap:12px">
     ${state.initiatives.map(i=>{
       const p = pillarById(i.pillar);
+      const pct = initiativeProgress(i);
+      const isAuto = (i.progressMode||"auto") === "auto";
+      const taskCount = tasksForInitiative(i.id).length;
+      const dueOverdue = i.due && new Date(i.due+"T00:00:00") < startOfToday();
       return `
-      <div class="init-row">
+      <div class="init-row" style="flex-wrap:wrap">
         <span class="status ${statusMap[i.status]?.cls||''}" data-pick="status:${i.id}"><span class="pip"></span>${statusMap[i.status]?.label||i.status}</span>
         <div class="title">
           <div class="title-t" contenteditable="plaintext-only" data-edit-list="initiatives" data-id="${i.id}" data-field="title">${escapeHTML(i.title)}</div>
           <div class="title-s" contenteditable="plaintext-only" data-edit-list="initiatives" data-id="${i.id}" data-field="summary">${escapeHTML(i.summary||"")}</div>
+          <div style="margin-top:8px">
+            <span class="next-step">
+              <span class="label">next</span>
+              <span contenteditable="plaintext-only" data-edit-list="initiatives" data-id="${i.id}" data-field="nextStep" class="${i.nextStep?'':'empty'}">${escapeHTML(i.nextStep||"set next step…")}</span>
+            </span>
+          </div>
         </div>
         <div class="meta" style="text-align:right">
           <div contenteditable="plaintext-only" data-edit-list="initiatives" data-id="${i.id}" data-field="owner">${escapeHTML(i.owner||"—")}</div>
-          <div class="date-pill" style="margin-top:6px" data-date-init="${i.id}">${fmtDate(i.due)||'set date'}</div>
+          <div class="date-pill ${dueOverdue?'overdue':''}" style="margin-top:6px" data-date-init="${i.id}">${fmtDate(i.due)||'set date'}</div>
         </div>
         ${p?`<span class="tag" data-pick="pillar:${i.id}">${escapeHTML(p.name)}</span>`:`<span class="tag" data-pick="pillar:${i.id}">no pillar</span>`}
         <div class="progress-wrap">
-          <div class="bar" data-prog="initiative:${i.id}"><i style="width:${Math.round((i.progress||0)*100)}%"></i></div>
-          <div class="muted" style="font-variant-numeric:tabular-nums;min-width:38px;text-align:right;font-size:12px">${Math.round((i.progress||0)*100)}%</div>
+          <div class="bar" data-prog="initiative:${i.id}"><i style="width:${Math.round(pct*100)}%"></i></div>
+          <div class="muted" style="font-variant-numeric:tabular-nums;min-width:38px;text-align:right;font-size:12px">${Math.round(pct*100)}%</div>
+          <button class="mode-toggle ${isAuto?'auto':''}" data-prog-mode="${i.id}" title="${isAuto?'Auto from tasks':'Manual'}">${isAuto?`auto · ${taskCount}t`:'manual'}</button>
         </div>
         <span class="menu" data-menu="initiative:${i.id}">⋯</span>
       </div>`;
@@ -615,8 +715,13 @@ function viewInitiatives(){
 
 function viewTasks(){
   const horizons=["weekly","monthly","quarterly"];
-  const list = state.tasks.filter(t=>t.horizon===currentHorizon);
+  const list = state.tasks.filter(t=>t.horizon===currentHorizon).slice().sort((a,b)=>{
+    const ao=isOverdue(a)?0:a.done?2:1, bo=isOverdue(b)?0:b.done?2:1;
+    if (ao!==bo) return ao-bo;
+    return (a.due||"").localeCompare(b.due||"");
+  });
   const p = progressFor(currentHorizon);
+  const overdue = list.filter(isOverdue).length;
   return `
   <div class="eyebrow">Execution</div>
   <h1 class="h1">Tasks</h1>
@@ -627,6 +732,7 @@ function viewTasks(){
       ${horizons.map(h=>{ const pp=progressFor(h); return `<button data-h="${h}" class="${h===currentHorizon?'active':''}">${({weekly:'This Week',monthly:'This Month',quarterly:'This Quarter'})[h]} · ${Math.round(pp.pct*100)}%</button>`; }).join("")}
     </div>
     <button class="add-btn" data-add="task"><span class="plus">＋</span> new task</button>
+    ${overdue ? `<span class="status blocked"><span class="pip"></span>${overdue} overdue</span>` : ''}
     <span class="muted" style="margin-left:auto;font-size:13px">${p.done}/${p.total} done</span>
   </div>
 
@@ -641,7 +747,7 @@ function viewTasks(){
             <span class="txt" contenteditable="plaintext-only" data-edit-list="tasks" data-id="${t.id}" data-field="title">${escapeHTML(t.title)}</span>
             ${i?`<span class="tag" data-pick="task-init:${t.id}">${escapeHTML(i.title)}</span>`:`<span class="tag" data-pick="task-init:${t.id}">no initiative</span>`}
             <span class="tag" data-pick="task-owner:${t.id}">${escapeHTML(t.owner||'unassigned')}</span>
-            <span class="date-pill" data-date="${t.id}">${fmtDate(t.due)||'set date'}</span>
+            <span class="date-pill ${dueClass(t)}" data-date="${t.id}">${fmtDate(t.due)||'set date'}</span>
             <span class="menu" data-menu="task:${t.id}">⋯</span>
           </div>`;
         }).join("") : `<div class="muted" style="padding:20px 0">No tasks in this horizon yet.</div>`}
@@ -819,7 +925,23 @@ function bindHandlers(){
   // checkboxes
   $$(".check[data-task]").forEach(el=>el.onclick=()=>{
     const t = state.tasks.find(x=>x.id===el.dataset.task);
-    if(t){ t.done=!t.done; save(); render(); }
+    if(t){
+      t.done = !t.done;
+      t.completedAt = t.done ? new Date().toISOString().slice(0,10) : "";
+      save(); render();
+    }
+  });
+
+  // scope tabs (mine/team/everyone)
+  $$("#sTabs button").forEach(b=>b.onclick=()=>{ currentScope=b.dataset.s; render(); });
+
+  // progress mode toggle (auto/manual)
+  $$("[data-prog-mode]").forEach(b=>b.onclick=(e)=>{
+    e.stopPropagation();
+    const it = initiativeById(b.dataset.progMode);
+    if (!it) return;
+    it.progressMode = (it.progressMode === "auto") ? "manual" : "auto";
+    save(); render();
   });
 
   // progress bars (drag)
@@ -829,7 +951,7 @@ function bindHandlers(){
       const x = (e.touches?e.touches[0].clientX:e.clientX) - r.left;
       const pct = Math.max(0, Math.min(1, x / r.width));
       const [kind, id] = bar.dataset.prog.split(":");
-      if (kind === "initiative"){ const it = initiativeById(id); if(it) it.progress = pct; }
+      if (kind === "initiative"){ const it = initiativeById(id); if(it){ it.progress = pct; it.progressMode = "manual"; } }
       if (kind === "okr"){ const o = state.strategy.okrs.find(x=>x.id===id); if(o) o.progress = pct; }
       bar.querySelector("i").style.width = (pct*100)+"%";
     };
@@ -1133,21 +1255,161 @@ function openAddModal(kind, extras){
   };
 }
 
-// ====================== QUICK CAPTURE ======================
+// ====================== COMMAND PALETTE (search + capture) ======================
 let captureType="task";
-function openCapture(){ $("#captureModal").hidden=false; setTimeout(()=>$("#captureInput").focus(),30); }
-function closeCapture(){ $("#captureModal").hidden=true; $("#captureInput").value=""; }
+let searchSelIdx = 0;
+let searchHits = [];
+
+function openCapture(){ $("#captureModal").hidden=false; setTimeout(()=>{ $("#captureInput").focus(); $("#captureInput").select?.(); refreshPalette(); },30); }
+function closeCapture(){ $("#captureModal").hidden=true; $("#captureInput").value=""; $("#searchResults").innerHTML=""; searchHits=[]; }
+
+function searchAll(q){
+  const ql = q.toLowerCase();
+  const hits = [];
+  const push = (kind, route, label, meta, action) => hits.push({ kind, route, label, meta, action });
+  state.initiatives.forEach(i=>{
+    if (i.title.toLowerCase().includes(ql) || (i.summary||"").toLowerCase().includes(ql))
+      push("initiative", "initiatives", i.title, i.owner||"", ()=>go("initiatives"));
+  });
+  state.tasks.forEach(t=>{
+    if (t.title.toLowerCase().includes(ql))
+      push("task", "tasks", t.title, `${t.horizon} · ${t.owner||"unassigned"}`, ()=>{ currentHorizon=t.horizon; go("tasks"); });
+  });
+  state.recognitions.forEach(r=>{
+    if ((r.note||"").toLowerCase().includes(ql) || (r.person||"").toLowerCase().includes(ql))
+      push("recognition", "recognitions", r.note, `${r.person} · ${fmtDate(r.date)}`, ()=>go("recognitions"));
+  });
+  state.team.forEach(m=>{
+    if (m.name.toLowerCase().includes(ql) || (m.role||"").toLowerCase().includes(ql))
+      push("person", "team", m.name, m.role, ()=>go("team"));
+  });
+  (state.strategy.okrs||[]).forEach(o=>{
+    if ((o.objective||"").toLowerCase().includes(ql) || (o.kr||"").toLowerCase().includes(ql))
+      push("okr", "strategy", o.objective, o.kr, ()=>go("strategy"));
+  });
+  (state.strategy.pillars||[]).forEach(p=>{
+    if (p.name.toLowerCase().includes(ql)) push("pillar", "strategy", p.name, p.summary, ()=>go("strategy"));
+  });
+  return hits.slice(0, 12);
+}
+
+function refreshPalette(){
+  const q = $("#captureInput").value.trim();
+  const results = $("#searchResults");
+  const controls = $("#captureControls");
+  if (!q){
+    results.innerHTML = "";
+    searchHits = [];
+    controls.style.display = "";
+    return;
+  }
+  searchHits = searchAll(q);
+  searchSelIdx = 0;
+  if (!searchHits.length){
+    results.innerHTML = `<div class="muted" style="padding:10px 4px;font-size:13px">No matches. Press enter to create.</div>`;
+  } else {
+    results.innerHTML = searchHits.map((h,idx)=>`
+      <div class="search-result ${idx===0?'sel':''}" data-idx="${idx}">
+        <span class="kind">${h.kind}</span>
+        <span class="what">${escapeHTML(h.label)}</span>
+        <span class="meta">${escapeHTML(h.meta||"")}</span>
+      </div>`).join("");
+    $$(".search-result", results).forEach(el=>{
+      el.onmouseenter = () => { searchSelIdx = parseInt(el.dataset.idx,10); updateSel(); };
+      el.onclick = () => { runHit(parseInt(el.dataset.idx,10)); };
+    });
+  }
+  controls.style.display = "";
+}
+function updateSel(){
+  $$(".search-result").forEach((el,i)=>el.classList.toggle("sel", i===searchSelIdx));
+}
+function runHit(idx){
+  const h = searchHits[idx]; if (!h) return;
+  closeCapture();
+  h.action();
+}
+
 function commitCapture(){
+  if (searchHits.length){ runHit(searchSelIdx); return; }
   const text=$("#captureInput").value.trim(); if(!text)return;
   const today=new Date().toISOString().slice(0,10);
   if(captureType==="task"){
-    state.tasks.unshift({ id:uid("t"), title:text, horizon:$("#captureHorizon").value, initiative:null, owner:"", due:today, done:false });
+    state.tasks.unshift({ id:uid("t"), title:text, horizon:$("#captureHorizon").value, initiative:null, owner:state.user.name, due:today, done:false });
   } else if(captureType==="recognition"){
     state.recognitions.unshift({ id:uid("r"), date:today, person:"—", type:"impact", note:text });
   } else if(captureType==="request"){
     const me=state.team[0]; if(me){ me.requests=me.requests||[]; me.requests.push({ id:uid("q"), title:text, status:"pending" }); }
   }
   save(); closeCapture(); render(); toast("Saved");
+}
+
+// ====================== WEEKLY REVIEW ======================
+function openReview(){
+  const s = startOfWeek(), e = endOfWeek();
+  const completed = state.tasks.filter(t => t.done && t.completedAt && inWeek(t.completedAt));
+  const overdue = state.tasks.filter(isOverdue);
+  const horizonNow = new Date(); const in14 = new Date(); in14.setDate(in14.getDate()+14);
+  const upcomingOOO = state.team.flatMap(m => (m.ooo||[]).map(o => ({...o, name:m.name}))).filter(o => {
+    const from = new Date(o.from); return from >= horizonNow && from <= in14;
+  }).sort((a,b)=>a.from.localeCompare(b.from));
+  const byOwner = {};
+  completed.forEach(t => { if(!t.owner) return; byOwner[t.owner] = (byOwner[t.owner]||0)+1; });
+  const suggestRecog = Object.entries(byOwner).sort((a,b)=>b[1]-a[1]).slice(0,3);
+
+  $("#reviewTitle").textContent = `Weekly Review · ${fmtRange(s,e)}`;
+  $("#reviewBody").innerHTML = `
+    <div class="review-section">
+      <div class="head"><div class="label">Done this week</div><div class="count">${completed.length}</div></div>
+      <ul>
+        ${completed.length ? completed.map(t=>`
+          <li>
+            <span class="name">${escapeHTML(t.title)}</span>
+            <span class="muted" style="margin-left:auto">${escapeHTML(t.owner||'')} · ${fmtDate(t.completedAt)}</span>
+          </li>`).join("") : `<li class="muted">Nothing logged yet this week.</li>`}
+      </ul>
+    </div>
+
+    <div class="review-section">
+      <div class="head"><div class="label">Overdue</div><div class="count" style="color:${overdue.length?'var(--danger)':'var(--ink)'}">${overdue.length}</div></div>
+      <ul>
+        ${overdue.length ? overdue.map(t=>`
+          <li>
+            <span class="name">${escapeHTML(t.title)}</span>
+            <span class="muted" style="margin-left:auto">${escapeHTML(t.owner||'')} · due ${fmtDate(t.due)}</span>
+          </li>`).join("") : `<li class="muted">Nothing overdue. 🌿</li>`}
+      </ul>
+    </div>
+
+    <div class="review-section">
+      <div class="head"><div class="label">Upcoming OOO · next 14 days</div><div class="count">${upcomingOOO.length}</div></div>
+      <ul>
+        ${upcomingOOO.length ? upcomingOOO.map(o=>`
+          <li>
+            <span class="name">${escapeHTML(o.name)}</span>
+            <span class="muted">${escapeHTML(o.type||'')}</span>
+            <span class="muted" style="margin-left:auto">${fmtDate(o.from)} – ${fmtDate(o.to)}</span>
+          </li>`).join("") : `<li class="muted">Nobody scheduled to be out.</li>`}
+      </ul>
+    </div>
+
+    <div class="review-section">
+      <div class="head"><div class="label">Suggested recognitions</div><div class="count">${suggestRecog.length}</div></div>
+      <ul>
+        ${suggestRecog.length ? suggestRecog.map(([name,count])=>`
+          <li>
+            <span class="name">${escapeHTML(name)}</span>
+            <span class="muted">${count} ${count===1?'task':'tasks'} done this week</span>
+            <button class="btn" style="margin-left:auto" data-suggest="${escapeHTML(name)}">recognize</button>
+          </li>`).join("") : `<li class="muted">No completed tasks to draw from.</li>`}
+      </ul>
+    </div>
+  `;
+  $$("[data-suggest]", $("#reviewBody")).forEach(b=>b.onclick=()=>{
+    state.recognitions.unshift({ id:uid("r"), date:new Date().toISOString().slice(0,10), person:b.dataset.suggest, type:"effort", note:"Strong week — set the pace." });
+    save(); toast("Recognition drafted"); $("#reviewModal").hidden=true; go("recognitions");
+  });
+  $("#reviewModal").hidden = false;
 }
 
 // ====================== EXCEL ======================
@@ -1223,10 +1485,23 @@ $$("#captureType button").forEach(b=>b.onclick=()=>{
   $$("#captureType button").forEach(x=>x.classList.toggle("active",x===b));
   $("#captureMeta").style.display = captureType==="task" ? "" : "none";
 });
-$("#captureInput").addEventListener("keydown",e=>{ if(e.key==="Enter") commitCapture(); if(e.key==="Escape") closeCapture(); });
+$("#captureInput").addEventListener("input", refreshPalette);
+$("#captureInput").addEventListener("keydown",e=>{
+  if (e.key==="Enter"){ e.preventDefault(); commitCapture(); }
+  else if (e.key==="Escape"){ closeCapture(); }
+  else if (e.key==="ArrowDown" && searchHits.length){ e.preventDefault(); searchSelIdx=(searchSelIdx+1)%searchHits.length; updateSel(); }
+  else if (e.key==="ArrowUp" && searchHits.length){ e.preventDefault(); searchSelIdx=(searchSelIdx-1+searchHits.length)%searchHits.length; updateSel(); }
+});
+$("#reviewBtn").onclick = openReview;
 document.addEventListener("keydown",e=>{
+  const inEdit = e.target.matches?.("input,textarea,[contenteditable='plaintext-only']");
   if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){ e.preventDefault(); openCapture(); }
-  if(e.key==="Escape"){ $("#captureModal").hidden=true; $("#formModal").hidden=true; closeDD(); }
+  if (!inEdit && e.key.toLowerCase()==="r" && !e.metaKey && !e.ctrlKey && !e.altKey){
+    if ($("#reviewModal").hidden && $("#captureModal").hidden && $("#formModal").hidden){
+      e.preventDefault(); openReview();
+    }
+  }
+  if(e.key==="Escape"){ $("#captureModal").hidden=true; $("#formModal").hidden=true; $("#reviewModal").hidden=true; closeDD(); }
 });
 $("#exportXlsx").onclick = exportXlsx;
 $("#importXlsxBtn").onclick = ()=>$("#importXlsx").click();
