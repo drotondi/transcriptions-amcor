@@ -115,6 +115,9 @@ input,select,textarea{font-family:inherit;font-size:14px;color:inherit;outline:n
 .task .check.on::after{content:"";width:9px;height:5px;border-left:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);transform:rotate(-45deg) translate(1px,-1px)}
 .task .txt{flex:1;min-width:0;color:var(--ink);font-size:14px}
 .task.done .txt{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
+.task.archived{opacity:.45}
+.task.archived .check{background:var(--bg-2);border-color:var(--line-2)}
+.task.archived .tag{background:var(--bg-2)}
 .date-pill{padding:3px 10px;background:var(--bg-2);border-radius:99px;font-size:11px;color:var(--muted);font-weight:500;white-space:nowrap;cursor:pointer}
 .date-pill.overdue{background:#FBE3E0;color:var(--danger);font-weight:600}
 .date-pill.soon{color:var(--ink-2)}
@@ -417,7 +420,13 @@ function migrate(s){
   s.priorities = s.priorities || base.priorities;
   s.strategy = s.strategy || base.strategy;
   s.initiatives = (s.initiatives || []).map(i => ({ progressMode: "auto", nextStep: "", ...i }));
-  s.tasks = (s.tasks||[]).map(t => ({ owner: deriveOwner(t, s), completedAt: t.done ? (t.completedAt || t.due || "") : "", ...t }));
+  s.tasks = (s.tasks||[]).map(t => {
+    const out = { ...t };
+    if (!out.owner) out.owner = deriveOwner(t, s);
+    if (out.done && !out.completedAt) out.completedAt = out.due || "";
+    if (!out.done) out.completedAt = "";
+    return out;
+  });
   s.recognitions = s.recognitions || [];
   s.team = s.team || [];
   return s;
@@ -497,7 +506,12 @@ function overallProgress(){
   return active.filter(t=>t.done).length / active.length;
 }
 function tasksByOwner(name, horizon){
-  return state.tasks.filter(t => !isArchived(t) && (t.owner||"")===name && (!horizon || bucketOf(t)===horizon));
+  return state.tasks.filter(t => {
+    if (!showArchived && isArchived(t)) return false;
+    if ((t.owner||"")!==name) return false;
+    if (horizon && bucketOf(t)!==horizon) return false;
+    return true;
+  });
 }
 function ownerProgress(name, horizon){
   const l = tasksByOwner(name, horizon);
@@ -507,11 +521,14 @@ function ownerProgress(name, horizon){
 
 function startOfToday(){ const d=new Date(); d.setHours(0,0,0,0); return d; }
 function isArchived(t){
-  if (!t.done || !t.completedAt) return false;
-  const c = new Date(t.completedAt+"T00:00:00");
-  if (isNaN(c)) return false;
+  if (!t.done) return false;
+  const ref = t.completedAt || t.due || "";
+  if (!ref) return true;
+  const c = new Date(ref+"T00:00:00");
+  if (isNaN(c)) return true;
   return (startOfToday() - c) / 86400000 > 7;
 }
+function archivedCount(){ return state.tasks.filter(isArchived).length; }
 function isOverdue(t){ if (t.done || !t.due) return false; const d=new Date(t.due+"T00:00:00"); return d < startOfToday(); }
 function dueClass(t){ if (t.done) return ""; if (isOverdue(t)) return "overdue"; const d=new Date(t.due+"T00:00:00"); const diff=(d-startOfToday())/86400000; return (diff>=0 && diff<=2) ? "soon" : ""; }
 function overdueCount(){ return state.tasks.filter(isOverdue).length; }
@@ -542,6 +559,7 @@ function personForOwner(name){
 
 // ====================== VIEWS ======================
 let currentHorizon = "weekly";
+let showArchived = false;
 
 function viewHome(){
   const today = new Date();
@@ -596,9 +614,10 @@ function viewHome(){
         </div>
         <div class="checklist">
           ${tasks.length ? tasks.map(t=>`
-            <div class="task ${t.done?'done':''}">
+            <div class="task ${t.done?'done':''} ${isArchived(t)?'archived':''}">
               <span class="check ${t.done?'on':''}" data-task="${t.id}"></span>
               <span class="txt" contenteditable="plaintext-only" data-edit-list="tasks" data-id="${t.id}" data-field="title">${escapeHTML(t.title)}</span>
+              ${isArchived(t)?'<span class="tag">archived</span>':''}
               <span class="date-pill ${dueClass(t)}" data-date="${t.id}">${fmtDate(t.due)||'set date'}</span>
               <span class="menu" data-menu="task:${t.id}">⋯</span>
             </div>`).join("") : `<div class="muted" style="padding:8px 0;font-size:13px">No ${currentHorizon} tasks yet.</div>`}
@@ -606,6 +625,9 @@ function viewHome(){
         </div>
       </div>`;
     }).join("")}
+  </div>
+  <div style="margin-top:24px;text-align:center">
+    ${archivedCount() ? `<a class="muted" style="cursor:pointer;border-bottom:1px dashed var(--line-2);padding-bottom:1px;font-size:13px" id="toggleArchived">${showArchived?'Hide archived':`Show ${archivedCount()} archived task${archivedCount()===1?'':'s'}`}</a>` : ''}
   </div>
   `;
 }
@@ -883,8 +905,9 @@ function bindHandlers(){
     }
   });
 
-  // scope tabs (mine/team/everyone)
-  $$("#sTabs button").forEach(b=>b.onclick=()=>{ currentScope=b.dataset.s; render(); });
+  // archived toggle
+  const tArch = $("#toggleArchived");
+  if (tArch) tArch.onclick = () => { showArchived = !showArchived; render(); };
 
   // progress mode toggle (auto/manual)
   $$("[data-prog-mode]").forEach(b=>b.onclick=(e)=>{
