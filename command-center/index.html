@@ -1082,11 +1082,13 @@ function openItemMenu(anchor, spec){
         items.push({ label:"Mark done & archive", action:()=>{
           t.done = true;
           t.completedAt = new Date(Date.now() - 8*86400000).toISOString().slice(0,10);
+          showArchived = false;
           save(); render(); toast("Archived");
         }});
       } else if (!isArchived(t)){
         items.push({ label:"Archive now", action:()=>{
           t.completedAt = new Date(Date.now() - 8*86400000).toISOString().slice(0,10);
+          showArchived = false;
           save(); render(); toast("Archived");
         }});
       } else {
@@ -1106,6 +1108,7 @@ function archiveAllDone(){
   const stamp = new Date(Date.now() - 8*86400000).toISOString().slice(0,10);
   let n = 0;
   state.tasks.forEach(t => { if (t.done && !isArchived(t)){ t.completedAt = stamp; n++; } });
+  showArchived = false;
   save(); render(); toast(`${n} archived`);
 }
 
