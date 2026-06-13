@@ -494,7 +494,7 @@ function viewHome(){
     <div class="section-label">People</div>
     <button class="add-btn" data-add="member"><span class="plus">＋</span> add member</button>
   </div>
-  <div class="grid" style="grid-template-columns:1fr;gap:14px">
+  <div class="grid grid-3" style="gap:14px">
     ${state.team.map(m=>{
       const tasks = tasksByOwner(m.name, currentHorizon);
       const pct = ownerProgress(m.name, currentHorizon);
