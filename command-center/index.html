@@ -107,25 +107,25 @@ input,select,textarea{font-family:inherit;font-size:14px;color:inherit;outline:n
 .card .pct b{color:var(--ink);font-weight:600}
 
 /* checklist */
-.checklist{display:flex;flex-direction:column;gap:2px}
-.task{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);position:relative}
+.checklist{display:flex;flex-direction:column;gap:0}
+.task{display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid var(--line);position:relative;min-height:28px}
 .task:last-child{border-bottom:0}
-.task .check{flex-shrink:0;width:18px;height:18px;border:1.5px solid var(--line-2);border-radius:5px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;background:var(--card)}
+.task .check{flex-shrink:0;width:16px;height:16px;border:1.5px solid var(--line-2);border-radius:4px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;background:var(--card)}
 .task .check.on{background:var(--ink);border-color:var(--ink)}
-.task .check.on::after{content:"";width:9px;height:5px;border-left:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);transform:rotate(-45deg) translate(1px,-1px)}
-.task .txt{flex:1;min-width:0;color:var(--ink);font-size:14px}
+.task .check.on::after{content:"";width:8px;height:4px;border-left:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);transform:rotate(-45deg) translate(1px,-1px)}
+.task .txt{flex:1;min-width:0;color:var(--ink);font-size:13px;line-height:1.4}
 .task.done .txt{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
 .task.archived{opacity:.45}
 .task.archived .check{background:var(--bg-2);border-color:var(--line-2)}
 .task.archived .tag{background:var(--bg-2)}
-.date-pill{padding:3px 10px;background:var(--bg-2);border-radius:99px;font-size:11px;color:var(--muted);font-weight:500;white-space:nowrap;cursor:pointer}
+.date-pill{padding:2px 8px;background:var(--bg-2);border-radius:99px;font-size:10px;color:var(--muted);font-weight:500;white-space:nowrap;cursor:pointer;letter-spacing:.2px}
 .date-pill.overdue{background:#FBE3E0;color:var(--danger);font-weight:600}
 .date-pill.soon{color:var(--ink-2)}
 .task .menu{opacity:0;color:var(--muted);font-size:18px;line-height:1;padding:0 4px;cursor:pointer}
 .task:hover .menu{opacity:1}
 
 /* avatar + person */
-.person-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.person-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
 .person-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .avatar{width:42px;height:42px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:14px;letter-spacing:.3px;flex-shrink:0}
 .person-info{flex:1;min-width:0}
@@ -420,10 +420,11 @@ function migrate(s){
   s.priorities = s.priorities || base.priorities;
   s.strategy = s.strategy || base.strategy;
   s.initiatives = (s.initiatives || []).map(i => ({ progressMode: "auto", nextStep: "", ...i }));
+  const oldStamp = new Date(Date.now() - 8 * 86400000).toISOString().slice(0,10);
   s.tasks = (s.tasks||[]).map(t => {
     const out = { ...t };
     if (!out.owner) out.owner = deriveOwner(t, s);
-    if (out.done && !out.completedAt) out.completedAt = out.due || "";
+    if (out.done && !out.completedAt) out.completedAt = oldStamp; // legacy done -> archive immediately
     if (!out.done) out.completedAt = "";
     return out;
   });
