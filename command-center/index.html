@@ -301,14 +301,6 @@ input,select,textarea{font-family:inherit;font-size:14px;color:inherit;outline:n
           <button data-type="recognition">recognition</button>
           <button data-type="request">request</button>
         </div>
-        <div class="field" id="captureMeta" style="margin-top:10px">
-          <label>horizon</label>
-          <select id="captureHorizon">
-            <option value="weekly">weekly</option>
-            <option value="monthly">monthly</option>
-            <option value="quarterly">quarterly</option>
-          </select>
-        </div>
       </div>
       <div class="muted" style="font-size:12px;text-align:right">↑↓ navigate · enter to open/create · esc to close</div>
     </div>
@@ -600,7 +592,7 @@ function viewHome(){
             <div class="task ${t.done?'done':''}">
               <span class="check ${t.done?'on':''}" data-task="${t.id}"></span>
               <span class="txt" contenteditable="plaintext-only" data-edit-list="tasks" data-id="${t.id}" data-field="title">${escapeHTML(t.title)}</span>
-              <span class="date-pill ${dueClass(t)}" data-date="${t.id}">${fmtDate(t.due)||'—'}</span>
+              <span class="date-pill ${dueClass(t)}" data-date="${t.id}">${fmtDate(t.due)||'set date'}</span>
               <span class="menu" data-menu="task:${t.id}">⋯</span>
             </div>`).join("") : `<div class="muted" style="padding:8px 0;font-size:13px">No ${currentHorizon} tasks yet.</div>`}
           <button class="add-btn" style="align-self:flex-start;margin-top:8px" data-add="task" data-owner="${escapeHTML(m.name)}"><span class="plus">＋</span> task</button>
@@ -1087,12 +1079,11 @@ const FORMS = {
     title:"New task",
     fields:[
       { name:"title", label:"Title", required:true },
-      { name:"horizon", label:"Horizon", type:"select", options:[["weekly","weekly"],["monthly","monthly"],["quarterly","quarterly"]], default:"weekly" },
+      { name:"due", label:"Due", type:"date" },
       { name:"initiative", label:"Initiative", type:"select-init" },
-      { name:"owner", label:"Owner", type:"select-team" },
-      { name:"due", label:"Due", type:"date" }
+      { name:"owner", label:"Owner", type:"select-team" }
     ],
-    save: (v, extras)=>{ state.tasks.unshift({ id:uid("t"), title:v.title, horizon:v.horizon||"weekly", initiative:v.initiative||null, owner:v.owner||extras?.owner||"", due:v.due||"", done:false }); }
+    save: (v, extras)=>{ state.tasks.unshift({ id:uid("t"), title:v.title, horizon:"weekly", initiative:v.initiative||null, owner:v.owner||extras?.owner||"", due:v.due||"", done:false }); }
   },
   recognition: {
     title:"New recognition",
@@ -1287,7 +1278,7 @@ function commitCapture(){
   const text=$("#captureInput").value.trim(); if(!text)return;
   const today=new Date().toISOString().slice(0,10);
   if(captureType==="task"){
-    state.tasks.unshift({ id:uid("t"), title:text, horizon:$("#captureHorizon").value, initiative:null, owner:state.user.name, due:today, done:false });
+    state.tasks.unshift({ id:uid("t"), title:text, horizon:"weekly", initiative:null, owner:state.user.name, due:today, done:false });
   } else if(captureType==="recognition"){
     state.recognitions.unshift({ id:uid("r"), date:today, person:"—", type:"impact", note:text });
   } else if(captureType==="request"){
