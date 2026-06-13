@@ -281,7 +281,6 @@ input,select,textarea{font-family:inherit;font-size:14px;color:inherit;outline:n
       <a data-route="home">Command</a>
       <a data-route="strategy">Strategy &amp; Vision</a>
       <a data-route="initiatives">Initiatives</a>
-      <a data-route="tasks">Tasks</a>
       <a data-route="recognitions">Recognitions</a>
       <a data-route="team">Team</a>
     </nav>
@@ -485,8 +484,17 @@ function donut(pct, size=54, stroke=5){
   </div>`;
 }
 
+function endOfMonth(d=new Date()){ return new Date(d.getFullYear(), d.getMonth()+1, 0, 23, 59, 59, 999); }
+function bucketOf(t){
+  if (!t.due) return t.horizon || "weekly";
+  const d = new Date(t.due+"T00:00:00");
+  if (isNaN(d)) return t.horizon || "weekly";
+  if (d <= endOfWeek()) return "weekly";
+  if (d <= endOfMonth()) return "monthly";
+  return "quarterly";
+}
 function progressFor(horizon){
-  const list = state.tasks.filter(t=>t.horizon===horizon);
+  const list = state.tasks.filter(t=>bucketOf(t)===horizon);
   if (!list.length) return { pct:0, done:0, total:0 };
   const done = list.filter(t=>t.done).length;
   return { pct: done/list.length, done, total: list.length };
@@ -496,7 +504,7 @@ function overallProgress(){
   return state.tasks.filter(t=>t.done).length / state.tasks.length;
 }
 function tasksByOwner(name, horizon){
-  return state.tasks.filter(t => (t.owner||"")===name && (!horizon || t.horizon===horizon));
+  return state.tasks.filter(t => (t.owner||"")===name && (!horizon || bucketOf(t)===horizon));
 }
 function ownerProgress(name, horizon){
   const l = tasksByOwner(name, horizon);
@@ -535,12 +543,10 @@ function personForOwner(name){
 
 // ====================== VIEWS ======================
 let currentHorizon = "weekly";
-let currentScope = "team";
 
 function viewHome(){
   const today = new Date();
   const overdue = overdueCount();
-  const owners = ownersForFilter(currentScope);
   return `
   <div class="eyebrow">Command Center</div>
   <h1 class="h1" data-edit="user.workspace">Command</h1>
@@ -566,35 +572,25 @@ function viewHome(){
       <button data-h="monthly"   class="${currentHorizon==='monthly'?'active':''}">This Month</button>
       <button data-h="quarterly" class="${currentHorizon==='quarterly'?'active':''}">This Quarter</button>
     </div>
-    <div class="period-tabs" id="sTabs">
-      <button data-s="mine"     class="${currentScope==='mine'?'active':''}">Mine</button>
-      <button data-s="team"     class="${currentScope==='team'?'active':''}">My team</button>
-      <button data-s="everyone" class="${currentScope==='everyone'?'active':''}">Everyone</button>
-    </div>
-    ${overdue ? `<span class="status blocked" style="cursor:pointer" data-go="tasks"><span class="pip"></span>${overdue} overdue</span>` : ''}
+    ${overdue ? `<span class="status blocked"><span class="pip"></span>${overdue} overdue</span>` : ''}
   </div>
 
   <div class="section-head">
-    <div class="section-label">People · ${currentScope==='mine'?'me':currentScope==='team'?'my team':'everyone'}</div>
+    <div class="section-label">People</div>
     <button class="add-btn" data-add="member"><span class="plus">＋</span> add member</button>
   </div>
   <div class="grid grid-3" style="gap:14px">
-    ${owners.map(name=>{
-      const m = personForOwner(name);
-      if (!m) return "";
+    ${state.team.map(m=>{
       const tasks = tasksByOwner(m.name, currentHorizon);
       const pct = ownerProgress(m.name, currentHorizon);
-      const editAttrs = m.isMe
-        ? (field)=>`data-edit="user.${field}"`
-        : (field)=>`data-edit-list="team" data-id="${m.id}" data-field="${field}"`;
       return `
       <div class="person-card">
         <div class="person-head">
           <div class="row-flex" style="flex:1;min-width:0;gap:12px">
             ${avatar(m.name)}
             <div class="person-info">
-              <div class="name" contenteditable="plaintext-only" ${editAttrs("name")}>${escapeHTML(m.name)}</div>
-              <div class="role" contenteditable="plaintext-only" ${editAttrs("role")}>${escapeHTML(m.role)}</div>
+              <div class="name" contenteditable="plaintext-only" data-edit-list="team" data-id="${m.id}" data-field="name">${escapeHTML(m.name)}</div>
+              <div class="role" contenteditable="plaintext-only" data-edit-list="team" data-id="${m.id}" data-field="role">${escapeHTML(m.role)}</div>
             </div>
           </div>
           ${donut(pct)}
@@ -713,50 +709,6 @@ function viewInitiatives(){
   `;
 }
 
-function viewTasks(){
-  const horizons=["weekly","monthly","quarterly"];
-  const list = state.tasks.filter(t=>t.horizon===currentHorizon).slice().sort((a,b)=>{
-    const ao=isOverdue(a)?0:a.done?2:1, bo=isOverdue(b)?0:b.done?2:1;
-    if (ao!==bo) return ao-bo;
-    return (a.due||"").localeCompare(b.due||"");
-  });
-  const p = progressFor(currentHorizon);
-  const overdue = list.filter(isOverdue).length;
-  return `
-  <div class="eyebrow">Execution</div>
-  <h1 class="h1">Tasks</h1>
-  <p class="lede">Weekly, monthly, quarterly — what's actually getting done.</p>
-
-  <div class="toolbar">
-    <div class="period-tabs" id="hTabs">
-      ${horizons.map(h=>{ const pp=progressFor(h); return `<button data-h="${h}" class="${h===currentHorizon?'active':''}">${({weekly:'This Week',monthly:'This Month',quarterly:'This Quarter'})[h]} · ${Math.round(pp.pct*100)}%</button>`; }).join("")}
-    </div>
-    <button class="add-btn" data-add="task"><span class="plus">＋</span> new task</button>
-    ${overdue ? `<span class="status blocked"><span class="pip"></span>${overdue} overdue</span>` : ''}
-    <span class="muted" style="margin-left:auto;font-size:13px">${p.done}/${p.total} done</span>
-  </div>
-
-  <div class="card"><div class="top-bar"><i style="width:${Math.round(p.pct*100)}%"></i></div>
-    <div class="body">
-      <div class="checklist">
-        ${list.length ? list.map(t=>{
-          const i = initiativeById(t.initiative);
-          return `
-          <div class="task ${t.done?'done':''}">
-            <span class="check ${t.done?'on':''}" data-task="${t.id}"></span>
-            <span class="txt" contenteditable="plaintext-only" data-edit-list="tasks" data-id="${t.id}" data-field="title">${escapeHTML(t.title)}</span>
-            ${i?`<span class="tag" data-pick="task-init:${t.id}">${escapeHTML(i.title)}</span>`:`<span class="tag" data-pick="task-init:${t.id}">no initiative</span>`}
-            <span class="tag" data-pick="task-owner:${t.id}">${escapeHTML(t.owner||'unassigned')}</span>
-            <span class="date-pill ${dueClass(t)}" data-date="${t.id}">${fmtDate(t.due)||'set date'}</span>
-            <span class="menu" data-menu="task:${t.id}">⋯</span>
-          </div>`;
-        }).join("") : `<div class="muted" style="padding:20px 0">No tasks in this horizon yet.</div>`}
-      </div>
-    </div>
-  </div>
-  `;
-}
-
 function viewRecognitions(){
   const sorted = [...state.recognitions].sort((a,b)=>b.date.localeCompare(a.date));
   const byMonth = {};
@@ -869,7 +821,7 @@ function viewTeam(){
 }
 
 // ====================== ROUTER ======================
-const routes = { home:viewHome, strategy:viewStrategy, initiatives:viewInitiatives, tasks:viewTasks, recognitions:viewRecognitions, team:viewTeam };
+const routes = { home:viewHome, strategy:viewStrategy, initiatives:viewInitiatives, recognitions:viewRecognitions, team:viewTeam };
 let route = "home";
 function go(r){ if(!routes[r])return; route=r; render(); }
 
@@ -1273,7 +1225,7 @@ function searchAll(q){
   });
   state.tasks.forEach(t=>{
     if (t.title.toLowerCase().includes(ql))
-      push("task", "tasks", t.title, `${t.horizon} · ${t.owner||"unassigned"}`, ()=>{ currentHorizon=t.horizon; go("tasks"); });
+      push("task", "home", t.title, `${bucketOf(t)} · ${t.owner||"unassigned"}`, ()=>{ currentHorizon=bucketOf(t); go("home"); });
   });
   state.recognitions.forEach(r=>{
     if ((r.note||"").toLowerCase().includes(ql) || (r.person||"").toLowerCase().includes(ql))
