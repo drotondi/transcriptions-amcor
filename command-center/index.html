@@ -627,8 +627,9 @@ function viewHome(){
       </div>`;
     }).join("")}
   </div>
-  <div style="margin-top:24px;text-align:center">
+  <div style="margin-top:24px;text-align:center;display:flex;justify-content:center;gap:18px;align-items:center">
     ${archivedCount() ? `<a class="muted" style="cursor:pointer;border-bottom:1px dashed var(--line-2);padding-bottom:1px;font-size:13px" id="toggleArchived">${showArchived?'Hide archived':`Show ${archivedCount()} archived task${archivedCount()===1?'':'s'}`}</a>` : ''}
+    ${state.tasks.some(t=>t.done && !isArchived(t)) ? `<a class="muted" style="cursor:pointer;border-bottom:1px dashed var(--line-2);padding-bottom:1px;font-size:13px" id="archiveAllDone">Archive all done now</a>` : ''}
   </div>
   `;
 }
@@ -906,9 +907,11 @@ function bindHandlers(){
     }
   });
 
-  // archived toggle
+  // archived toggle / bulk archive
   const tArch = $("#toggleArchived");
   if (tArch) tArch.onclick = () => { showArchived = !showArchived; render(); };
+  const aAll = $("#archiveAllDone");
+  if (aAll) aAll.onclick = archiveAllDone;
 
   // progress mode toggle (auto/manual)
   $$("[data-prog-mode]").forEach(b=>b.onclick=(e)=>{
@@ -1071,8 +1074,39 @@ function openDate(anchor, kind, id){
 
 function openItemMenu(anchor, spec){
   const [kind, ...rest] = spec.split(":");
-  const items = [{label:"Delete", danger:true, action:()=>deleteItem(kind, ...rest)}];
+  const items = [];
+  if (kind === "task"){
+    const t = state.tasks.find(x=>x.id===rest[0]);
+    if (t){
+      if (!t.done){
+        items.push({ label:"Mark done & archive", action:()=>{
+          t.done = true;
+          t.completedAt = new Date(Date.now() - 8*86400000).toISOString().slice(0,10);
+          save(); render(); toast("Archived");
+        }});
+      } else if (!isArchived(t)){
+        items.push({ label:"Archive now", action:()=>{
+          t.completedAt = new Date(Date.now() - 8*86400000).toISOString().slice(0,10);
+          save(); render(); toast("Archived");
+        }});
+      } else {
+        items.push({ label:"Unarchive", action:()=>{
+          t.completedAt = new Date().toISOString().slice(0,10);
+          save(); render(); toast("Unarchived");
+        }});
+      }
+      items.push({sep:true});
+    }
+  }
+  items.push({label:"Delete", danger:true, action:()=>deleteItem(kind, ...rest)});
   showDD(anchor, items);
+}
+
+function archiveAllDone(){
+  const stamp = new Date(Date.now() - 8*86400000).toISOString().slice(0,10);
+  let n = 0;
+  state.tasks.forEach(t => { if (t.done && !isArchived(t)){ t.completedAt = stamp; n++; } });
+  save(); render(); toast(`${n} archived`);
 }
 
 function deleteItem(kind, ...ids){
